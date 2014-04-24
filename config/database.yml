@@ -17,9 +17,9 @@
 development:
   adapter: postgresql
   encoding: unicode
-  database: wrap-semantic_development
+  database: wrap_semantic_development
   pool: 5
-  username: wrap-semantic
+  username: wrap_semantic
   password:
 
   # Connect on a TCP socket. Omitted by default since the client uses a
@@ -46,15 +46,15 @@ development:
 test:
   adapter: postgresql
   encoding: unicode
-  database: wrap-semantic_test
+  database: wrap_semantic_test
   pool: 5
-  username: wrap-semantic
+  username: wrap_semantic
   password:
 
 production:
   adapter: postgresql
   encoding: unicode
-  database: wrap-semantic_production
+  database: wrap_semantic_production
   pool: 5
-  username: wrap-semantic
+  username: wrap_semantic
   password:
