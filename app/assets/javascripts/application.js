@@ -13,4 +13,9 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= require semantic-ui
 //= require_tree .
+
+$(document).on('click', '.dropdown', function() {
+  $('.ui.dropdown').dropdown('toggle');
+})

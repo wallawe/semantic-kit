@@ -1,0 +1,33 @@
+// Responsiveness
+
+$break-small: 320px;
+$break-medium: 600px;
+$break-large: 1020px;
+
+@mixin respond-to($media) {
+  @if $media == smartphone {
+    @media screen and (min-width: $break-small) and (max-width: $break-medium) { @content; }
+  }
+  @else if $media == tablet {
+    @media only screen and (min-width: $break-medium + 1) and (max-width: $break-large - 1) { @content; }
+  }
+}
+
+// Resets & Fonts
+
+* {
+  font-family: 'Open Sans', 'sans-serif';
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+//Overrides
+
+.ui.menu {
+  border-radius: 0;
+  .item {
+    padding: 1.5em;
+    font-weight: 300;
+  }
+}
