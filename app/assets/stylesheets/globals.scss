@@ -26,8 +26,16 @@ $break-large: 1020px;
 
 .ui.menu {
   border-radius: 0;
+  margin-bottom: 0;
   .item {
     padding: 1.5em;
-    font-weight: 300;
+    font-weight: 500;
+  }
+  .sub .item {
+    padding: 1em 1.5em;
+
+    &.active {
+      border-color: red;
+    }
   }
 }
