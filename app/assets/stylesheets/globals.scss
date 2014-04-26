@@ -16,15 +16,18 @@ $break-large: 1020px;
 // Resets & Fonts
 
 * {
-  font-family: 'Open Sans', 'sans-serif';
+  font-family: 'Open Sans', sans-serif;
   box-sizing: border-box;
-  padding: 0;
-  margin: 0;
+}
+
+a {
+  color: #08c;
+  text-decoration: none;
 }
 
 //Overrides
 
-.ui.menu {
+.nav.menu {
   border-radius: 0;
   margin-bottom: 0;
   .item {
@@ -33,9 +36,5 @@ $break-large: 1020px;
   }
   .sub .item {
     padding: 1em 1.5em;
-
-    &.active {
-      border-color: red;
-    }
   }
 }
