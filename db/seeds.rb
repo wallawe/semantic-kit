@@ -40,5 +40,7 @@ theme_three = {name: "Theme Three", description: "A resume theme", copyright: "2
   theme.theme_categories.create(category_id: Category.all.sample.id)
 end
 
-Theme.first.create_owner(user_id: will.id)
+Theme.first(2).each do |t|
+  t.create_owner(user_id: will.id)
+end
 Theme.last.create_owner(user_id: travis.id)
