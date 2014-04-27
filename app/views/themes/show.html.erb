@@ -5,8 +5,20 @@
 <p><%= @theme.description %></p>
 <p><%= @theme.copyright %></p>
 
-<h2>Subscribe</h2>
-<%= link_to "Subscribe", subscriptions_path(id: @theme.id), class: "ui button", method: :post %>
+
+<h2>Price List</h2>
+<div>
+  <p>Single: <%= number_to_currency @theme.price_list.single_tier %></p>
+  <%= link_to "Subscribe", subscriptions_path(id: @theme.id, price: @theme.price_list.single_tier), class: "ui button", method: :post %>
+</div>
+<div>
+  <p>Multiple: <%= number_to_currency @theme.price_list.multiple_tier %></p>
+  <%= link_to "Subscribe", subscriptions_path(id: @theme.id, price: @theme.price_list.multiple_tier), class: "ui button", method: :post %>
+</div>
+<div>
+  <p>Extended: <%= number_to_currency @theme.price_list.extended_tier %></p>
+  <%= link_to "Subscribe", subscriptions_path(id: @theme.id, price: @theme.price_list.extended_tier), class: "ui button", method: :post %>
+</div>
 
 <h2>Owner</h2>
 
