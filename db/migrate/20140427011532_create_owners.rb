@@ -1,9 +1,8 @@
-class CreateSubscriptions < ActiveRecord::Migration
+class CreateOwners < ActiveRecord::Migration
   def change
-    create_table :subscriptions do |t|
+    create_table :owners do |t|
       t.references :user
       t.references :theme
-
       t.timestamps
     end
   end

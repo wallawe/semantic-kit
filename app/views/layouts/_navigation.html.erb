@@ -5,31 +5,35 @@
       Sema
     <% end %>
     <div class="right menu">
-      <div class="ui dropdown item">
-        User<i class="icon dropdown"></i>
-        <div class="menu">
-          <a class="item"><i class="browser icon"></i>View Dashboard</a>
-          <a class="item"><i class="settings icon"></i> Account Settings</a>
-          <a class="item"><i class="edit icon"></i>Edit Profile</a>
-          <a class="item"><i class="forward mail icon"></i>Log out</a>
+      <% if current_user %>
+        <div class="ui dropdown item">
+          User<i class="icon dropdown"></i>
+          <div class="menu">
+            <a class="item"><i class="browser icon"></i>View Dashboard</a>
+            <%= link_to account_path, class: "item" do %>
+              <i class="settings icon"></i> Account Settings</a>
+            <% end %>
+            <%= link_to user_path(current_user), class: "item" do %>
+              <i class="edit icon"></i>Edit Profile
+            <% end %>
+            <%= link_to logout_path, class: "item" do %>
+              <i class="forward mail icon"></i>Log out
+            <% end %>
+          </div>
         </div>
-      </div>
-      <a class="item">Help</a>
+      <% else %>
+        <div class="ui item"><%= link_to "Sign In", signin_path %></div>
+      <% end %>
+      <%= link_to "Help", help_path, class: "item" %>
     </div>
   </div>
 </div>
 
 <div class="container">
   <div class="ui sub inverted secondary pointing menu">
-    <a class="active item">All</a>
-    <a class="item">Admin / Dashboard</a>
-    <a class="item">Corporate</a>
-    <a class="item">Portfolio</a>
-    <a class="item">Resume</a>
-    <a class="item">Landing Page</a>
-    <a class="item">E-commerce</a>
-    <a class="item">Blog</a>
-    <a class="item">Components</a>
+    <%= link_to "All", themes_path, class: "item" %>
+    <% Category.order(:name).each do |category| %>
+      <%= link_to category.name, category_path(category), class: "item" %>
+    <% end %>
   </div>
 </div>
-
