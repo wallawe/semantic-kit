@@ -1,0 +1,13 @@
+<h1>
+  <%= @theme.name %>
+</h1>
+
+<p><%= @theme.description %></p>
+<p><%= @theme.copyright %></p>
+
+<h2>Subscribe</h2>
+<%= link_to "Subscribe", subscriptions_path(id: @theme.id), class: "ui button", method: :post %>
+
+<h2>Owner</h2>
+
+<%= link_to @theme.owner.username, user_path(@theme.owner.user) %>

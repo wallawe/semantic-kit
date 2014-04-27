@@ -1,0 +1,38 @@
+<div class="ui two column grid">
+
+  <div class="column">
+    <% if !alert.nil? %>
+      <div class="ui error message">
+        <div class="header">We noticed some issues</div>
+          <p id="error"><%= flash.now[:alert] %></p>
+        </div>
+      </div>
+    <% end %>
+
+    <div class="ui form segment">
+      <%= form_tag sessions_path do %>
+        <div class="field">
+          <label for="email">Email:</label>
+          <div class="ui left labeled icon input">
+            <%= text_field_tag :email, nil, :autofocus => true, :autocomplete => 'off' %>
+            <i class="mail icon"></i>
+            <div class="ui corner label">
+              <i class="icon asterisk"></i>
+            </div>
+          </div>
+        </div>
+        <div class="field">
+          <label for="password">Password:</label>
+          <div class="ui left labeled icon input">
+            <%= password_field_tag :password, nil, :autocomplete => 'off' %>
+            <i class="lock icon"></i>
+            <div class="ui corner label">
+              <i class="icon asterisk"></i>
+            </div>
+          </div>
+        </div>
+        <%= submit_tag 'Log In', :class => "ui blue submit button" %>
+      <% end %>
+    </div>
+  </div>
+</div>

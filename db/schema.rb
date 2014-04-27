@@ -11,22 +11,62 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140424201714) do
+ActiveRecord::Schema.define(version: 20140427011532) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "categories", force: true do |t|
+    t.string   "name"
+    t.string   "slug"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "owners", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "theme_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "sales_trackers", force: true do |t|
+    t.integer  "theme_id"
+    t.integer  "sale_count"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "subscriptions", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "theme_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "theme_categories", force: true do |t|
+    t.integer  "category_id"
+    t.integer  "theme_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "themes", force: true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.string   "copyright"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "users", force: true do |t|
+    t.string   "username"
+    t.string   "name"
+    t.string   "email"
+    t.string   "password_digest"
+    t.string   "location"
+    t.string   "website"
+    t.text     "about"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -2,13 +2,13 @@
   <div class="content">
     <h1>Semantic UI Themes &amp; Templates</h1>
     <p>Differentiate yourself and your design. <a href="http://www.semantic-ui.com">Semantic UI</a> is an easy to use front-end framework with its own style and purpose. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-    <a href="#" class="ui animated button green">
+    <%= link_to themes_path, class: "ui animated button green" do %>
       <div class="visible content">View all Themes</div>
       <div class="hidden content">
         <i class="right arrow icon"></i>
       </div>
-    </a>
-    <span style="margin-left: 10px;"> or <a href="#">sell your themes</a></span>
+    <% end %>
+    <span style="margin-left: 10px;"> or <%= link_to "sell your themes", new_theme_path %></span>
   </div>
 </div>
 
