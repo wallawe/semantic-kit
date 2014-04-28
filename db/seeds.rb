@@ -55,3 +55,5 @@ Theme.first(2).each do |t|
   t.create_owner(user_id: will.id)
 end
 Theme.last.create_owner(user_id: travis.id)
+
+puts "All done! Success"
