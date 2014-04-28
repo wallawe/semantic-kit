@@ -1,1 +1,7 @@
-<%= render partial: "shared/theme", collection: @themes %>
+<%= render partial: 'layouts/subnav' %>
+
+<div class="ui grid gallery">
+  <div class="two column row">
+    <%= render partial: "shared/theme", collection: @themes %>
+  </div>
+</div>
