@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140427011532) do
+ActiveRecord::Schema.define(version: 20140427035018) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,6 +26,15 @@ ActiveRecord::Schema.define(version: 20140427011532) do
   create_table "owners", force: true do |t|
     t.integer  "user_id"
     t.integer  "theme_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "price_lists", force: true do |t|
+    t.integer  "theme_id"
+    t.decimal  "single_tier",   precision: 5, scale: 2
+    t.decimal  "multiple_tier", precision: 5, scale: 2
+    t.decimal  "extended_tier", precision: 5, scale: 2
     t.datetime "created_at"
     t.datetime "updated_at"
   end
