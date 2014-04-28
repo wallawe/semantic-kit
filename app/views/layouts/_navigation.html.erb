@@ -9,7 +9,9 @@
         <div class="ui dropdown item">
           User<i class="icon dropdown"></i>
           <div class="menu">
-            <a class="item"><i class="browser icon"></i>View Dashboard</a>
+            <%= link_to dashboard_path, class: "item" do %>
+              <i class="browser icon"></i>View Dashboard
+            <% end %>
             <%= link_to account_path, class: "item" do %>
               <i class="settings icon"></i> Account Settings</a>
             <% end %>
