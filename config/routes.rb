@@ -1,4 +1,6 @@
 WrapSemantic::Application.routes.draw do
+  get 'dashboards/show'
+
   root "info#home"
 
   get "/help",   to: "info#help", as: "help"
@@ -9,6 +11,7 @@ WrapSemantic::Application.routes.draw do
 
   resource  :account,       only: [:show]
   resources :categories
+  resource  :dashboard,     only: [:show]
 
   resources :previews,      only: [:show]
   resources :sessions,      only: [:new, :create]
