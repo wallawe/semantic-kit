@@ -60,8 +60,12 @@
       <thead><tr><th colspan="2">Theme Details</th></tr></thead>
       <tbody>
         <tr>
-          <td>Category</td>
-          <td>**TODO**<%#= @theme.category %></td>
+          <td>Categories</td>
+          <td>
+            <% @theme.categories.each do |category| %>
+              <%= link_to category.name, category_path(category) %>
+            <% end %>
+          </td>
         </tr>
         <tr>
           <td>Compatibility</td>

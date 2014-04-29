@@ -40,5 +40,10 @@
     </div>
   <% end %>
 
+  <h3>Add Categories:</h3>
+  <p>
+    <%= collection_check_boxes(:theme, :category_ids, Category.all, :id, :name) %>
+  </p>
+
   <%= f.submit "Submit" %>
 <% end %>
