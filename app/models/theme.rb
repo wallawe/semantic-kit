@@ -2,9 +2,10 @@ class Theme < ActiveRecord::Base
   has_many :theme_categories
   has_many :categories, through: :theme_categories
 
-  has_one :owner
+  has_one :owner,      dependent: :destroy
+  has_one :price_list, dependent: :destroy
 
-  has_one :price_list
+  accepts_nested_attributes_for :price_list
 
   mount_uploader :image, ImageUploader
 
