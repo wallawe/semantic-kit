@@ -25,5 +25,20 @@
     <%= f.file_field :image %>
   </div>
 
+  <%= f.fields_for :price_list, @theme.build_price_list do |builder| %>
+    <div>
+      <%= builder.label :single_tier %>
+      <%= builder.number_field :single_tier %>
+    </div>
+    <div>
+      <%= builder.label :multiple_tier %>
+      <%= builder.number_field :multiple_tier %>
+    </div>
+    <div>
+      <%= builder.label :extended_tier %>
+      <%= builder.number_field :extended_tier %>
+    </div>
+  <% end %>
+
   <%= f.submit "Submit" %>
 <% end %>
