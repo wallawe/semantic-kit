@@ -1,25 +1,88 @@
-<h1>
-  <%= @theme.name %>
-</h1>
+<% content_for :subheader do %>
+  <div class="subheader">
+    <div class="container">
+      <h3 class="ui red header">
+        <%= @theme.name %>
+        <div class="sub header">This is some text</div>
+      </h3>
+    </div>
+  </div>
+<% end %>
+<div class="ui grid">
+  <div class="eleven wide column">
+    <div class="ui segment item-show">
+      <img src="/assets/placeholder.png">
 
-<p><%= @theme.description %></p>
-<p><%= @theme.copyright %></p>
+      <h3 class="ui dividing inverted header">Description</h3>
+      <p><%= @theme.description %> Allow for html to be used by theme creators here.</p>
+
+      <h3 class="ui dividing inverted header">Copyright</h3>
+      <p><%= @theme.copyright %></p>
+    </div>
+  </div>
+  <div class="five wide column">
+
+    <div class="column" style="text-align: center;">
+
+      <a href="#" class="ui huge green labeled icon button" style="width: 100%;">
+        buy <%= number_to_currency @theme.price_list.single_tier %>
+        <i class="tags icon"></i>
+      </a>
+      <span style="color: #fff; font-size: 0.8em;">we accept paypal and all major cards</span>
+    </div>
+
+    <div class="ui segment">
+      <header class="ui top attached label"><b>Application License</b></header>
+      <div class="ui  list">
+        <%= link_to subscriptions_path(id: @theme.id, price: @theme.price_list.single_tier), class: "item", method: :post do %>
+          <i class="angle right icon"></i>
+          Single
+          <div class="right floated ui"><%= number_to_currency @theme.price_list.single_tier %></div>
+        <% end %>
+
+        <%= link_to subscriptions_path(id: @theme.id, price: @theme.price_list.single_tier), class: "item", method: :post do %>
+          <i class="angle right icon"></i>
+          Multiple
+          <div class="right floated ui"><%= number_to_currency @theme.price_list.multiple_tier %></div>
+        <% end %>
+
+        <%= link_to subscriptions_path(id: @theme.id, price: @theme.price_list.extended_tier), class: "item", method: :post do %>
+          <i class="angle right icon"></i>
+          Extended
+          <div class="right floated ui"><%= number_to_currency @theme.price_list.extended_tier %></div>
+        <% end %>
+      </div>
+    </div>
 
 
-<h2>Price List</h2>
-<div>
-  <p>Single: <%= number_to_currency @theme.price_list.single_tier %></p>
-  <%= link_to "Subscribe", subscriptions_path(id: @theme.id, price: @theme.price_list.single_tier), class: "ui button", method: :post %>
+
+    <table class="ui table segment">
+      <thead><tr><th colspan="2">Theme Details</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>Category</td>
+          <td>**TODO**<%#= @theme.category %></td>
+        </tr>
+        <tr>
+          <td>Compatibility</td>
+          <td>IE8+<br>Chrome<br>Safari</td>
+        </tr>
+        <tr>
+          <td>Tags</td>
+          <td>Theme, Admin, responsive</td>
+        </tr>
+        <tr>
+          <td>Released</td>
+          <td>2 months ago</td>
+        </tr>
+      </tbody>
+    </table>
+
+
+
+    <div class="ui segment">
+      <header class="ui top attached label"><b>Author</b></header>
+      <div><%= link_to @theme.owner.username, user_path(@theme.owner.user) %></div>
+    </div>
+  </div>
 </div>
-<div>
-  <p>Multiple: <%= number_to_currency @theme.price_list.multiple_tier %></p>
-  <%= link_to "Subscribe", subscriptions_path(id: @theme.id, price: @theme.price_list.multiple_tier), class: "ui button", method: :post %>
-</div>
-<div>
-  <p>Extended: <%= number_to_currency @theme.price_list.extended_tier %></p>
-  <%= link_to "Subscribe", subscriptions_path(id: @theme.id, price: @theme.price_list.extended_tier), class: "ui button", method: :post %>
-</div>
-
-<h2>Owner</h2>
-
-<%= link_to @theme.owner.username, user_path(@theme.owner.user) %>

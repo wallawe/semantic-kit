@@ -34,11 +34,15 @@ body {
   padding: 0;
 }
 
+h1, h2, h3, h4, h5, h6 {
+  margin: 0.5em 0;
+}
+
 .hero.message {
   padding: 0 2em 2em 2em;
-  border: 1px solid rgba(0,0,0,0.05);
   text-align: center;
   margin-bottom: 2rem;
+  box-shadow: inset 0 0 5px #333;
 
   h1 {
     font-size: 2.5em;
@@ -57,8 +61,9 @@ body {
   .two.column.row > .column {
     margin-bottom: 2%;
     width: 49% !important;
-    background: rgba(50,50,50,0.5);
+    background: rgba(255,255,255,0.1);
     padding-bottom: 1em;
+    border-radius: 5px;
 
     &:nth-of-type(odd) { margin-right: 2%;}
   }
@@ -72,4 +77,24 @@ body {
   }
 }
 
-.ui.menu { margin: 2rem 0;}
+.ui.menu {
+  margin: 2rem 0;
+}
+
+.subheader {
+  width: 100%;
+  background: #f2f2f2;
+  box-shadow: inset 0 0 3px #ccc;
+
+  .container { padding: 1em; }
+}
+
+.ui.item-show {
+  background: rgba(250,250,250, 0.1);
+
+  p {
+    color: #eee;
+    line-height: 1.5em;
+    font-size: 0.9em;
+  }
+}
