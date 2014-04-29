@@ -1,18 +1,15 @@
 source 'https://rubygems.org'
 ruby '2.1.1'
 
-gem 'rails', '4.1.0'
-gem 'pg'
-
-gem 'sass-rails', '~> 4.0.2'
-gem 'uglifier', '>= 1.3.0'
-gem 'semantic-ui-sass', '~> 0.16.1.0'
-
-gem 'coffee-rails', '~> 4.0.0'
-
-gem 'jquery-rails'
-
-# Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
-gem 'turbolinks'
-
 gem 'bcrypt', '~> 3.1.7'
+gem 'carrierwave'
+gem 'coffee-rails', '~> 4.0.0'
+gem 'fog'
+gem 'jquery-rails'
+gem 'rails', '4.1.0'
+gem 'rmagick', :require => 'RMagick'
+gem 'pg'
+gem 'sass-rails', '~> 4.0.2'
+gem 'semantic-ui-sass', '~> 0.16.1.0'
+gem 'turbolinks'
+gem 'uglifier', '>= 1.3.0'

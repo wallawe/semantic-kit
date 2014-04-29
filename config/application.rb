@@ -6,6 +6,10 @@ require 'rails/all'
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
+config_path = File.expand_path('../app_config.yml', __FILE__)
+require 'active_support/core_ext/hash/indifferent_access'
+APP_CONFIG = HashWithIndifferentAccess.new(YAML.load_file(config_path)[Rails.env])
+
 module WrapSemantic
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.

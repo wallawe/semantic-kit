@@ -1,4 +1,13 @@
 <%= form_for @theme do |f| %>
+
+  <% if @theme.errors.any? %>
+    <div class="header">We noticed some issues</div>
+      <% @theme.errors.full_messages.each do |message| %>
+        <p id="error"><%= message %></p>
+      <% end %>
+    </div>
+  <% end %>
+
   <div>
     <%= f.label :name %>
     <%= f.text_field :name %>
@@ -11,4 +20,10 @@
     <%= f.label :copyright %>
     <%= f.text_field :copyright %>
   </div>
+  <div>
+    <%= f.label :image %>
+    <%= f.file_field :image %>
+  </div>
+
+  <%= f.submit "Submit" %>
 <% end %>
