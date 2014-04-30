@@ -1,6 +1,6 @@
 <h1><%= @tag.name %></h1>
 <div class="ui grid gallery">
   <div class="two column row">
-    <%= render partial: "shared/theme", collection: @tag.themes %>
+    <%= render partial: "shared/theme", collection: @tag.themes.approved %>
   </div>
 </div>

@@ -16,7 +16,7 @@ class ThemesController < ApplicationController
   end
 
   def index
-    @themes = Theme.all
+    @themes = Theme.approved
   end
 
   def show
@@ -27,7 +27,7 @@ class ThemesController < ApplicationController
 
     def theme_params
       params.require(:theme).permit(:name, :description, :copyright, { category_ids: [] },
-                                    :image, :tag_list,
+                                    :image, :file_package, :tag_list,
                                     price_list_attributes: [:single_tier, :multiple_tier, :extended_tier])
     end
 end
