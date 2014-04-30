@@ -79,6 +79,10 @@
           <td>Released</td>
           <td><%= time_ago_in_words @theme.created_at %> ago</td>
         </tr>
+        <tr>
+          <td>Download</td>
+          <td><%= link_to "Download", @theme.file_package.url %></td>
+        </tr>
       </tbody>
     </table>
 

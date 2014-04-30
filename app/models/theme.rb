@@ -11,6 +11,7 @@ class Theme < ActiveRecord::Base
   accepts_nested_attributes_for :price_list
 
   mount_uploader :image, ImageUploader
+  mount_uploader :file_package, FilePackageUploader
 
   validates :name, :description, presence: true
 
