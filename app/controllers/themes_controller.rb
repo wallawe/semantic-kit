@@ -16,7 +16,7 @@ class ThemesController < ApplicationController
   end
 
   def index
-    @themes = Theme.all
+    @themes = Theme.approved
   end
 
   def show

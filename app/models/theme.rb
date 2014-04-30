@@ -15,6 +15,9 @@ class Theme < ActiveRecord::Base
 
   validates :name, :description, presence: true
 
+  scope :approved,    -> { where(approved: true) }
+  scope :pending,     -> { where(approved: false) }
+
   def default_image_url
     if image_url.present?
       image_url
