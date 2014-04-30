@@ -1,59 +1,97 @@
-<%= form_for @theme do |f| %>
-
-  <% if @theme.errors.any? %>
-    <div class="header">We noticed some issues</div>
-      <% @theme.errors.full_messages.each do |message| %>
-        <p id="error"><%= message %></p>
-      <% end %>
+<% content_for :subheader do %>
+  <div class="subheader">
+    <div class="container">
+      <h3 class="ui red header">
+        Submit a theme
+        <div class="sub header">and stack that cheese</div>
+      </h3>
     </div>
-  <% end %>
-
-  <div>
-    <%= f.label :name %>
-    <%= f.text_field :name %>
   </div>
-  <div>
-    <%= f.label :description %>
-    <%= f.text_field :description %>
-  </div>
-  <div>
-    <%= f.label :copyright %>
-    <%= f.text_field :copyright %>
-  </div>
-  <div>
-    <%= f.label :preview_url %>
-    <%= f.url_field :preview_url %>
-  </div>
-  <div>
-    <%= f.label :image %>
-    <%= f.file_field :image %>
-  </div>
-
-  <%= f.fields_for :price_list, @theme.build_price_list do |builder| %>
-    <div>
-      <%= builder.label :single_tier %>
-      <%= builder.number_field :single_tier %>
-    </div>
-    <div>
-      <%= builder.label :multiple_tier %>
-      <%= builder.number_field :multiple_tier %>
-    </div>
-    <div>
-      <%= builder.label :extended_tier %>
-      <%= builder.number_field :extended_tier %>
-    </div>
-  <% end %>
-
-  <h3>Add Categories:</h3>
-  <p>
-    <%= collection_check_boxes(:theme, :category_ids, Category.all, :id, :name) %>
-  </p>
-
-  <h3>Add tags:</h3>
-  <div>
-    <%= f.label :tag_list %>
-    <%= f.text_field :tag_list %>
-  </div>
-
-  <%= f.submit "Submit" %>
 <% end %>
+
+<div class="form-wrap">
+  <h2 class="ui center inverted aligned icon header">
+    <div class="content">Here's the deal
+      <div class="sub header">We like to keep things simple. Sell a theme with us and keep 75% of your sale no matter what. 10% of our profits go to the Semantic UI team to show our love.</div>
+    </div>
+  </h2>
+
+  <div class="ui horizontal inverted divider">
+    <i class="circular angle down icon"></i>
+  </div>
+
+  <%= form_for @theme do |f| %>
+
+    <% if @theme.errors.any? %>
+      <div class="header">We noticed some issues</div>
+        <% @theme.errors.full_messages.each do |message| %>
+          <p id="error"><%= message %></p>
+        <% end %>
+      </div>
+    <% end %>
+
+    <div class="ui form inverted">
+      <h3 class="ui header blue">Basics</h3>
+      <div class="field">
+        <%= f.label :name, "Theme Name" %>
+        <%= f.text_field :name %>
+      </div>
+      <div class="field">
+        <%= f.label :description %>
+        <%= f.text_field :description %>
+      </div>
+      <div class="field">
+        <%= f.label :copyright %>
+        <%= f.text_field :copyright %>
+      </div>
+      <div class="field">
+        <%= f.label :preview_url %>
+        <%= f.url_field :preview_url %>
+      </div>
+      <div class="field">
+        <%= f.label :image %>
+        <%= f.file_field :image, :class => "image-arena" %>
+      </div>
+    </div>
+
+
+    <%= f.fields_for :price_list, @theme.build_price_list do |builder| %>
+      <div class="ui form inverted price-fields">
+        <h3 class="ui header blue">Price</h3>
+        <div class="inline field">
+          <%= builder.number_field :single_tier, :placeholder => "Single Application" %>
+          <div class="ui pointing left label">
+            Single Application - $5 minimum <a href="#"> <i class="question purple circular icon"></i></a>
+          </div>
+        </div>
+        <div class="inline field">
+          <%= builder.number_field :multiple_tier, :placeholder => "Multiple Applications" %>
+          <div class="ui pointing left label">
+            Suggested: Single price x 3 <a href="#"> <i class="question purple circular icon"></i></a>
+          </div>
+        </div>
+        <div class="inline field">
+          <%= builder.number_field :extended_tier, :placeholder => "Extended Application" %>
+          <div class="ui pointing left label">
+            Suggested: Single price x 40 <a href="#"> <i class="question purple circular icon"></i></a>
+          </div>
+        </div>
+      </div>
+    <% end %>
+
+    <div class="ui form inverted">
+      <h3 class="ui header blue">Category</h3>
+      <div class="field">
+        <%= collection_select(:theme, :category_ids, Category.all, :id, :name) %>
+      </div>
+
+      <h3 class="ui header blue">Add tags</h3>
+      <div class="field">
+        <%= f.label :tag_list %>
+        <%= f.text_field :tag_list %>
+      </div>
+
+      <%= f.submit "Submit", :class => "ui button blue" %>
+    </div>
+  <% end %>
+</div>
