@@ -1,4 +1,6 @@
 WrapSemantic::Application.routes.draw do
+  get 'tags/show'
+
   get 'dashboards/show'
 
   root "info#home"
@@ -17,6 +19,7 @@ WrapSemantic::Application.routes.draw do
   resources :sessions,      only: [:new, :create]
   resources :subscriptions, only: [:create]
 
+  resources :tags,          only: [:show]
   resources :themes
   resources :users,         only: [:new, :create, :show]
 end

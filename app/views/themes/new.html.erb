@@ -21,6 +21,10 @@
     <%= f.text_field :copyright %>
   </div>
   <div>
+    <%= f.label :preview_url %>
+    <%= f.url_field :preview_url %>
+  </div>
+  <div>
     <%= f.label :image %>
     <%= f.file_field :image %>
   </div>
@@ -44,6 +48,12 @@
   <p>
     <%= collection_check_boxes(:theme, :category_ids, Category.all, :id, :name) %>
   </p>
+
+  <h3>Add tags:</h3>
+  <div>
+    <%= f.label :tag_list %>
+    <%= f.text_field :tag_list %>
+  </div>
 
   <%= f.submit "Submit" %>
 <% end %>
