@@ -20,7 +20,7 @@
             <%= link_to account_path, class: "item" do %>
               <i class="settings icon"></i> Account Settings</a>
             <% end %>
-            <%= link_to user_path(current_user), class: "item" do %>
+            <%= link_to edit_user_path(current_user), class: "item" do %>
               <i class="edit icon"></i>Edit Profile
             <% end %>
             <%= link_to logout_path, class: "item" do %>
