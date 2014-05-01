@@ -1,24 +1,25 @@
-<p>
-  <%= @user.username %>
-</p>
+<div class="ui form inverted">
+  <%= form_for current_user do |f| %>
+    <div class="field">
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+    </div>
 
-<p>
-  <%= @user.name %>
-</p>
+    <div class="field">
+      <%= f.label :location %>
+      <%= f.text_field :location %>
+    </div>
 
-<p>
-  <%= @user.email %>
-</p>
+    <div class="field">
+      <%= f.label :website %>
+      <%= f.text_field :website %>
+    </div>
 
-<p>
-  <%= @user.location %>
-</p>
+    <div class="field">
+      <%= f.label :about %>
+      <%= f.text_field :about %>
+    </div>
 
-<p>
-  <%= @user.website %>
-</p>
-
-<p>
-  <%= @user.about %>
-</p>
-
+    <%= f.submit "Save", :class => "ui button blue" %>
+  <% end %>
+</div>
