@@ -16,4 +16,16 @@ class User < ActiveRecord::Base
   def subscribed?(theme)
     subscriptions.where(theme_id: theme.id).any?
   end
+
+  def admin?
+    admin
+  end
+
+  def make_admin!
+    update_attribute(:admin, true)
+  end
+
+  def remove_admin!
+    update_attribute(:admin, false)
+  end
 end
