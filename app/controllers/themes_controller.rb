@@ -20,6 +20,7 @@ class ThemesController < ApplicationController
   end
 
   def show
+    @license = params[:license] || "single"
     @theme = Theme.find(params[:id])
   end
 

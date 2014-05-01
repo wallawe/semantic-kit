@@ -1,0 +1,33 @@
+<%= form_tag subscriptions_path(id: @theme.id, price: @theme.price_list.send("#{@license}_tier")) do %>
+  <script src="https://checkout.stripe.com/checkout.js"></script>
+  <%= hidden_field_tag :token, nil, id: "stripe_token" %>
+  <button id="payment" class="ui huge green labeled icon button" style="width: 100%;">
+    buy <%= number_to_currency(@theme.price_list.send("#{@license}_tier")) %>
+    <i class="tags icon"></i>
+  </button>
+
+
+  <script>
+    var handler = StripeCheckout.configure({
+      key: '<%= APP_CONFIG["stripe"]["publishable_key"] %>',
+      token: function(token, args) {
+        $("#stripe_token").val(token.id);
+        $("form").submit();
+      }
+    });
+
+    var theme_name  = '<%= @theme.name %>';
+    var description = '<%= @license.capitalize %> Tier License';
+    var amount_in_cents = '<%= @theme.price_list.send("#{@license}_tier") * 100 %>';
+
+    document.getElementById('payment').addEventListener('click', function(e) {
+      handler.open({
+        name: theme_name,
+        description: description,
+        amount: amount_in_cents
+      });
+      e.preventDefault();
+    });
+  </script>
+<% end %>
+<span style="color: #fff; font-size: 0.8em;">we accept paypal and all major cards</span>

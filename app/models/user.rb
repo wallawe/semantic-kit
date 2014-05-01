@@ -12,4 +12,8 @@ class User < ActiveRecord::Base
   def to_param
     "#{username}"
   end
+
+  def subscribed?(theme)
+    subscriptions.where(theme_id: theme.id).any?
+  end
 end
