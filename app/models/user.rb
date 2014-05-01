@@ -4,8 +4,8 @@ class User < ActiveRecord::Base
   # learn more here: https://github.com/codahale/bcrypt-ruby/blob/master/README.md
   has_secure_password
 
-  validates :password, length: { minimum: 6 }
-  validates :password, presence: true
+  validates :password, length: { minimum: 6 }, on: :create
+  validates :password, presence: true, on: :create
 
   has_many :subscriptions
 
