@@ -1,7 +1,7 @@
 <% content_for :subheader do %>
   <div class="subheader">
     <div class="container">
-      <h3 class="ui red header">
+      <h3 class="ui header">
         Submit a theme
         <div class="sub header">and stack that cheese</div>
       </h3>
@@ -23,10 +23,13 @@
   <%= form_for @theme do |f| %>
 
     <% if @theme.errors.any? %>
-      <div class="header">We noticed some issues</div>
-        <% @theme.errors.full_messages.each do |message| %>
-          <p id="error"><%= message %></p>
-        <% end %>
+      <div class="ui red message">
+        <div class="header">We noticed some issues</div>
+        <ul class="list">
+          <% @theme.errors.full_messages.each do |message| %>
+            <li id="error"><%= message %></li>
+          <% end %>
+        </ul>
       </div>
     <% end %>
 
@@ -37,7 +40,7 @@
         <%= f.text_field :name %>
       </div>
       <div class="field">
-        <%= f.label :description %>
+        <%= f.label :description, "Description - HTML is allowed" %>
         <%= f.text_field :description %>
       </div>
       <div class="field">
@@ -94,7 +97,7 @@
 
       <h3 class="ui header blue">Add tags</h3>
       <div class="field">
-        <%= f.label :tag_list %>
+        <%= f.label :tag_list, "Tags (Limit to 10)" %>
         <%= f.text_field :tag_list %>
       </div>
 
