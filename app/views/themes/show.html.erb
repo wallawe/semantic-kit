@@ -8,6 +8,7 @@
     </div>
   </div>
 <% end %>
+
 <div class="ui grid">
   <div class="eleven wide column">
     <div class="ui segment item-show">
@@ -23,34 +24,34 @@
   <div class="five wide column">
 
     <div class="column" style="text-align: center;">
-
-      <a href="#" class="ui huge green labeled icon button" style="width: 100%;">
-        buy <%= number_to_currency @theme.price_list.single_tier %>
-        <i class="tags icon"></i>
-      </a>
-      <span style="color: #fff; font-size: 0.8em;">we accept paypal and all major cards</span>
+      <% if current_user.subscribed?(@theme) %>
+        <%= render "download_button" %>
+      <% else %>
+        <%= render "subscriptions/button" %>
+      <% end %>
     </div>
 
     <div class="ui segment">
       <header class="ui top attached label"><b>Application License</b></header>
       <div class="ui  list">
-        <%= link_to subscriptions_path(id: @theme.id, price: @theme.price_list.single_tier), class: "item", method: :post do %>
+        <%= link_to theme_path(@theme.id, license: "single"), class: "item" do %>
           <i class="angle right icon"></i>
           Single
           <div class="right floated ui"><%= number_to_currency @theme.price_list.single_tier %></div>
         <% end %>
 
-        <%= link_to subscriptions_path(id: @theme.id, price: @theme.price_list.single_tier), class: "item", method: :post do %>
+        <%= link_to theme_path(@theme, license: "multiple"), class: "item" do %>
           <i class="angle right icon"></i>
           Multiple
           <div class="right floated ui"><%= number_to_currency @theme.price_list.multiple_tier %></div>
         <% end %>
 
-        <%= link_to subscriptions_path(id: @theme.id, price: @theme.price_list.extended_tier), class: "item", method: :post do %>
+        <%= link_to theme_path(@theme, license: "extended"), class: "item" do %>
           <i class="angle right icon"></i>
           Extended
           <div class="right floated ui"><%= number_to_currency @theme.price_list.extended_tier %></div>
         <% end %>
+
       </div>
     </div>
 
@@ -78,10 +79,6 @@
         <tr>
           <td>Released</td>
           <td><%= time_ago_in_words @theme.created_at %> ago</td>
-        </tr>
-        <tr>
-          <td>Download</td>
-          <td><%= link_to "Download", @theme.file_package.url %></td>
         </tr>
       </tbody>
     </table>
