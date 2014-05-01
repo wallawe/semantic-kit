@@ -1,0 +1,5 @@
+<% if @themes.any? %>
+  <%= render partial: "shared/theme", collection: @themes %>
+<% else %>
+  <p>There are no pending themes.</p>
+<% end %>

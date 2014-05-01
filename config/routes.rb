@@ -22,4 +22,8 @@ WrapSemantic::Application.routes.draw do
   resources :tags,          only: [:show]
   resources :themes
   resources :users,         only: [:new, :create, :show]
+
+  namespace :admin do
+    resource :dashboard,    only: [:show]
+  end
 end
