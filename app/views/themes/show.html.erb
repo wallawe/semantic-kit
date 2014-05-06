@@ -2,8 +2,16 @@
   <div class="subheader">
     <div class="container">
       <h3 class="ui header">
-        <%= @theme.name %>
-        <div class="sub header">This is some text</div>
+        <%= @theme.name %><br>
+        <div class="sub header">
+          <div class="ui breadcrumb"><!-- TODO - make this dynamic -->
+            <a class="section">Themes</a>
+            <div class="divider"> / </div>
+            <a class="section">Blog</a>
+            <div class="divider"> / </div>
+            <div class="active section">Details</div>
+          </div>
+        </div>
       </h3>
     </div>
   </div>
@@ -33,7 +41,7 @@
 
     <div class="ui segment">
       <header class="ui top attached label"><b>Application License</b></header>
-      <div class="ui  list">
+      <div class="ui list">
         <%= link_to theme_path(@theme.id, license: "single"), class: "item" do %>
           <i class="angle right icon"></i>
           Single

@@ -1,25 +1,36 @@
-<div class="ui form inverted">
-  <%= form_for current_user do |f| %>
-    <div class="field">
-      <%= f.label :name %>
-      <%= f.text_field :name %>
-    </div>
+<div class="form-wrap">
+  <h2 class="ui center inverted aligned icon header">
+    Edit your details
+  </h2>
 
-    <div class="field">
-      <%= f.label :location %>
-      <%= f.text_field :location %>
-    </div>
+  <div class="ui horizontal inverted divider">
+    <i class="circular angle down icon"></i>
+  </div>
 
-    <div class="field">
-      <%= f.label :website %>
-      <%= f.text_field :website %>
-    </div>
+  <div class="ui form inverted">
+    <%= form_for current_user do |f| %>
+      <div class="field">
+        <%= f.label :name %>
+        <%= f.text_field :name %>
+      </div>
 
-    <div class="field">
-      <%= f.label :about %>
-      <%= f.text_field :about %>
-    </div>
+      <div class="field">
+        <%= f.label :location %>
+        <%= f.text_field :location %>
+      </div>
 
-    <%= f.submit "Save", :class => "ui button blue" %>
-  <% end %>
+      <div class="field">
+        <%= f.label :website %>
+        <%= f.text_field :website %>
+      </div>
+
+      <div class="field">
+        <%= f.label :about %>
+        <%= f.text_area :about %>
+      </div>
+
+      <%= f.submit "Save", :class => "ui button blue" %>
+      <%= link_to "Cancel", user_path(current_user), :class => "secondary-text" %>
+    <% end %>
+  </div>
 </div>
