@@ -6,7 +6,7 @@
     <% end %>
     <%= link_to "Themes", themes_path, class: "item" %>
     <%= link_to "Sell", new_theme_path, class: "item" %>
-    <% if current_user.admin? %>
+    <% if current_user && current_user.admin? %>
       <%= link_to "Admin Dashboard", admin_dashboard_path, class: "item" %>
     <% end %>
     <div class="right menu">
