@@ -1,10 +1,12 @@
 <div class="ui grid">
   <div class="row">
     <div class="four wide column"></div>
+
+
     <div class="eight wide column">
       <h2 class="ui inverted center aligned header">
 
-        <div class="content">
+        <div class="content" style="margin: 30px auto;">
           Welcome back
           <div class="sub header">Sign in here</div>
         </div>
@@ -44,7 +46,19 @@
           <%= submit_tag 'Get to it', :class => "ui blue submit button" %>
         <% end %>
       </div>
+      <div class="ui horizontal divider inverted" style="margin: 40px 0;">
+        Or
+      </div>
+      <div style="text-align: center;">
+        <%= link_to new_user_path, class: "ui green labeled icon button" do %>
+          Sign Up
+          <i class="signup icon"></i>
+        <% end %>
+      </div>
+
     </div>
+
+
     <div class="four wide column"></div>
   </div>
 </div>

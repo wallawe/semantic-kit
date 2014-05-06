@@ -1,7 +1,7 @@
 <%= form_tag subscriptions_path(id: @theme.id, price: @theme.price_list.send("#{@license}_tier")) do %>
   <script src="https://checkout.stripe.com/checkout.js"></script>
   <%= hidden_field_tag :token, nil, id: "stripe_token" %>
-  <button id="payment" class="ui huge green labeled icon button" style="width: 100%;">
+  <button id="payment" class="ui huge green labeled icon fluid button">
     buy <%= number_to_currency(@theme.price_list.send("#{@license}_tier")) %>
     <i class="tags icon"></i>
   </button>

@@ -1,25 +1,30 @@
-<p>
-  <%= @user.username %>
-</p>
+<div class="form-wrap">
+  <h2 class="ui center inverted aligned icon header">
+    Profile
+  </h2>
+  <div class="ui horizontal inverted divider">
+    <i class="circular angle down icon"></i>
+  </div>
+  <div class="ui two column grid">
+    <div class="column">
+      <h2 class="ui huge header">
+        <%= @user.username %>
+      </h2>
+      <p><b>About:</b> <%= @user.about %></p>
+      <p><b>Website:</b> <%= @user.website %></p>
+      <p><b>Email:</b> <%= @user.email %></p>
+    </div>
+    <div class="column">
+      <%= image_tag avatar_url(@user), :class => "right floated circular ui image" %>
+    </div>
+  </div>
 
-<p>
-  <%= @user.name %>
-</p>
+  <div class="ui section inverted divider"></div>
+  <div class="3 fluid ui buttons">
+    <%= link_to "Dashboard", dashboard_path, :class => "ui orange button" %>
+    <%= link_to "Edit Profile", edit_user_path, :class => "ui teal button" %>
+    <%= link_to "Sell", new_theme_path, :class => "ui green button" %>
+  </div>
 
-<p>
-  <%= @user.email %>
-</p>
 
-<p>
-  <%= @user.location %>
-</p>
-
-<p>
-  <%= @user.website %>
-</p>
-
-<p>
-  <%= @user.about %>
-</p>
-
-<%= link_to "Edit Profile", edit_user_path %>
+</div>
