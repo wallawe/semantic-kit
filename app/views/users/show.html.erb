@@ -13,7 +13,7 @@
       <p><b>About:</b> <%= @user.about %></p>
       <p><b>Website:</b> <%= @user.website %></p>
       <p><b>Email:</b> <%= @user.email %></p>
-      <% if current_user %>
+      <% if current_user && current_user.id == @user.id %>
         <%= link_to "Edit Image", "http://www.gravatar.com" %>
       <% end %>
     </div>
