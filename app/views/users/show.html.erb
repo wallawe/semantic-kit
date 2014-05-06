@@ -13,6 +13,9 @@
       <p><b>About:</b> <%= @user.about %></p>
       <p><b>Website:</b> <%= @user.website %></p>
       <p><b>Email:</b> <%= @user.email %></p>
+      <% if current_user %>
+        <%= link_to "Edit Image", "http://www.gravatar.com" %>
+      <% end %>
     </div>
     <div class="column">
       <%= image_tag avatar_url(@user), :class => "right floated circular ui image" %>

@@ -12,6 +12,10 @@ class UsersController < ApplicationController
   def edit
   end
 
+  def index
+    @users = User.all
+  end
+
   def update
     if current_user.update_attributes(user_params)
       redirect_to user_path(current_user)

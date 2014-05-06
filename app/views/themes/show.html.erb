@@ -32,7 +32,7 @@
   <div class="five wide column">
 
     <div class="column" style="text-align: center;">
-      <% if current_user.subscribed?(@theme) %>
+      <% if current_user && current_user.subscribed?(@theme) %>
         <%= render "download_button" %>
       <% else %>
         <%= render "subscriptions/button" %>

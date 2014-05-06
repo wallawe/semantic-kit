@@ -1,0 +1,13 @@
+<div class="ui items">
+  <% @users.each do |f| %>
+    <%= link_to user_path(f), :class => "item" do %>
+      <div class="image">
+        <%= image_tag avatar_url(f) %>
+      </div>
+      <div class="content">
+        <div class="name"><%= f.username %></div>
+        <p class="description"><%= f.about %></p>
+      </div>
+    <% end %>
+  <% end %>
+</div>
