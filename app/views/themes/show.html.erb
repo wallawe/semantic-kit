@@ -1,14 +1,14 @@
 <% content_for :subheader do %>
   <div class="subheader">
     <div class="container">
-      <h3 class="ui header">
+      <h3 class="ui header inverted">
         <%= @theme.name %><br>
         <div class="sub header">
           <div class="ui breadcrumb"><!-- TODO - make this dynamic -->
             <a class="section">Themes</a>
-            <div class="divider"> / </div>
+            <div class="divider" style="color: #fff;"> / </div>
             <a class="section">Blog</a>
-            <div class="divider"> / </div>
+            <div class="divider" style="color: #fff;"> / </div>
             <div class="active section">Details</div>
           </div>
         </div>
@@ -22,10 +22,10 @@
     <div class="ui segment item-show">
       <%= image_tag @theme.default_image_url, :width => "620" %>
 
-      <h3 class="ui dividing inverted header">Description</h3>
+      <h3 class="ui dividing header">Description</h3>
       <p><%= @theme.description %> Allow for html to be used by theme creators here.</p>
 
-      <h3 class="ui dividing inverted header">Copyright</h3>
+      <h3 class="ui dividing header">Copyright</h3>
       <p><%= @theme.copyright %></p>
     </div>
   </div>
@@ -69,7 +69,7 @@
       <thead><tr><th colspan="2">Theme Details</th></tr></thead>
       <tbody>
         <tr>
-          <td>Categories</td>
+          <td>Category</td>
           <td>
             <% @theme.categories.each do |category| %>
               <%= link_to category.name, category_path(category) %>

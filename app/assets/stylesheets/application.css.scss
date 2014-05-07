@@ -9,12 +9,13 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
- *= require_tree .
  */
+
 
 @import "semantic-ui";
 @import "semantic-ui/collections/menu";
 @import "globals";
+@import "themes";
 
 .container {
   width: 1020px;
@@ -29,9 +30,13 @@
 }
 
 body {
-  background: #444349; //image_url('stardust.png');
+  background: #fff; //image_url('stardust.png');
   margin: 0;
   padding: 0;
+
+  p {
+    color: #666666;
+  }
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -41,19 +46,22 @@ h1, h2, h3, h4, h5, h6 {
 .hero.message {
   padding: 0 4em 2em 4em;
   text-align: center;
-  margin-bottom: 2rem;
+  margin: 8em auto 14em auto;
 
   h1 {
     font-size: 3.5em;
     line-height: 1em;
     text-shadow: 0px 0px 35px #111;
     font-weight: 500;
-    text-transform: capitalize;
+    text-transform: uppercase;
     padding: 20px 30px;
+    border-bottom: 1px solid #404040;
+    background: #6989B5;
   }
 
   p {
     font-weight: 300;
+    color: #a6a6a6;
   }
 }
 
@@ -67,7 +75,6 @@ h1, h2, h3, h4, h5, h6 {
   .two.column.row > .column {
     margin-bottom: 2%;
     width: 49% !important;
-    background: rgba(255, 255, 255, 0.05);
     padding-bottom: 1em;
     border-radius: 5px;
 
@@ -80,7 +87,7 @@ h1, h2, h3, h4, h5, h6 {
 
   h3 {
     margin: 0.5em 0;
-    color: #ddd;
+    color: #6989B5;
   }
 
   img {
@@ -98,23 +105,40 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
-.ui.menu {
-  margin: 2rem 0;
+.ui.menu.secondary {
+  margin: 1rem 0 3rem 0;
+  display: block;
 }
 
+.hero-backdrop {
+  background: #444349;
+  position: absolute;
+  height: 45rem;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index:-1;
+}
 .subheader {
   width: 100%;
-  background: lighten(#444349, 70%);
-  box-shadow: inset 0 0 3px #ccc;
+  background: #444349;
 
   h3.ui.header { font-size: 1.7rem; }
 }
 
-.ui.item-show {
-  background: rgba(250,250,250, 0.1);
+.card {
+  background: #f2f2f2;
+  @include box_shadow;
+}
 
+.ui.segment {
+  background: #f2f2f2;
+}
+
+.ui.item-show {
+  background: #f2f2f2;
+  @include box_shadow;
   p {
-    color: #eee;
     line-height: 1.5em;
     font-size: 0.9em;
   }
@@ -122,5 +146,4 @@ h1, h2, h3, h4, h5, h6 {
 
 .secondary-text {
   margin-left: 10px;
-  text-shadow: 1px 1px 1px #444;
 }

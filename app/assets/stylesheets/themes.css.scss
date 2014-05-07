@@ -3,16 +3,13 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .form-wrap {
-  background: rgba(255,255,255,0.1);
   padding: 2em 10em;
   border-radius: 5px;
-  box-shadow: inset 0 0 0.3em #222;
-
   .content {
-    text-shadow: 1px 1px 1px #222;
+    text-shadow: 1px 1px 1px #fff;
 
     .sub.header {
-      font-weight: 300;
+      font-weight: 500;
       margin-top: 0.5em;
     }
   }

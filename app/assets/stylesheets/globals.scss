@@ -21,7 +21,7 @@ $break-large: 1020px;
 }
 
 a {
-  color: #08d;
+  color: #6989B5;
   text-decoration: none;
 }
 
@@ -30,6 +30,7 @@ a {
 .nav.menu {
   border-radius: 0;
   margin-bottom: 0;
+  background: #f9f9f9;
   .item {
     padding: 1em;
     font-weight: 500;
@@ -37,4 +38,16 @@ a {
   .sub .item {
     padding: 1em 1.5em;
   }
+}
+
+.gr {
+  color: #5BBD72;
+}
+
+// Mixins
+
+@mixin box_shadow {
+  box-shadow: 0 0 3px #aaa;
+  -webkit-box-shadow: 0 0 3px #aaa;
+  -moz-box-shadow: 0 0 3px #aaa;
 }
