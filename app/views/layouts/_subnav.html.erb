@@ -1,4 +1,4 @@
-<div class="ui sub inverted secondary pointing menu">
+<div class="ui sub secondary pointing menu">
   <%= nav_link "All", themes_path %>
   <% Category.order(:name).each do |category| %>
     <%= nav_link category.name, category_path(category) %>

@@ -1,13 +1,13 @@
-<div class="form-wrap">
-  <h2 class="ui center inverted aligned icon header">
+<div class="form-wrap card">
+  <h2 class="ui center aligned icon header">
     Edit your details
   </h2>
 
-  <div class="ui horizontal inverted divider">
+  <div class="ui horizontal divider">
     <i class="circular angle down icon"></i>
   </div>
 
-  <div class="ui form inverted">
+  <div class="ui form">
     <%= form_for current_user do |f| %>
       <div class="field">
         <%= f.label :name %>
@@ -29,7 +29,7 @@
         <%= f.text_area :about %>
       </div>
 
-      <%= f.submit "Save", :class => "ui button blue" %>
+      <%= f.submit "Save", :class => "ui button green" %>
       <%= link_to "Cancel", user_path(current_user), :class => "secondary-text" %>
     <% end %>
   </div>
