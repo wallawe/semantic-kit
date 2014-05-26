@@ -4,8 +4,11 @@
     <%= nav_link category.name, category_path(category) %>
   <% end %>
 </div>
-<div class="ui message">
-  <div class="header">
-    <%= t(:"admin.theme_index") %>
+
+<% if current_page?(admin_dashboard_path) %>
+  <div class="ui message">
+    <div class="header">
+      <%= t(:"admin.theme_index") %>
+    </div>
   </div>
-</div>
+<% end %>
