@@ -8,5 +8,6 @@ en:
     log_in: "Log in"
     log_out: "Log out"
   subscriptions:
+    purchase: "Wrap Semantic: %{amount} - %{theme_name}"
   transfers:
     notice: "Wrap Semantic Purchase: %{theme_name}"
