@@ -13,7 +13,7 @@
   <script type="text/javascript">
     Stripe.setPublishableKey('<%= APP_CONFIG["stripe"]["publishable_key"] %>');
 
-    var stripeResponseHandler = function(status, response) {
+    var stripeCardFormResponseHandler = function(status, response) {
       var $form = $('#card-form');
 
       if (response.error) {
@@ -36,7 +36,37 @@
         // Disable the submit button to prevent repeated clicks
         $form.find('button').prop('disabled', true);
 
-        Stripe.card.createToken($form, stripeResponseHandler);
+        Stripe.card.createToken($form, stripeCardFormResponseHandler);
+
+        // Prevent the form from submitting with the default action
+        return false;
+      });
+    });
+
+    var stripeBankAccountFormResponseHandler = function(status, response) {
+      var $form = $('#bank-account-form');
+
+      if (response.error) {
+        $form.find('.payment-errors').text(response.error.message);
+        $form.find('button').prop('disabled', false);
+      } else {
+        // token contains id, last4, and card type
+        var token = response.id;
+        // Insert the token into the form so it gets submitted to the server
+        $form.append($('<input type="hidden" name="stripeToken" />').val(token));
+        // and re-submit
+        $form.get(0).submit();
+      }
+    };
+
+    jQuery(function($) {
+      $('#bank-account-form').submit(function(e) {
+        var $form = $(this);
+
+        // Disable the submit button to prevent repeated clicks
+        $form.find('button').prop('disabled', true);
+
+        Stripe.bankAccount.createToken($form, stripeBankAccountFormResponseHandler);
 
         // Prevent the form from submitting with the default action
         return false;
@@ -46,8 +76,8 @@
 <% end %>
 
 <div class="form-wrap card">
-  <div class="ui form bank-account">
-    <%= form_tag payment_preferences_path, id: "card-form" do %>
+  <div class="ui form">
+    <%= form_tag payment_preferences_path(type: "card"), id: "card-form" do %>
       <h3 class="ui header gr">Credit Card</h3>
       <span class="payment-errors"></span>
 
@@ -78,8 +108,8 @@
     <% end %>
   </div>
 
-  <form action="" method="POST" id="bank-account-form">
-    <div class="ui form bank-account">
+  <%= form_tag payment_preferences_path(type: "bank_account"), id: "bank-account-form" do %>
+    <div class="ui form">
       <h3 class="ui header gr">Bank Account</h3>
       <span class="payment-errors"></span>
 
@@ -105,6 +135,6 @@
       </div>
 
       <button type="submit" class="ui button green">Submit Preferences</button>
-    </form>
+    <% end %>
   </div>
 </div>

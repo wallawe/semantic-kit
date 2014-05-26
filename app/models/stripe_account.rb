@@ -19,6 +19,6 @@ class StripeAccount < ActiveRecord::Base
       email: user.email,
       bank_account: token
     )
-    self.update_attribute(recipient_id: recipient.id, payment_type: "bank_account")
+    self.update_attributes(recipient_id: recipient.id, payment_type: "bank_account")
   end
 end
