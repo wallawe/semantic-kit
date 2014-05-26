@@ -1,0 +1,110 @@
+<% content_for :subheader do %>
+  <div class="subheader">
+    <div class="container">
+      <h3 class="ui header inverted">
+        Choose your payment method
+      </h3>
+    </div>
+  </div>
+<% end %>
+
+<% content_for :header do %>
+  <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+  <script type="text/javascript">
+    Stripe.setPublishableKey('<%= APP_CONFIG["stripe"]["publishable_key"] %>');
+
+    var stripeResponseHandler = function(status, response) {
+      var $form = $('#card-form');
+
+      if (response.error) {
+        $form.find('.payment-errors').text(response.error.message);
+        $form.find('button').prop('disabled', false);
+      } else {
+        // token contains id, last4, and card type
+        var token = response.id;
+        // Insert the token into the form so it gets submitted to the server
+        $form.append($('<input type="hidden" name="stripeToken" />').val(token));
+        // and re-submit
+        $form.get(0).submit();
+      }
+    };
+
+    jQuery(function($) {
+      $('#card-form').submit(function(e) {
+        var $form = $(this);
+
+        // Disable the submit button to prevent repeated clicks
+        $form.find('button').prop('disabled', true);
+
+        Stripe.card.createToken($form, stripeResponseHandler);
+
+        // Prevent the form from submitting with the default action
+        return false;
+      });
+    });
+  </script>
+<% end %>
+
+<div class="form-wrap card">
+  <div class="ui form bank-account">
+    <%= form_tag payment_preferences_path, id: "card-form" do %>
+      <h3 class="ui header gr">Credit Card</h3>
+      <span class="payment-errors"></span>
+
+      <div class="field">
+        <label>
+          <span>Card Number</span>
+          <input type="text" size="20" data-stripe="number"/>
+        </label>
+      </div>
+
+      <div class="field">
+        <label>
+          <span>CVC</span>
+          <input type="text" size="4" data-stripe="cvc"/>
+        </label>
+      </div>
+
+      <div class="field">
+        <label>
+          <span>Expiration (MM/YYYY)</span>
+          <input type="text" size="2" data-stripe="exp-month"/>
+        </label>
+        <span> / </span>
+        <input type="text" size="4" data-stripe="exp-year"/>
+      </div>
+
+      <button type="submit" class="ui button green">Submit Preferences</button>
+    <% end %>
+  </div>
+
+  <form action="" method="POST" id="bank-account-form">
+    <div class="ui form bank-account">
+      <h3 class="ui header gr">Bank Account</h3>
+      <span class="payment-errors"></span>
+
+      <div class="field">
+        <label>
+          <span>Country</span>
+          <input type="text" size="20" data-stripe="country"/>
+        </label>
+      </div>
+
+      <div class="field">
+        <label>
+          <span>Routing Number</span>
+          <input type="text" size="4" data-stripe="routing-number"/>
+        </label>
+      </div>
+
+      <div class="field">
+        <label>
+          <span>Account Number</span>
+          <input type="text" size="4" data-stripe="account-number"/>
+        </label>
+      </div>
+
+      <button type="submit" class="ui button green">Submit Preferences</button>
+    </form>
+  </div>
+</div>
