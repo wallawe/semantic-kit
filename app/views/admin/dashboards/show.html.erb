@@ -1,5 +1,11 @@
-<% if @themes.any? %>
-  <%= render partial: "shared/theme", collection: @themes %>
-<% else %>
-  <p>There are no pending themes.</p>
-<% end %>
+<%= render partial: 'layouts/subnav' %>
+
+<div class="ui grid gallery">
+  <div class="two column row">
+    <% if @themes.any? %>
+      <%= render partial: "shared/theme", collection: @themes %>
+    <% else %>
+      <p>There are no pending themes.</p>
+    <% end %>
+  </div>
+</div>

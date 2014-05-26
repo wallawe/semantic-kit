@@ -1,6 +1,12 @@
 en:
+  admin:
+    theme_index: "You are viewing pending themes."
+    theme_pending: "This theme has not yet been approved."
   sessions:
     invalid_login: "Invalid login/password. Try again!"
     successful_login: "Logged in successfully"
     log_in: "Log in"
     log_out: "Log out"
+  subscriptions:
+  transfers:
+    notice: "Wrap Semantic Purchase: %{theme_name}"

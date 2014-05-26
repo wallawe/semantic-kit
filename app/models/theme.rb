@@ -35,4 +35,12 @@ class Theme < ActiveRecord::Base
       Tag.where(name: n.strip).first_or_create!
     end
   end
+
+  def approve!
+    update_attribute(:approved, true)
+  end
+
+  def disapprove!
+    update_attribute(:approved, false)
+  end
 end
