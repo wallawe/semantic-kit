@@ -47,7 +47,7 @@ a {
 // Mixins
 
 @mixin box_shadow {
-  box-shadow: 0 0 3px #aaa;
-  -webkit-box-shadow: 0 0 3px #aaa;
-  -moz-box-shadow: 0 0 3px #aaa;
+  box-shadow: 0 0 5px #aaa;
+  -webkit-box-shadow: 0 0 5px #aaa;
+  -moz-box-shadow: 0 0 5px #aaa;
 }

@@ -49,14 +49,14 @@ h1, h2, h3, h4, h5, h6 {
   margin: 8em auto 14em auto;
 
   h1 {
-    font-size: 3.5em;
-    line-height: 1em;
+    font-size: 3em;
+    line-height: 2em;
     text-shadow: 0px 0px 35px #111;
     font-weight: 500;
     text-transform: uppercase;
     padding: 20px 30px;
     border-bottom: 1px solid #404040;
-    background: #6989B5;
+    background: rgba(105, 137, 181, 0.5);
   }
 
   p {
@@ -77,6 +77,7 @@ h1, h2, h3, h4, h5, h6 {
     width: 49% !important;
     padding-bottom: 1em;
     border-radius: 5px;
+    margin-bottom: 3em;
 
     &:nth-of-type(odd) { margin-right: 2%;}
   }
@@ -123,7 +124,10 @@ h1, h2, h3, h4, h5, h6 {
   width: 100%;
   background: #444349;
 
-  h3.ui.header { font-size: 1.7rem; }
+  h3.ui.header {
+    font-size: 1.7rem;
+    font-weight: normal;
+  }
 }
 
 .card {
@@ -133,6 +137,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .ui.segment {
   background: #f2f2f2;
+  @include box_shadow;
 }
 
 .ui.item-show {
@@ -141,6 +146,8 @@ h1, h2, h3, h4, h5, h6 {
   p {
     line-height: 1.5em;
     font-size: 0.9em;
+    font-size: 18px;
+    font-weight: 300;
   }
 }
 
