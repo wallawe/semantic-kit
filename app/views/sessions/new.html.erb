@@ -1,17 +1,13 @@
 <div class="ui grid">
   <div class="row">
     <div class="four wide column"></div>
-
-
     <div class="eight wide column">
       <h2 class="ui center aligned header">
-
         <div class="content" style="margin: 30px auto;">
           Welcome back
           <div class="sub header">Sign in here</div>
         </div>
       </h2>
-
       <% if !alert.nil? %>
         <div class="ui red message">
           <div class="header">We noticed some issues</div>
@@ -20,7 +16,6 @@
           </ul>
         </div>
       <% end %>
-
       <div class="ui form segment">
         <%= form_tag sessions_path do %>
           <div class="field">
@@ -55,10 +50,7 @@
           <i class="signup icon"></i>
         <% end %>
       </div>
-
     </div>
-
-
     <div class="four wide column"></div>
   </div>
 </div>
