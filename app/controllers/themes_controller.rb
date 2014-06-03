@@ -8,8 +8,9 @@ class ThemesController < ApplicationController
   def create
     @theme = Theme.new(theme_params)
     if @theme.save
-      @theme.create_owner(user_id: User.first.id)
-      redirect_to themes_path
+      @theme.create_owner(user_id: current_user.id)
+      current_user.create_stripe_account if current_user.stripe_account.nil?
+      redirect_to payment_preferences_path
     else
       render :new
     end

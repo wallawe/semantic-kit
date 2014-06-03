@@ -35,4 +35,21 @@ class Theme < ActiveRecord::Base
       Tag.where(name: n.strip).first_or_create!
     end
   end
+
+  def approve!
+    update_attribute(:approved, true)
+  end
+
+  def disapprove!
+    update_attribute(:approved, false)
+  end
+
+  def pay_owner(amount)
+    Stripe::Transfer.create(
+      :amount => (amount * PriceList::THEME_CREATOR_PERCENTAGE).to_i,
+      :currency => "usd",
+      :recipient => self.owner.stripe_account.recipient_id,
+      :statement_description => I18n.t(:"transfers.notice", theme_name: self.name)
+    )
+  end
 end

@@ -5,19 +5,11 @@ class SubscriptionsController < ApplicationController
     # Stripe expects amount to be in cents
     amount = params[:price].to_i * 100
 
-    customer = Stripe::Customer.create(
-      :email => current_user.email,
-      :card  => params[:token]
-    )
+    subscription = current_user.subscriptions.create!(theme_id: params[:id], price_tier: params[:price])
 
-    charge = Stripe::Charge.create(
-      :customer    => customer.id,
-      :amount      => amount,
-      :description => 'Rails Stripe customer',
-      :currency    => 'usd'
-    )
+    subscription.create_customer_and_charge(params[:token], amount)
 
-    subscription = current_user.subscriptions.create!(theme_id: params[:id])
+    theme.pay_owner(amount)
 
     redirect_to theme_path(theme), notice: "WOOHOO"
 

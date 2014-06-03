@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
   validates :password, length: { minimum: 6 }, on: :create
   validates :password, presence: true, on: :create
 
+  has_one :stripe_account
   has_many :subscriptions
 
   def to_param
@@ -28,4 +29,5 @@ class User < ActiveRecord::Base
   def remove_admin!
     update_attribute(:admin, false)
   end
+
 end

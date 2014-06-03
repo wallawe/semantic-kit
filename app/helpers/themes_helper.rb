@@ -11,4 +11,17 @@ module ThemesHelper
 
     price.to_i * 100
   end
+
+  def call_to_action(theme)
+    if current_user
+      if current_user.admin? && !theme.approved?
+        render "approve_button"
+      elsif current_user.subscribed?(theme)
+        render "download_button"
+      else
+        render "subscriptions/button"
+      end
+    else
+    end
+  end
 end

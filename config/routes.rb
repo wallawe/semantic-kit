@@ -11,19 +11,21 @@ WrapSemantic::Application.routes.draw do
 
   get "/signin", to: "sessions#new",     as: "signin"
 
-  resource  :account,       only: [:show]
+  resource  :account,             only: [:show]
   resources :categories
-  resource  :dashboard,     only: [:show]
+  resource  :dashboard,           only: [:show]
 
-  resources :previews,      only: [:show]
-  resources :sessions,      only: [:new, :create]
-  resources :subscriptions, only: [:create]
+  resources :payment_preferences, only: [:new, :create]
+  resources :previews,            only: [:show]
+  resources :sessions,            only: [:new, :create]
+  resources :subscriptions,       only: [:create]
 
-  resources :tags,          only: [:show]
+  resources :tags,                only: [:show]
   resources :themes
-  resources :users,         only: [:new, :create, :show, :edit, :update, :index]
+  resources :theme_approvals,     only: [:update, :destroy]
+  resources :users,               only: [:new, :create, :show, :edit, :update, :index]
 
   namespace :admin do
-    resource :dashboard,    only: [:show]
+    resource :dashboard,          only: [:show]
   end
 end

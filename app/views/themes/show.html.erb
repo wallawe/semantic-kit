@@ -19,6 +19,14 @@
 
 <div class="ui grid">
   <div class="eleven wide column">
+    <% if !@theme.approved? %>
+      <div class="ui message">
+        <div class="header">
+          <%= t(:"admin.theme_pending") %>
+        </div>
+      </div>
+    <% end %>
+
     <div class="ui segment item-show">
       <%= image_tag @theme.default_image_url, :width => "620" %>
 
@@ -32,11 +40,7 @@
   <div class="five wide column">
 
     <div class="column" style="text-align: center;">
-      <% if current_user && current_user.subscribed?(@theme) %>
-        <%= render "download_button" %>
-      <% else %>
-        <%= render "subscriptions/button" %>
-      <% end %>
+      <%= call_to_action(@theme) %>
     </div>
 
     <div class="ui segment">
