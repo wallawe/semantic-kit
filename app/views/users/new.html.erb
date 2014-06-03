@@ -1,1 +1,72 @@
-users#new
+<div class="ui grid">
+  <div class="row">
+    <div class="four wide column"></div>
+
+
+    <div class="eight wide column">
+      <h2 class="ui center aligned header">
+
+        <div class="content" style="margin: 30px auto;">
+          Welcome
+          <div class="sub header">Sign up here</div>
+        </div>
+      </h2>
+
+      <% if !alert.nil? %>
+        <div class="ui red message">
+          <div class="header">We noticed some issues</div>
+          <ul class="list">
+            <li id="error"><%= flash.now[:alert] %></li>
+          </ul>
+        </div>
+      <% end %>
+
+      <div class="ui form segment">
+          <div class="field">
+            <label for="email">Email:</label>
+            <div class="ui left labeled icon input">
+              <input type="email">
+              <i class="mail icon"></i>
+              <div class="ui corner label">
+                <i class="icon asterisk"></i>
+              </div>
+            </div>
+          </div>
+          <div class="field">
+            <label for="password">Password:</label>
+            <div class="ui left labeled icon input">
+              <input type="password">
+              <i class="lock icon"></i>
+              <div class="ui corner label">
+                <i class="icon asterisk"></i>
+              </div>
+            </div>
+          </div>
+          <div class="field">
+            <label for="password">Password Confirmation:</label>
+            <div class="ui left labeled icon input">
+              <input type="password">
+              <i class="lock icon"></i>
+              <div class="ui corner label">
+                <i class="icon asterisk"></i>
+              </div>
+            </div>
+          </div>
+          <%= submit_tag 'Sign up', :class => "ui green submit button" %>
+      </div>
+      <div class="ui horizontal divider" style="margin: 40px 0;">
+        Or
+      </div>
+      <div style="text-align: center;">
+        <%= link_to new_session_path, class: "ui black large labeled icon button" do %>
+          Sign In
+          <i class="signup icon"></i>
+        <% end %>
+      </div>
+
+    </div>
+
+
+    <div class="four wide column"></div>
+  </div>
+</div>
