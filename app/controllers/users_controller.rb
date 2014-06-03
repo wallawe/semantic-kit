@@ -4,15 +4,13 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(params[:user])
+    @user = User.new(user_create_params)
 
-    respond_to do |format|
-      if @user.save
-        format.html { redirect_to @user, notice: 'Success!' }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
-      end
+    if @user.save
+      session[:user_id] = @user.id
+      redirect_to user_path(@user.username), notice: 'Success!'
+    else
+      render action: "new"
     end
   end
 
@@ -28,8 +26,8 @@ class UsersController < ApplicationController
   end
 
   def update
-    if current_user.update_attributes(user_params)
-      redirect_to user_path(current_user)
+    if current_user.update_attributes(user_update_params)
+      redirect_to user_path(current_user.username)
     else
       render :edit
     end
@@ -37,7 +35,11 @@ class UsersController < ApplicationController
 
   private
 
-    def user_params
+    def user_create_params
+      params.require(:user).permit(:email, :password, :password_confirmation, :username, :name)
+    end
+
+    def user_update_params
       params.require(:user).permit(:name, :website, :location, :about)
     end
 end

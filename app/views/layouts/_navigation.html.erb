@@ -17,7 +17,7 @@
             <%= link_to dashboard_path, class: "item" do %>
               <i class="settings icon"></i>Dashboard
             <% end %>
-            <%= link_to user_path(current_user), class: "item" do %>
+            <%= link_to user_path(current_user.username), class: "item" do %>
               <i class="browser icon"></i>Profile</a>
             <% end %>
             <%= link_to logout_path, class: "item" do %>
