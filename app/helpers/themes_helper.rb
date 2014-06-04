@@ -22,6 +22,7 @@ module ThemesHelper
         render "subscriptions/button"
       end
     else
+      render "subscriptions/button"
     end
   end
 end

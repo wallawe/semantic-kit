@@ -5,9 +5,12 @@
         <%= @theme.name %><br>
         <div class="sub header">
           <div class="ui breadcrumb"><!-- TODO - make this dynamic -->
-            <a class="section">Themes</a>
+            <%= link_to "Themes", themes_path, class: "section" %>
             <div class="divider" style="color: #fff;"> / </div>
-            <a class="section">Blog</a>
+              <% first_category = @theme.categories.first %>
+              <%= link_to category_path(first_category) do %>
+               <%= first_category.name %>
+              <% end %>
             <div class="divider" style="color: #fff;"> / </div>
             <div class="active section">Details</div>
           </div>
