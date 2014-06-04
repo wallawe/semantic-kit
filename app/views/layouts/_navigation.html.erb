@@ -20,6 +20,9 @@
             <%= link_to user_path(current_user.username), class: "item" do %>
               <i class="browser icon"></i>Profile</a>
             <% end %>
+            <%= link_to edit_user_path(current_user), class: "item" do %>
+              <i class="pencil icon"></i>Edit
+            <% end %>
             <%= link_to logout_path, class: "item" do %>
               <i class="forward mail icon"></i>Log out
             <% end %>
