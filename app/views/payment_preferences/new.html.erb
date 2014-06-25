@@ -9,6 +9,8 @@
 <% end %>
 
 <% content_for :header do %>
+  <%= javascript_include_tag "jquery.payment" %>
+  <%= stylesheet_link_tag "payment_preferences" %>
   <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
   <script type="text/javascript">
     Stripe.setPublishableKey('<%= APP_CONFIG["stripe"]["publishable_key"] %>');
@@ -76,6 +78,13 @@
 <% end %>
 
 <div class="form-wrap card">
+  <div class="preference-button">
+    <button type="submit" class="ui button green" id="cc_button">Add Credit Card</button>
+  </div>
+  <div class="preference-button">
+    <button type="submit" class="ui button green" id="bank_button">Add Bank Account</button>
+  </div>
+
   <div class="ui form">
     <%= form_tag payment_preferences_path(type: "card"), id: "card-form" do %>
       <h3 class="ui header gr">Credit Card</h3>
@@ -84,27 +93,27 @@
       <div class="field">
         <label>
           <span>Card Number</span>
-          <input type="text" size="20" data-stripe="number"/>
+          <input type="text" size="20" data-stripe="number" id="cc_number"/>
         </label>
       </div>
 
       <div class="field">
         <label>
           <span>CVC</span>
-          <input type="text" size="4" data-stripe="cvc"/>
+          <input type="text" size="4" data-stripe="cvc" id="cvc"/>
         </label>
       </div>
 
       <div class="field">
         <label>
           <span>Expiration (MM/YYYY)</span>
-          <input type="text" size="2" data-stripe="exp-month"/>
+          <input type="text" size="2" data-stripe="exp-month" id="expiration"/>
         </label>
         <span> / </span>
-        <input type="text" size="4" data-stripe="exp-year"/>
+        <input type="text" size="4" data-stripe="exp-year" id="expiration"/>
       </div>
 
-      <button type="submit" class="ui button green">Submit Preferences</button>
+      <button type="submit" class="ui button green">Submit</button>
     <% end %>
   </div>
 
@@ -134,7 +143,7 @@
         </label>
       </div>
 
-      <button type="submit" class="ui button green">Submit Preferences</button>
+      <button type="submit" class="ui button green">Submit</button>
     <% end %>
   </div>
 </div>
