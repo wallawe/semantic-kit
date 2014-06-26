@@ -1,8 +1,4 @@
 WrapSemantic::Application.routes.draw do
-  get 'tags/show'
-
-  get 'dashboards/show'
-
   root "info#home"
 
   get "/help",   to: "info#help", as: "help"
