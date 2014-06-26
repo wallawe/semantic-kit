@@ -29,7 +29,7 @@ class ThemesController < ApplicationController
 
     def theme_params
       params.require(:theme).permit(:name, :description, :copyright, { category_ids: [] },
-                                    :image, :file_package, :tag_list,
+                                    :image, :file_package, :tag_list, :preprocessor, { browsers: [] },
                                     price_list_attributes: [:single_tier, :multiple_tier, :extended_tier])
     end
 end
