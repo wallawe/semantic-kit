@@ -7,9 +7,8 @@
           <div class="ui breadcrumb"><!-- TODO - make this dynamic -->
             <%= link_to "Themes", themes_path, class: "section" %>
             <div class="divider" style="color: #fff;"> / </div>
-              <% first_category = @theme.categories.first %>
-              <%= link_to category_path(first_category) do %>
-               <%= first_category.name %>
+              <% @theme.categories.each do |category| %>
+               <%= link_to category_path first_category.name %>
               <% end %>
             <div class="divider" style="color: #fff;"> / </div>
             <div class="active section">Details</div>
@@ -85,7 +84,15 @@
         </tr>
         <tr>
           <td>Compatibility</td>
-          <td>IE8+<br>Chrome<br>Safari</td>
+          <td>
+            <% @theme.browsers.each do |browser| %>
+              <%= browser %><br>
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <td>Preprocessor</td>
+          <td><%= @theme.preprocessor %></td>
         </tr>
         <tr>
           <td>Tags</td>

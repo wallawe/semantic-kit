@@ -10,7 +10,7 @@ class ThemesController < ApplicationController
     if @theme.save
       @theme.create_owner(user_id: current_user.id)
       current_user.create_stripe_account if current_user.stripe_account.nil?
-      redirect_to payment_preferences_path
+      redirect_to new_payment_preference_path
     else
       render :new
     end
@@ -29,7 +29,7 @@ class ThemesController < ApplicationController
 
     def theme_params
       params.require(:theme).permit(:name, :description, :copyright, { category_ids: [] },
-                                    :image, :file_package, :tag_list,
+                                    :image, :file_package, :tag_list, :preprocessor, { browsers: [] },
                                     price_list_attributes: [:single_tier, :multiple_tier, :extended_tier])
     end
 end

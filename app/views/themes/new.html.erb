@@ -59,6 +59,19 @@
         <%= f.label :file_package %>
         <%= f.file_field :file_package, :class => "image-arena" %>
       </div>
+      <div class="field">
+        <%= f.label :preprocessor %>
+        <%= f.select :preprocessor, options_for_select(Theme::PREPROCESSOR_OPTIONS) %>
+      </div>
+      <div class="field">
+        <%= f.label :browsers, "Browser Support" %>
+        <% Theme::BROWSER_OPTIONS.each do |browser| %>
+          <li>
+            <%= check_box_tag 'theme[browsers][]', browser -%>
+            <%= browser %>
+          </li>
+        <% end %>
+      </div>
     </div>
 
 
