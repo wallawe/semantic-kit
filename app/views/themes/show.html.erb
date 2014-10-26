@@ -4,14 +4,10 @@
       <h3 class="ui header inverted">
         <%= @theme.name %><br>
         <div class="sub header">
-          <div class="ui breadcrumb"><!-- TODO - make this dynamic -->
+          <div class="ui breadcrumb">
             <%= link_to "Themes", themes_path, class: "section" %>
             <div class="divider" style="color: #fff;"> / </div>
-              <% @theme.categories.each do |category| %>
-               <%= link_to category_path category.name %>
-              <% end %>
-            <div class="divider" style="color: #fff;"> / </div>
-            <div class="active section">Details</div>
+            <%= link_to @theme.categories.first.name, category_path(@theme.categories.first) %>
           </div>
         </div>
       </h3>
