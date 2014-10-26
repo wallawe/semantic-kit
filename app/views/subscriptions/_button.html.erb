@@ -9,7 +9,7 @@
 
   <script>
     var handler = StripeCheckout.configure({
-      key: '<%= APP_CONFIG["stripe"]["publishable_key"] %>',
+      key: '<%= STRIPE_PUBLISHABLE_KEY %>',
       token: function(token, args) {
         $("#stripe_token").val(token.id);
         $("form").submit();
