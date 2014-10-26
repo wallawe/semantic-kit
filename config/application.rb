@@ -6,9 +6,7 @@ require 'rails/all'
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
-if Rails.env.production?
-  APP_CONFIG = nil
-else
+if !Rails.env.production?
   require 'active_support/core_ext/hash/indifferent_access'
   config_path = File.expand_path('../app_config.yml', __FILE__)
   APP_CONFIG = HashWithIndifferentAccess.new(YAML.load_file(config_path)[Rails.env])

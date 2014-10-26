@@ -1,6 +1,12 @@
-access_key_id = APP_CONFIG["aws"]["access_key_id"] || ENV["aws_access_key_id"]
-secret_access_key = APP_CONFIG["aws"]["secret_access_key"] || ENV["aws_secret_access_key"]
-bucket = APP_CONFIG["aws"]["bucket"] || ENV["aws_bucket"]
+if Rails.env.production?
+  access_key_id = ENV["aws_access_key_id"]
+  secret_access_key = ENV["aws_secret_access_key"]
+  bucket = ENV["aws_bucket"]
+else
+  access_key_id = APP_CONFIG["aws"]["access_key_id"]
+  secret_access_key = APP_CONFIG["aws"]["secret_access_key"]
+  bucket = APP_CONFIG["aws"]["bucket"]
+end
 
 CarrierWave.configure do |config|
   config.fog_credentials = {
