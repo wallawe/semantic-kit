@@ -11,3 +11,5 @@ en:
     purchase: "Wrap Semantic: %{amount} - %{theme_name}"
   transfers:
     notice: "Wrap Semantic Purchase: %{theme_name}"
+  themes:
+    none_approved: "There are no approved themes yet."

@@ -2,6 +2,10 @@
 
 <div class="ui grid gallery">
   <div class="two column row">
-    <%= render partial: "shared/theme", collection: @themes %>
+    <% if @themes.any? %>
+      <%= render partial: "shared/theme", collection: @themes %>
+    <% else %>
+      <%= t(:"themes.none_approved") %>
+    <% end %>
   </div>
 </div>
