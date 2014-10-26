@@ -27,7 +27,7 @@ class Theme < ActiveRecord::Base
     if image_url.present?
       image_url
     else
-      "/assets/placeholder.png"
+      "https://s3.amazonaws.com/wrapsemanticstatic/placeholder.png"
     end
   end
 
