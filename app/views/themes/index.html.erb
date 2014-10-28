@@ -1,11 +1,13 @@
 <%= render partial: 'layouts/subnav' %>
 
-<div class="ui grid gallery">
-  <div class="two column row">
-    <% if @themes.any? %>
+<% if @themes.any? %>
+  <div class="ui grid gallery">
+    <div class="two column row">
       <%= render partial: "shared/theme", collection: @themes %>
-    <% else %>
-      <%= t(:"themes.none_approved") %>
-    <% end %>
+    </div>
   </div>
-</div>
+<% else %>
+  <div class="ui raised segment">
+    <%= t(:"themes.none_approved") %>
+  </div>
+<% end %>
