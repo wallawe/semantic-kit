@@ -5,4 +5,8 @@ class Owner < ActiveRecord::Base
   delegate :username, :name, :stripe_account,
     to: :user
 
+  def user
+    SemanticUsers.get("id", user_id)
+  end
+
 end

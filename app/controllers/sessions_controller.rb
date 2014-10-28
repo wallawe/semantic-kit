@@ -5,7 +5,7 @@ class SessionsController < ApplicationController
   end
 
   def create
-    if user = User.find_by_email(params[:email]).try(:authenticate, params[:password])
+    if user = SemanticUsers.authenticate(params[:email], params[:password])
       session[:user_id] = user.id
       redirect_to themes_path, :notice => t(:"sessions.successful_login")
     else

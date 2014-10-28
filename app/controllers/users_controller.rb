@@ -18,7 +18,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.where(username: params[:id]).first
+    @user = SemanticUsers.get("username", params[:id])
   end
 
   def edit
