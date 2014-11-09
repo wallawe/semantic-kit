@@ -1,0 +1,11 @@
+<% if @snippets.any? %>
+  <div class="ui grid gallery">
+    <div class="three column row">
+      <%= render @snippets %>
+    </div>
+  </div>
+<% else %>
+  <div class="ui raised segment">
+    <%= t(:"snippets.none") %>
+  </div>
+<% end %>

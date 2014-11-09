@@ -4,6 +4,7 @@
       <!-- <i class="moon icon"></i> -->
       <b>Semantic</b> UI
     <% end %>
+    <%= link_to "Snippets", snippets_path, class: "item" %>
     <%= link_to "Themes", themes_path, class: "item" %>
     <%= link_to "Sell", new_theme_path, class: "item" %>
     <% if current_user && current_user.admin? %>

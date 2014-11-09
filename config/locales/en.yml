@@ -9,6 +9,8 @@ en:
     successful_login: "Logged in successfully"
     log_in: "Log in"
     log_out: "Log out"
+  snippets:
+    none: "There are no snippets available at the moment."
   subscriptions:
     purchase: "Wrap Semantic: %{amount} - %{theme_name}"
   transfers:
