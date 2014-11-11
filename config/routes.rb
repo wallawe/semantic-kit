@@ -14,6 +14,7 @@ WrapSemantic::Application.routes.draw do
   resources :payment_preferences, only: [:new, :create]
   resources :previews,            only: [:show]
   resources :sessions,            only: [:new, :create]
+  resources :snippets
   resources :subscriptions,       only: [:create]
 
   resources :tags,                only: [:show]

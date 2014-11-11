@@ -1,0 +1,35 @@
+<% content_for :header do %>
+  <script type="text/javascript">
+    <%= raw @snippet.js %>
+  </script>
+  <style>
+    <%= raw @snippet.css %>
+  </style>
+<% end %>
+
+<% content_for :subheader do %>
+  <div class="subheader">
+    <div class="container">
+      <h3 class="ui header inverted">
+        <%= @snippet.title %><br>
+      </h3>
+    </div>
+  </div>
+<% end %>
+
+<div class="ui grid">
+  <div class="eleven wide column">
+
+    <div class="ui segment item-show">
+      <h3 class="ui dividing header">Description</h3>
+      <p><%= simple_format(@snippet.description) %></p>
+      <p><%= raw @snippet.html %></p>
+    </div>
+  </div>
+  <div class="five wide column">
+    <div class="ui segment">
+      <header class="ui top attached label"><b>Author</b></header>
+      <div><%#= link_to @snippet.owner.username, user_path(@snippet.owner.user) %></div>
+    </div>
+  </div>
+</div>
