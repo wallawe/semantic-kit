@@ -1,23 +1,38 @@
-<div class="hero-backdrop"></div>
-
-<div class="ui large icon inverted message hero">
+<!-- <div class="ui large icon inverted message hero">
   <div class="content">
     <h1>All Themes Semantic</h1>
     <p>Differentiate yourself and your design with a Semantic UI theme or template. Semantic UI is an easy to use front-end framework with its own style and purpose. Learn more <a href="http://www.semantic-ui.com">here.</a> </p>
-    <%= link_to themes_path, class: "ui animated button green" do %>
+    <%#= link_to themes_path, class: "ui animated button green" do %>
       <div class="visible content">View all Themes</div>
       <div class="hidden content">
         <i class="right arrow icon"></i>
       </div>
-    <% end %>
+    <#% end %>
     <span class="secondary-text"> or <%= link_to "sell your themes", new_theme_path %></span>
   </div>
 </div>
-
-<div class="ui grid gallery">
-  <%= render 'layouts/subnav' %>
-  <div class="two column row">
-    <%= render partial: "shared/theme", collection: @themes %>
-    adfadf
+ -->
+<div class="hero">
+  <h1 class="headline">Semantic UI Resources</h1>
+  <span class="subheadline">all in one place</span>
+  <div class="container">
+    <a href="/themes" class="one-third">
+      <h3>Themes</h3>
+      <span class="call-out">Buy and sell Semantic UI themes</span>
+    </a><!--
+ --><a href="#" class="one-third">
+      <h3>Snippets</h3>
+      <span class="call-out">Create and share pieces of code</span>
+    </a><!--
+ --><a href="#" class="one-third">
+      <h3>Expo</h3>
+      <span class="call-out">Beautiful sites built with Semantic UI</span>
+    </a>
   </div>
 </div>
+
+<!-- <div class="container">
+  <h2>What is Semantic UI?</h2>
+  <p>Description, How we help</p>
+  //input email updates here && social media stuff
+</div> -->
