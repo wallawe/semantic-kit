@@ -1,15 +1,29 @@
 <div class="ui tiered nav menu">
   <div class="container">
     <%= link_to root_path, :class => 'item' do %>
-      <!-- <i class="moon icon"></i> -->
       <b>Semantic</b> UI
     <% end %>
-    <%= link_to "Snippets", snippets_path, class: "item" %>
-    <%= link_to "Themes", themes_path, class: "item" %>
-    <%= link_to "Sell", new_theme_path, class: "item" %>
-    <% if current_user && current_user.admin? %>
-      <%= link_to "Admin Dashboard", admin_dashboard_path, class: "item" %>
-    <% end %>
+    <div class="ui dropdown item">
+      <%= link_to "Themes", themes_path%>
+      <div class="menu">
+        <%= link_to "View All Themes", themes_path, class: "item" %>
+        <%= link_to "Sell a Theme", new_theme_path, class: "item" %>
+      </div>
+    </div>
+    <div class="ui dropdown item">
+      <a href="#">Snippets</a>
+      <div class="menu">
+        <a href="#" class="item">View Snippets</a>
+        <a href="#" class="item">Create a snippet</a>
+      </div>
+    </div>
+    <div class="ui dropdown item">
+      <a href="#">Expo</a>
+      <div class="menu">
+        <a href="#" class="item">View Gallery</a>
+        <a href="#" class="item">Submit a Site</a>
+      </div>
+    </div>
     <div class="right menu">
       <% if current_user %>
         <div class="ui dropdown item">
@@ -26,6 +40,9 @@
             <% end %>
             <%= link_to logout_path, class: "item" do %>
               <i class="forward mail icon"></i>Log out
+            <% end %>
+            <% if current_user && current_user.admin? %>
+              <%= link_to "Admin Dashboard", admin_dashboard_path, class: "item" %>
             <% end %>
           </div>
         </div>

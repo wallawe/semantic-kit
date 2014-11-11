@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.1.1'
+ruby '2.1.2'
 
 gem 'bcrypt', '~> 3.1.7'
 gem 'carrierwave'
@@ -13,7 +13,6 @@ gem 'pg'
 gem 'sass-rails', '~> 4.0.2'
 gem 'semantic-ui-sass', '~> 0.19.3.0'
 gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
-gem 'turbolinks'
 gem 'uglifier', '>= 1.3.0'
 
 group :development do
