@@ -1,15 +1,13 @@
+<% content_for :title do %>
+  <%= @user.username %>
+<% end %>
+<% content_for :subtext do %>
+  just so happens to be awesome
+<% end %>
+
 <div class="form-wrap card">
-  <h2 class="ui center aligned icon header">
-    Profile
-  </h2>
-  <div class="ui horizontal divider">
-    <i class="circular angle down icon"></i>
-  </div>
   <div class="ui two column grid">
     <div class="column">
-      <h2 class="ui huge header">
-        <%= @user.username %>
-      </h2>
       <p><b>About:</b> <%= @user.about %></p>
       <p><b>Website:</b> <%= @user.website %></p>
       <p><b>Email:</b> <%= @user.email %></p>
@@ -18,16 +16,16 @@
       <% end %>
     </div>
     <div class="column">
-      <%= image_tag avatar_url(@user), :class => "right floated circular ui image" %>
+      <%= image_tag avatar_url(@user), :class => "right floated ui image" %>
     </div>
   </div>
 
   <% if current_user && current_user.id == @user.id %>
     <div class="ui section divider"></div>
     <div class="3 fluid ui buttons">
-      <%= link_to "Dashboard", dashboard_path, :class => "ui orange button" %>
-      <%= link_to "Edit Profile", edit_user_path, :class => "ui teal button" %>
-      <%= link_to "Sell", new_theme_path, :class => "ui green button" %>
+      <%= link_to "Dashboard", dashboard_path, :class => "ui button" %>
+      <%= link_to "Edit Profile", edit_user_path, :class => "ui button" %>
+      <%= link_to "Sell", new_theme_path, :class => "ui button" %>
     </div>
   <% end %>
 

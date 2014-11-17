@@ -1,10 +1,8 @@
-<% content_for :header do %>
-  <script type="text/javascript">
-    <%= raw @snippet.js %>
-  </script>
-  <style>
-    <%= raw @snippet.css %>
-  </style>
+<% content_for :title do %>
+  <%= @snippet.title %>
+<% end %>
+<% content_for :subtext do %>
+  <%= @snippet.description %>
 <% end %>
 
 <% content_for :subheader do %>
@@ -17,19 +15,62 @@
   </div>
 <% end %>
 
-<div class="ui grid">
-  <div class="eleven wide column">
-
-    <div class="ui segment item-show">
-      <h3 class="ui dividing header">Description</h3>
-      <p><%= simple_format(@snippet.description) %></p>
-      <p><%= raw @snippet.html %></p>
-    </div>
-  </div>
-  <div class="five wide column">
-    <div class="ui segment">
-      <header class="ui top attached label"><b>Author</b></header>
-      <div><%#= link_to @snippet.owner.username, user_path(@snippet.owner.user) %></div>
-    </div>
-  </div>
+<div class="four item tabular ui menu">
+  <a class="item active js-preview">Preview</a>
+  <a class="item js-html">HTML</a>
+  <a class="item js-css">CSS</a>
+  <% if @snippet.js.present? %>
+    <a class="item js-script">Javascript</a>
+  <% end %>
 </div>
+
+
+<div class="preview-box tab-content" style="display: block;">
+  <iframe src="/snippets/<%= @snippet.id %>/iframe_content" width="100%" height="500" frameBorder="0" seamless="seamless"></iframe>
+</div>
+
+<div class="html-box tab-content">
+  <pre class="prettyprint"><%= @snippet.html %></pre>
+  </pre>
+</div>
+
+<div class="css-box tab-content">
+  <pre class="prettyprint"><%= raw @snippet.css %></pre>
+</div>
+
+<div class="js-box tab-content">
+  <pre class="prettyprint"><%= raw @snippet.js %></pre>
+</div>
+
+<%= link_to "Edit this snippet", edit_snippet_path %>
+
+<% content_for :javascripts do %>
+<script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
+<script type="text/javascript">
+//horrible code. i was hungover. i'll fix it one day
+  $('.js-preview').on('click', function(){
+    $('.item').removeClass('active');
+    $(this).addClass('active');
+    $('.tab-content').hide();
+    $('.preview-box').show();
+  });
+  $('.js-html').on('click', function(){
+    $('.item').removeClass('active');
+    $(this).addClass('active');
+    $('.tab-content').hide();
+    $('.html-box').show();
+  });
+  $('.js-css').on('click', function(){
+    $('.item').removeClass('active');
+    $(this).addClass('active');
+    $('.tab-content').hide();
+    $('.css-box').show();
+  });
+  $('.js-script').on('click', function(){
+    $('.item').removeClass('active');
+    $(this).addClass('active');
+    $('.tab-content').hide();
+    $('.js-box').show();
+  });
+</script>
+<% end %>

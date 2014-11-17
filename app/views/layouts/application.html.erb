@@ -8,13 +8,16 @@
   <%= csrf_meta_tags %>
   <%= yield :header %>
 </head>
-<body>
+<body class="<%= controller_name %>">
 
-  <%= render 'layouts/navigation' %>
+  <%= render 'shared/nav' %>
+  <%= render 'shared/subnav' %>
 
   <div class="container">
+    <%= yield :categories %>
     <%= yield %>
   </div>
 
+  <%= yield :javascripts %>
 </body>
 </html>

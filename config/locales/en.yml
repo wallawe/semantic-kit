@@ -3,7 +3,7 @@ en:
     theme_index: "You are viewing pending themes."
     theme_pending: "This theme has not yet been approved."
   categories:
-    no_approved_themes: "There are no approved themes for %{name}."
+    no_approved_themes: "There are no approved  %{name} themes quite yet."
   sessions:
     invalid_login: "Invalid login/password. Try again!"
     successful_login: "Logged in successfully"
