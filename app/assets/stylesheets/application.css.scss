@@ -11,12 +11,12 @@
  *= require_self
  */
 
-
 @import "semantic-ui";
 @import "semantic-ui/collections/menu";
 @import "globals";
 @import "themes";
 @import "landing";
+@import "snippets";
 
 .container {
   width: 1020px;
@@ -31,7 +31,6 @@
 }
 
 body {
-  background: #fff; //image_url('https://s3.amazonaws.com/wrapsemanticstatic/stardust.png');
   margin: 0;
   padding: 0;
 
@@ -76,8 +75,9 @@ h1, h2, h3, h4, h5, h6 {
   .two.column.row > .column {
     margin-bottom: 2%;
     width: 49% !important;
+    background: #f2f2f2;
+    border-bottom: 2px solid #ddd;
     padding-bottom: 1em;
-    border-radius: 5px;
     margin-bottom: 3em;
 
     &:nth-of-type(odd) { margin-right: 2%;}
@@ -108,7 +108,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .ui.menu.secondary {
-  margin: 1rem 0 3rem 0;
+  margin: 0.5rem 0 1rem 0;
   display: block;
 }
 
@@ -123,27 +123,47 @@ h1, h2, h3, h4, h5, h6 {
 }
 .subheader {
   width: 100%;
-  background: #444349;
 
   h3.ui.header {
+    vertical-align: top;
+    margin-top: 0;
+    display: inline-block;
     font-size: 1.7rem;
     font-weight: normal;
   }
 }
 
+.snippets .subheader {
+  background: $orange;
+  .ui.inverted.header .sub.header {
+    color: lighten($orange, 18%);
+  }
+}
+
+.themes .subheader, .categories .subheader {
+  background: $navy;
+  .ui.inverted.header .sub.header {
+    color: lighten($navy, 40%);
+  }
+}
+
+.expo .subheader {
+  background: $green;
+  .ui.inverted.header .sub.header {
+    color: lighten($green, 30%);
+  }
+}
+
 .card {
   background: #f2f2f2;
-  @include box_shadow;
 }
 
 .ui.segment {
   background: #f2f2f2;
-  @include box_shadow;
 }
 
 .ui.item-show {
   background: #f2f2f2;
-  @include box_shadow;
   p {
     line-height: 1.5em;
     font-size: 0.9em;

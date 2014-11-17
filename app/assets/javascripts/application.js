@@ -15,7 +15,7 @@
 //= require semantic-ui
 //= require_tree .
 
-$(document).on('mouseenter', '.dropdown', function() {
+$(document).on('click', '.dropdown', function() {
   $(this).dropdown('show');
 }).on('mouseleave', '.dropdown', function(){
   $('.ui.dropdown').dropdown('hide');

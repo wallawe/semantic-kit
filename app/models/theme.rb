@@ -1,8 +1,9 @@
 class Theme < ActiveRecord::Base
   PREPROCESSOR_OPTIONS = [ ["Select", nil], ["SASS", "SASS"],
-                           ["LESS", "LESS"], ["Stylus", "Stylus"]
+                           ["LESS", "LESS"], ["Stylus", "Stylus"],
+                           ["None", "None"]
                          ]
-  BROWSER_OPTIONS      = [ "Chrome", "Safari", "Internet Explorer" ]
+  BROWSER_OPTIONS      = [ "Chrome", "Safari", "IE10", "IE9", "IE8", "IE7" ]
 
   has_many :theme_categories
   has_many :categories, through: :theme_categories

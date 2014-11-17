@@ -1,19 +1,14 @@
-<% content_for :subheader do %>
-  <div class="subheader">
-    <div class="container">
-      <h3 class="ui header inverted">
-        <%= @theme.name %><br>
-        <div class="sub header">
-          <div class="ui breadcrumb">
-            <%= link_to "Themes", themes_path, class: "section" %>
-            <div class="divider" style="color: #fff;"> / </div>
-            <%= link_to @theme.categories.first.name, category_path(@theme.categories.first) %>
-          </div>
-        </div>
-      </h3>
-    </div>
+<% content_for :title do %>
+  <%= @theme.name %>
+<% end %>
+<% content_for :subtext do %>
+  <div class="ui breadcrumb">
+    <%= link_to "Themes", themes_path, class: "section" %>
+    <div class="divider" style="color: #fff;"> / </div>
+    <%= link_to @theme.categories.first.name, category_path(@theme.categories.first) %>
   </div>
 <% end %>
+
 
 <div class="ui grid">
   <div class="eleven wide column">

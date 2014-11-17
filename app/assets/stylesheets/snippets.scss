@@ -1,0 +1,84 @@
+.snippets {
+  .preview-box {
+    border: 1px solid #ddd;
+    width: 100%;
+    min-height: 500px;
+  }
+
+  .tab-content {
+    border: 1px solid #ddd;
+    display: none;
+    height: 400px;
+    margin-top: -17px;
+  }
+
+  .prettyprint {
+    border: 0;
+    padding: 10px;
+    margin-top: 0;
+    span {
+      font-family: monospace;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+    .pln {
+      color: #333333;
+    }
+    .str {
+      color: #dd1144;
+    }
+
+    .kwd {
+      color: #333333;
+    }
+
+    .com {
+      color: #999988;
+    }
+
+    .typ {
+      color: #445588;
+    }
+
+    .lit {
+      color: #445588;
+    }
+
+    .pun {
+      color: #333333;
+    }
+
+    .opn {
+      color: #333333;
+    }
+
+    .clo {
+      color: #333333;
+    }
+
+    .tag {
+      color: navy;
+    }
+
+    .atn {
+      color: teal;
+    }
+
+    .atv {
+      color: #dd1144;
+    }
+
+    .dec {
+      color: #333333;
+    }
+
+    .var {
+      color: teal;
+    }
+
+    .fun {
+      color: #990000;
+    }
+  }
+}
+

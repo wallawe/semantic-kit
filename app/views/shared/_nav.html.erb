@@ -4,7 +4,7 @@
       <b>Semantic</b> UI
     <% end %>
     <div class="ui dropdown item">
-      <%= link_to "Themes", themes_path%>
+      <a href="#">Themes</a>
       <div class="menu">
         <%= link_to "View All Themes", themes_path, class: "item" %>
         <%= link_to "Sell a Theme", new_theme_path, class: "item" %>
@@ -13,8 +13,8 @@
     <div class="ui dropdown item">
       <a href="#">Snippets</a>
       <div class="menu">
-        <a href="#" class="item">View Snippets</a>
-        <a href="#" class="item">Create a snippet</a>
+        <%= link_to "View All Snippets", snippets_path, class: "item" %>
+        <%= link_to "Create a Snippet", new_snippet_path, class: "item" %>
       </div>
     </div>
     <div class="ui dropdown item">
@@ -53,5 +53,3 @@
     </div>
   </div>
 </div>
-
-<%= yield :subheader %>

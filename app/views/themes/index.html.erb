@@ -1,4 +1,26 @@
-<%= render partial: 'layouts/subnav' %>
+<% content_for :title do %>
+  All
+<% end %>
+<% content_for :subtext do %>
+  Themes &amp; Templates
+<% end %>
+
+<% content_for :categories do %>
+  <div class="ui sub secondary pointing menu">
+    <%= nav_link "All", themes_path %>
+    <% Category.order(:name).each do |category| %>
+      <%= nav_link category.name, category_path(category) %>
+    <% end %>
+  </div>
+
+  <% if current_page?(admin_dashboard_path) %>
+    <div class="ui message">
+      <div class="header">
+        <%= t(:"admin.theme_index") %>
+      </div>
+    </div>
+  <% end %>
+<% end %>
 
 <% if @themes.any? %>
   <div class="ui grid gallery">

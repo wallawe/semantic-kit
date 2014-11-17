@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  layout "landing", only: [:new]
+
   def new
     @user = User.new
   end
