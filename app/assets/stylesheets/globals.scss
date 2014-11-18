@@ -20,6 +20,13 @@ $break-large: 1020px;
   box-sizing: border-box;
 }
 
+ol, ul, li {
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
 a {
   color: #6989B5;
   text-decoration: none;

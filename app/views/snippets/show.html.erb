@@ -2,7 +2,7 @@
   <%= @snippet.title %>
 <% end %>
 <% content_for :subtext do %>
-  <%= @snippet.description %>
+  By: <%= link_to @snippet.user.username, user_path(@snippet.user) %>
 <% end %>
 
 <% content_for :subheader do %>
@@ -42,7 +42,8 @@
   <pre class="prettyprint"><%= raw @snippet.js %></pre>
 </div>
 
-<%= link_to "Edit this snippet", edit_snippet_path %>
+<%= link_to "Edit", edit_snippet_path %> |
+<%= link_to "Delete", snippet_path(@snippet), method: 'delete', :data => { confirm: "are you sure?" } %>
 
 <% content_for :javascripts do %>
 <script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>

@@ -10,12 +10,14 @@
     display: none;
     height: 400px;
     margin-top: -17px;
+    overflow: scroll;
   }
 
   .prettyprint {
     border: 0;
     padding: 10px;
     margin-top: 0;
+    word-wrap: break-word;
     span {
       font-family: monospace;
       font-size: 13px;
