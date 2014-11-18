@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
 
   has_one :stripe_account
   has_many :subscriptions
+  has_many :snippets
 
   def to_param
     "#{username}"

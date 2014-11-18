@@ -175,3 +175,42 @@ h1, h2, h3, h4, h5, h6 {
 .secondary-text {
   margin-left: 10px;
 }
+
+.users .ui.items .item {
+  width: 200px;
+  height: auto;
+  min-height: 20px;
+}
+
+
+.why-us {
+  margin: 100px 0;
+  width: 47.5%;
+  display: inline-block;
+  background: $gray_green;
+  text-align: center;
+  margin-right: 4%;
+  padding: 15px;
+  &:last-child {
+    margin-right: 0;
+  }
+
+  & > div {
+    border: 4px solid #fff;
+    padding: 10px 0 20px 0;
+  }
+
+  h2 {
+    font-size: 40px;
+    margin: 10px auto 20px auto;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: lighten($gray_green, 15%);
+  }
+
+  ul, li {
+    display: block;
+    color: #fff;
+    padding-bottom: 5px;
+  }
+}
