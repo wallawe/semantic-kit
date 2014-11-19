@@ -1,6 +1,7 @@
 class SnippetsController < ApplicationController
   before_filter :get_snippet, only: [:show, :edit, :update, :iframe_content, :destroy]
   before_filter :authenticate, only: [:new, :create, :destroy, :update, :edit ]
+
   def new
     @snippet = Snippet.new
   end

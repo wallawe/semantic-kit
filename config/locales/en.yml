@@ -1,4 +1,8 @@
 en:
+  actions:
+    confirm_delete: "are you sure?"
+    delete: "Delete"
+    edit: "Edit"
   admin:
     theme_index: "You are viewing pending themes."
     theme_pending: "This theme has not yet been approved."
@@ -17,3 +21,4 @@ en:
     notice: "Wrap Semantic Purchase: %{theme_name}"
   themes:
     none_approved: "There are no approved themes yet."
+    updated: "Your theme has been updated successfully."

@@ -12,6 +12,9 @@ class User < ActiveRecord::Base
   has_many :subscriptions
   has_many :snippets
 
+  has_many :owners
+  has_many :themes, through: :owners
+
   def to_param
     "#{username}"
   end
@@ -30,6 +33,22 @@ class User < ActiveRecord::Base
 
   def remove_admin!
     update_attribute(:admin, false)
+  end
+
+  def owns_theme?(theme)
+    theme.owner.user_id == self.id
+  end
+
+  def owns_snippet?(snippet)
+    snippet.user_id == self.id
+  end
+
+  def can_edit_theme?(theme)
+    admin? || owns_theme?(theme)
+  end
+
+  def can_edit_snippet?(snippet)
+    admin? || owns_snippet?(snippet)
   end
 
 end
