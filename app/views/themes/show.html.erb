@@ -11,7 +11,7 @@
   </div>
 <% end %>
 
-<% if current_user.owns_theme?(@theme) %>
+<% if logged_in? && current_user.can_edit_theme?(@theme) %>
   <%= link_to t(:"actions.edit"), edit_theme_path %>
 <% end %>
 

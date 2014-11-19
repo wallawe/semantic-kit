@@ -43,4 +43,12 @@ class User < ActiveRecord::Base
     snippet.user_id == self.id
   end
 
+  def can_edit_theme?(theme)
+    admin? || owns_theme?(theme)
+  end
+
+  def can_edit_snippet?(snippet)
+    admin? || owns_snippet?(snippet)
+  end
+
 end
