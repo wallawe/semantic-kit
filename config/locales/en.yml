@@ -21,3 +21,4 @@ en:
     notice: "Wrap Semantic Purchase: %{theme_name}"
   themes:
     none_approved: "There are no approved themes yet."
+    updated: "Your theme has been updated successfully."

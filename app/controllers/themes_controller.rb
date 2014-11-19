@@ -23,7 +23,7 @@ class ThemesController < ApplicationController
   def update
     theme = Theme.find(params[:id])
     if theme.update_attributes(theme_params)
-      redirect_to theme_path(theme)
+      redirect_to theme_path(theme), notice: t(:"themes.updated")
     else
       render :edit
     end
