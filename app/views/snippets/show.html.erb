@@ -42,8 +42,10 @@
   <pre class="prettyprint"><%= raw @snippet.js %></pre>
 </div>
 
-<%= link_to "Edit", edit_snippet_path %> |
-<%= link_to "Delete", snippet_path(@snippet), method: 'delete', :data => { confirm: "are you sure?" } %>
+<% if current_user.owns_snippet?(@snippet) %>
+  <%= link_to t(:"actions.edit"), edit_snippet_path %> |
+  <%= link_to t(:"actions.delete"), snippet_path(@snippet), method: 'delete', :data => { confirm: t(:"actions.confirm_delete") } %>
+<% end %>
 
 <% content_for :javascripts do %>
 <script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>

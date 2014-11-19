@@ -6,44 +6,5 @@
 <% end %>
 
 <div class="form-wrap card">
-  <%= form_for @snippet do |f| %>
-
-    <% if @snippet.errors.any? %>
-      <div class="ui red message">
-        <div class="header">We noticed some issues</div>
-        <ul class="list">
-          <% @snippet.errors.full_messages.each do |message| %>
-            <li id="error"><%= message %></li>
-          <% end %>
-        </ul>
-      </div>
-    <% end %>
-
-    <div class="ui form">
-      <div class="field">
-        <%= f.label :title, "Title" %>
-        <%= f.text_field :title %>
-      </div>
-      <div class="field">
-        <%= f.label :description, "Snippet Description" %>
-        <%= f.text_field :description %>
-      </div>
-      <div class="field">
-        <%= f.label :html, "HTML" %>
-        <%= f.text_area :html %>
-      </div>
-      <div class="field">
-        <%= f.label :css, "CSS" %>
-        <%= f.text_area :css %>
-      </div>
-      <div class="field">
-        <%= f.label :js, "JavaScript" %>
-        <%= f.text_area :js %>
-      </div>
-    </div>
-
-    <div class="ui form">
-      <%= f.submit "Submit", :class => "ui button green" %>
-    </div>
-  <% end %>
+  <%= render "form" %>
 </div>

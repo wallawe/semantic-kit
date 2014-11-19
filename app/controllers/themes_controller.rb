@@ -16,6 +16,19 @@ class ThemesController < ApplicationController
     end
   end
 
+  def edit
+    @theme = Theme.find(params[:id])
+  end
+
+  def update
+    theme = Theme.find(params[:id])
+    if theme.update_attributes(theme_params)
+      redirect_to theme_path(theme)
+    else
+      render :edit
+    end
+  end
+
   def index
     @themes = Theme.approved
   end
