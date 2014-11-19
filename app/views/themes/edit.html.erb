@@ -1,0 +1,17 @@
+<% content_for :title do %>
+  Edit Your Theme
+<% end %>
+<% content_for :subtext do %>
+  <%= @theme.name %>
+<% end %>
+
+<div class="form-wrap card">
+  <h2 class="ui center aligned icon header">
+  </h2>
+
+  <div class="ui horizontal divider">
+    <i class="circular angle down icon"></i>
+  </div>
+
+  <%= render "form" %>
+</div>
