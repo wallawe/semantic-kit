@@ -7,14 +7,14 @@ Theme.delete_all
 ### Create Users
 #####################
 
-will = User.create(email: "will@test.com", password: "password",
-                   password_confirmation: "password", username: "wallacewe",
-                   name: "Will Wallace", location: "Arlington, VA",
-                   website: "wallace.com", about: "Awesome")
+will = User.create(email: "wallac.will@gmail.com", password: "password",
+                   password_confirmation: "password", username: "wallawe",
+                   location: "NYC",
+                   website: "will-wallace.com", about: "Awesome")
 
 travis = User.create(email: "travis@test.com", password: "password",
                      password_confirmation: "password", username: "travisvalentine",
-                     name: "Travis Valentine", location: "Washington, DC",
+                     location: "Washington, DC",
                      website: "tcvalentine.com", about: "Ginger")
 
 #####################
@@ -31,16 +31,16 @@ end
 ### Create Themes
 #####################
 
-theme_one   = {name: "Theme One", description: "An admin theme", copyright: "2014"}
-theme_two   = {name: "Theme Two", description: "A portfolio theme", copyright: "2014"}
-theme_three = {name: "Theme Three", description: "A resume theme", copyright: "2014"}
+theme_one   = {name: "Theme One", description: "An admin theme"}
+theme_two   = {name: "Theme Two", description: "A portfolio theme"}
+theme_three = {name: "Theme Three", description: "A resume theme"}
 
 single = [5.99, 7.99, 9.99]
 multiple = [13.00, 15.00, 18.00]
 extended = [200.00, 300.00, 400.00]
 
 [ theme_one, theme_two, theme_three ].each_with_index do |theme, index|
-  theme = Theme.create(name: theme[:name], description: theme[:description], copyright: theme[:copyright])
+  theme = Theme.create(name: theme[:name], description: theme[:description])
   # create theme categories
   theme.theme_categories.create(category_id: Category.all.sample.id)
   # create theme price_list

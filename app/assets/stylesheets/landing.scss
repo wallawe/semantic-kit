@@ -62,5 +62,10 @@
       padding: 0 1.5em;
     }
   }
+}
 
+.sessions-new, .users-new {
+  .footer {
+    display: none;
+  }
 }
