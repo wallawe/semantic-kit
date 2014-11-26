@@ -58,4 +58,8 @@ class Theme < ActiveRecord::Base
       :statement_description => I18n.t(:"transfers.notice", theme_name: self.name)
     )
   end
+
+  def to_param
+    "#{id} #{name}".parameterize
+  end
 end

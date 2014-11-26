@@ -42,7 +42,7 @@ class SnippetsController < ApplicationController
 
   def destroy
     @snippet.destroy
-    redirect_to snippets_path, notice: 'Deletion successful'
+    redirect_to semantic_ui_snippets_path, notice: 'Deletion successful'
   end
 
   private
