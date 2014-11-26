@@ -15,9 +15,15 @@
   <%= link_to iframe_content_snippet_path(@snippet), class: "ui button tooltip", data: { content: "View Full Screen Preview" }, target: "_blank" do %>
     <i class="expand icon"></i>
   <% end %>
-  <div class="ui button tooltip" data-content="Add to Favorites">
-    <i class="heart icon"></i>
-  </div>
+  <% if !current_user.favorited_snippet?(@snippet) %>
+    <%= link_to favorites_path(favorited_id: @snippet.id, favorited_type: "Snippet"), class: "ui button tooltip", data: {content: "Add to Favorites" }, method: :post do %>
+      <i class="empty heart icon"></i>
+    <% end %>
+  <% else %>
+    <%= link_to favorite_path(favorited_id: @snippet.id, favorited_type: "Snippet"), class: "ui button tooltip", data: {content: "Add to Favorites" }, method: :delete do %>
+      <i class="heart icon"></i>
+    <% end %>
+  <% end %>
   <%= link_to new_snippet_path, class: "ui button tooltip", data: { content: "Add a Snippet" } do %>
     <i class="plus icon"></i>
   <% end %>
