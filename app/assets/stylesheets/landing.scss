@@ -8,11 +8,13 @@
 
   h1 {
     color: #fff;
-    padding-top: 2em;
-    font-size: 60px;
-    font-weight: bold;
+    padding-top: 1.5em;
+    font-size: 70px;
+    text-transform: uppercase;
+    font-weight: 300;
     text-align: center;
-    width: 12em;
+    max-width: 980px;
+    letter-spacing: 3px;
     margin: 0 auto;
     text-shadow: 0 0 45px darken($navy, 10%);
   }
@@ -50,7 +52,7 @@
 
     h3 {
       text-align: center;
-      font-size: 32px;
+      font-size: 40px;
       margin: 1em auto 0.5em auto;
     }
 
@@ -59,6 +61,7 @@
       display: block;
       text-align: center;
       margin-bottom: 2em;
+      font-size: 17px;
       padding: 0 1.5em;
     }
   }

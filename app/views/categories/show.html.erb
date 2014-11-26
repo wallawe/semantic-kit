@@ -23,13 +23,12 @@
 <% end %>
 
 <% if @category.themes.approved.any? %>
-  <div class="ui grid gallery">
-    <div class="two column row">
-      <%= render partial: "shared/theme", collection: @category.themes.approved %>
-    </div>
+  <div class="ui two cards bottom-20">
+    <%= render partial: "shared/theme", collection: @category.themes.approved %>
   </div>
 <% else %>
   <div class="ui raised segment">
-    <p><%= t(:"categories.no_approved_themes", name: @category.name) %></p>
+      <%= t(:"categories.no_approved_themes", name: @category.name) %>
+      <%= link_to "Create a new one", new_theme_path %>
   </div>
 <% end %>

@@ -5,6 +5,14 @@
   Themes &amp; Templates
 <% end %>
 
+<% content_for :right_content do %>
+  <%= link_to new_theme_path do %>
+    <div class="ui circular plus icon basic button tooltip" data-content="Sell a theme" style="margin-top: 15px;">
+      <i class="plus large icon"></i>
+    </div>
+  <% end %>
+<% end %>
+
 <% content_for :categories do %>
   <div class="ui sub secondary pointing menu">
     <%= nav_link "All", themes_path %>
@@ -23,13 +31,13 @@
 <% end %>
 
 <% if @themes.any? %>
-  <div class="ui grid gallery">
-    <div class="two column row">
-      <%= render partial: "shared/theme", collection: @themes %>
-    </div>
+  <div class="ui two cards bottom-20">
+    <%= render partial: "shared/theme", collection: @themes %>
   </div>
 <% else %>
   <div class="ui raised segment">
     <%= t(:"themes.none_approved") %>
+    <br>
+    <%= link_to "Create a new one", new_theme_path %>
   </div>
 <% end %>
