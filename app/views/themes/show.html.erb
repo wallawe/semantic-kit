@@ -13,29 +13,39 @@
   </div>
 <% end %>
 
-<% if logged_in? && current_user.can_edit_theme?(@theme) %>
-  <%= link_to t(:"actions.edit"), edit_theme_path %>
-<% end %>
 
-<div class="ui grid">
-  <div class="eleven wide column">
-    <% if !@theme.approved? %>
-      <div class="ui message">
+<% if !@theme.approved? %>
+  <div class="ui one column grid top-20">
+    <div class="column">
+      <div class="ui yellow message">
         <div class="header">
           <%= t(:"admin.theme_pending") %>
         </div>
       </div>
-    <% end %>
+    </div>
+  </div>
+<% end %>
+
+<div class="ui grid">
+  <div class="eleven wide column">
 
     <div class="ui segment item-show">
       <%= image_tag @theme.default_image_url, :width => "100%" %>
       <h3 class="ui dividing header">Description</h3>
       <p><%= simple_format(@theme.description) %></p>
     </div>
+    <% if logged_in? && current_user.can_edit_theme?(@theme) %>
+      <%= link_to t(:"actions.edit"), edit_theme_path %>
+    <% end %>
   </div>
+
+
   <div class="five wide column">
     <div class="column">
-      <button class="ui huge blue icon labeled fluid button bottom-20"><i class="share icon"></i>live preview</button>
+      <%= link_to @theme.preview_url, class: "ui huge blue icon labeled fluid button bottom-20" do %>
+        <i class="share icon"></i>
+        live preview
+      <% end %>
     </div>
     <div class="column" style="text-align: center;">
       <%= call_to_action(@theme) %>
@@ -45,27 +55,25 @@
       <header class="ui top attached label"><b>Application License</b></header>
       <div class="ui list">
         <%= link_to theme_path(@theme.id, license: "single"), class: "item" do %>
-          <i class="angle right icon"></i>
           Single
-          <div class="right floated ui"><%= number_to_currency @theme.price_list.single_tier %></div>
+          <div class="right floated ui">
+            <%= number_to_currency @theme.price_list.single_tier %>
+          </div>
         <% end %>
-
         <%= link_to theme_path(@theme, license: "multiple"), class: "item" do %>
-          <i class="angle right icon"></i>
           Multiple
-          <div class="right floated ui"><%= number_to_currency @theme.price_list.multiple_tier %></div>
+          <div class="right floated ui">
+            <%= number_to_currency @theme.price_list.multiple_tier %>
+          </div>
         <% end %>
-
         <%= link_to theme_path(@theme, license: "extended"), class: "item" do %>
-          <i class="angle right icon"></i>
           Extended
-          <div class="right floated ui"><%= number_to_currency @theme.price_list.extended_tier %></div>
+          <div class="right floated ui">
+            <%= number_to_currency @theme.price_list.extended_tier %>
+          </div>
         <% end %>
-
       </div>
     </div>
-
-
 
     <table class="ui table segment">
       <thead><tr><th colspan="2">Theme Details</th></tr></thead>

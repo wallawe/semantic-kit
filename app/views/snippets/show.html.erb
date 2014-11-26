@@ -12,9 +12,9 @@
 <% end %>
 <% content_for :right_content do %>
 <div class="ui inverted basic icon buttons" style="margin-top: 17px;">
-  <div class="ui button tooltip" data-content="View Full Screen Preview">
+  <%= link_to iframe_content_snippet_path(@snippet), class: "ui button tooltip", data: { content: "View Full Screen Preview" }, target: "_blank" do %>
     <i class="expand icon"></i>
-  </div>
+  <% end %>
   <div class="ui button tooltip" data-content="Add to Favorites">
     <i class="heart icon"></i>
   </div>
@@ -22,7 +22,6 @@
     <i class="plus icon"></i>
   <% end %>
 </div>
-
 <% end %>
 
 <div class="four item tabular ui menu">

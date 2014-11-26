@@ -18,7 +18,7 @@
 
     var theme_name  = '<%= @theme.name %>';
     var description = '<%= @license.capitalize %> Tier License';
-    var amount_in_cents = '<%= @theme.price_list.send("#{@license}_tier") * 100 %>';
+    var amount_in_cents = '<%= @theme.price_list.send("#{@license}_tier").to_f * 100 %>';
 
     document.getElementById('payment').addEventListener('click', function(e) {
       handler.open({

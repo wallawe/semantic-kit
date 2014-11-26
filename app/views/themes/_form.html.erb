@@ -48,21 +48,20 @@
         <%= collection_select(:theme, :category_ids, Category.all, :id, :name) %>
       </div>
     </div>
-
     <div class="field">
       <%= f.label :browsers, "Browser Support" %>
       <% Theme::BROWSER_OPTIONS.each do |browser| %>
-        <li>
-          <%= check_box_tag 'theme[browsers][]', browser -%>
-          <%= browser %>
-        </li>
+        <div clas="ui checkbox">
+          <%= check_box_tag browser, browser %>
+          <label for="<%= browser %>"><%= browser %></label>
+        </div>
       <% end %>
     </div>
   </div>
 
   <%= f.fields_for :price_list, @theme.build_price_list do |builder| %>
     <div class="ui form">
-      <h3 class="ui header gr">Price</h3>
+      <h3 class="ui header">Price</h3>
       <div class="inline field left icon input ui">
         <%= builder.number_field :single_tier, :placeholder => "Single Application" %>
         <i class="dollar icon"></i>

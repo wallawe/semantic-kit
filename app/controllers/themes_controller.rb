@@ -41,7 +41,7 @@ class ThemesController < ApplicationController
   private
 
     def theme_params
-      params.require(:theme).permit(:name, :description, { category_ids: [] },
+      params.require(:theme).permit(:name, :description, :preview_url, { category_ids: [] },
                                     :image, :file_package, :tag_list, :preprocessor, { browsers: [] },
                                     price_list_attributes: [:single_tier, :multiple_tier, :extended_tier])
     end
