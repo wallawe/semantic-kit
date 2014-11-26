@@ -3,6 +3,8 @@ class Snippet < ActiveRecord::Base
 
   validates_presence_of :title, :html
 
+  mount_uploader :image, ImageUploader
+
   def to_param
     "#{id} #{title}".parameterize
   end

@@ -1,9 +1,23 @@
-<div class="ui grid gallery">
-  <div class="two column row">
-    <% if @themes.any? %>
-      <%= render partial: "shared/theme", collection: @themes %>
-    <% else %>
-      <p>There are no pending themes.</p>
-    <% end %>
-  </div>
-</div>
+<% content_for :title do %>
+  <%= "Hi, #{current_user.username}!" %>
+<% end %>
+<% content_for :subtext do %>
+  Get your Admin on
+<% end %>
+
+<% if @themes %>
+  <table class="ui table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Author</th>
+        <th>Status</th>
+        <th>Meets Criteria</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= render partial: "admin/dashboards/theme", collection: @themes %>
+    </tbody>
+  </table>
+<% end %>

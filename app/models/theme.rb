@@ -62,4 +62,13 @@ class Theme < ActiveRecord::Base
   def to_param
     "#{id} #{name}".parameterize
   end
+
+  def has_required_elements?
+    # don't know what all to put in here right now
+    price_list.present? && file_package.present?
+  end
+
+  def status
+    approved? ? "Approved" : "Pending"
+  end
 end
