@@ -3,7 +3,7 @@
 <% end %>
 <% content_for :subtext do %>
   <div class="ui breadcrumb">
-    <%= link_to "Themes", themes_path, class: "section" %>
+    <%= link_to "Themes", semantic_ui_themes_path, class: "section" %>
     <i class="right chevron icon divider" style="color: #fff;"></i>
     <% if @theme.categories.first %>
       <%= link_to @theme.categories.first.name, category_path(@theme.categories.first) %>

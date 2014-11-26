@@ -6,6 +6,11 @@ WrapSemantic::Application.routes.draw do
   get "/logout", to: "sessions#destroy", as: "logout"
   get "/signin", to: "sessions#new",     as: "signin"
 
+  ["semantic-ui-themes", "semantic-ui-snippets"].each do |slug|
+    controller = slug.gsub("semantic-ui-", "")
+    get "/#{slug}", to: "#{controller}#index"
+  end
+
   resource  :account,             only: [:show]
   resources :categories
   resource  :dashboard,           only: [:show]
