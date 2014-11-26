@@ -10900,8 +10900,8 @@ a.ui.inverted.yellow.header:hover {
 
 @font-face {
   font-family: 'Icons';
-  src: asset-url("icons.eot");
-  src: asset-url("icons.eot?#iefix") format('embedded-opentype'), url("icons.svg#icons") format('svg'), url("icons.woff") format('woff'), url("icons.ttf") format('truetype');
+  src: font-url("icons.eot");
+  src: font-url("icons.eot?#iefix") format('embedded-opentype'), url("icons.svg#icons") format('svg'), url("icons.woff") format('woff'), url("icons.ttf") format('truetype');
   font-style: normal;
   font-weight: normal;
   font-variant: normal;
