@@ -17,24 +17,23 @@
       <%= f.text_field :title %>
     </div>
     <div class="field">
-      <%= f.label :description, "Snippet Description" %>
-      <%= f.text_field :description %>
-    </div>
-    <div class="field">
       <%= f.label :html, "HTML" %>
       <%= f.text_area :html %>
     </div>
     <div class="field">
-      <%= f.label :css, "CSS" %>
+      <%= f.label :css, "Custom CSS" %>
       <%= f.text_area :css %>
+      <span class="text-field-note">Semantic 1.0 styles are included by default</span>
     </div>
     <div class="field">
-      <%= f.label :js, "JavaScript" %>
+      <%= f.label :js, "Custom JavaScript" %>
       <%= f.text_area :js %>
+      <span class="text-field-note">Semantic UI's JS library is included by default</span>
     </div>
   </div>
 
   <div class="ui form">
     <%= f.submit "Submit", :class => "ui button green" %>
+    <%= link_to "Cancel", :back %>
   </div>
 <% end %>

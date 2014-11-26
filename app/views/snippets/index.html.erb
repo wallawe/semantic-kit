@@ -1,16 +1,32 @@
 <% content_for :title do %>
-  All Snippets
+  Semantic UI Snippets
 <% end %>
 <% content_for :subtext do %>
   For your pleasure
 <% end %>
-
+<% content_for :right_content do %>
+  <%= link_to new_snippet_path do %>
+    <div class="ui circular plus icon basic button tooltip" data-content="Add a Snippet" style="margin-top: 15px;">
+      <i class="plus large icon"></i>
+    </div>
+  <% end %>
+<% end %>
 
 <% if @snippets.any? %>
-  <div class="ui grid gallery">
-    <div class="three column row">
-      <%= render @snippets %>
-    </div>
+  <div class="ui two cards top-20 bottom-20">
+    <% @snippets.each do |snippet| %>
+      <div class="ui card snips top-20">
+        <%= link_to snippet_path(snippet), class: "image" do %>
+          <img src="http://bootsnipp.com/img/screenshots/86de42971e3ea6d9a06d63e8dc94cc4e0939bfe7.png">
+        <% end %>
+        <div class="content" style="border-top: 1px solid #e9e9e9;">
+          <%= link_to snippet.title,snippet_path(snippet), class: "header" %>
+          <div class="meta">
+            <a class="time"><%= time_ago_in_words(snippet.created_at) %> ago</a>
+          </div>
+        </div>
+      </div>
+    <% end %>
   </div>
 <% else %>
   <div class="ui raised segment">
@@ -18,3 +34,18 @@
     <%= link_to "Create a new one", new_snippet_path %>
   </div>
 <% end %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

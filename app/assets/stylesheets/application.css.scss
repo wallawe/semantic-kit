@@ -12,16 +12,14 @@
  */
 
 @import "semantic-ui";
-@import "semantic-ui/collections/menu";
 @import "globals";
 @import "themes";
 @import "landing";
 @import "snippets";
 
 .container {
-  width: 1020px;
+  width: 980px;
   margin: 0 auto;
-  padding: 1.5em;
   @include respond-to(tablet) {
     width: 80%;
   }
@@ -42,6 +40,35 @@ body {
 h1, h2, h3, h4, h5, h6 {
   margin: 0.5em 0;
 }
+
+//STICKY FOOTER
+
+html, body {
+  height: 100%;
+}
+.sticky-footer-wrapper {
+  min-height: 100%;
+  margin: 0 auto -188px; /* the bottom margin is the negative value of the footer's height */
+}
+.footer, .push {
+  height: 188px; /* '.push' must be the same height as 'footer' */
+  @include respond-to(tablet) {
+    height: auto;
+  }
+  @include respond-to(smartphone) {
+    height: auto;
+  }
+}
+
+
+.ui.inverted.black.footer {
+  padding-top: 40px;
+  margin-top: 40px;
+  margin-bottom: 0 !important;
+  background-color: #2f3238 !important;
+}
+
+
 
 .hero.message {
   padding: 0 4em 2em 4em;
@@ -65,51 +92,22 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
-.ui.inverted.message {
-  background: transparent;
+.price-point {
+  font-size: 1.8em;
+  font-weight: bold;
+  margin-top: 0em;
+  display: inline-block;
+  color: #D95C5C;
 }
 
-.gallery {
-  &.grid { margin: 0; }
-
-  .two.column.row > .column {
-    margin-bottom: 2%;
-    width: 49% !important;
-    background: #f2f2f2;
-    border-bottom: 2px solid #ddd;
-    padding-bottom: 1em;
-    margin-bottom: 3em;
-
-    &:nth-of-type(odd) { margin-right: 2%;}
-  }
-
-  a.labeled.button {
-    margin-top: 0.5em;
-  }
-
-  h3 {
-    margin: 0.5em 0;
-    color: #6989B5;
-  }
-
-  img {
-    width: 100%;
-  }
-
-  .price-point {
-    font-size: 1.5em;
-    font-family: georgia, serif;
-    font-style: italic;
-    font-weight: bold;
-    margin-top: 0.5em;
-    display: inline-block;
-    color: #D95C5C;
-  }
-}
 
 .ui.menu.secondary {
   margin: 0.5rem 0 1rem 0;
   display: block;
+}
+
+.ui.sub.secondary.pointing.menu {
+  margin: 2rem 0 2.5rem 0;
 }
 
 .hero-backdrop {
@@ -123,12 +121,14 @@ h1, h2, h3, h4, h5, h6 {
 }
 .subheader {
   width: 100%;
-
-  h3.ui.header {
+  background: $darkness;
+  height: 140px;
+  padding-top: 30px;
+  h2.ui.header {
     vertical-align: top;
     margin-top: 0;
     display: inline-block;
-    font-size: 1.7rem;
+    font-size: 2.7rem;
     font-weight: normal;
   }
 }
@@ -141,9 +141,9 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .themes .subheader, .categories .subheader {
-  background: $navy;
+  background: $blue;
   .ui.inverted.header .sub.header {
-    color: lighten($navy, 40%);
+    color: lighten($blue, 30%);
   }
 }
 
@@ -155,7 +155,9 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .card {
-  background: #f2f2f2;
+  background: #fff;
+  border: 1px solid #f0f0f0;
+  border-top: 0;
 }
 
 .ui.segment {
@@ -213,4 +215,13 @@ h1, h2, h3, h4, h5, h6 {
     color: #fff;
     padding-bottom: 5px;
   }
+}
+
+.right-content {
+  float: right;
+}
+
+.ui.tabular.menu .active.item:first-child {
+  background: #f7f7f7;
+  border-bottom: 1px solid transparent;
 }

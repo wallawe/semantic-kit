@@ -2,16 +2,18 @@
 <html>
 <head>
   <title>Semantic Themes</title>
-  <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
   <%= stylesheet_link_tag    "application", media: "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
   <%= yield :header %>
 </head>
-<body>
-
-  <%= render 'shared/nav' %>
-  <%= yield %>
+<body class="<%= controller_name %>-<%= action_name %>">
+  <div class="sticky-footer-wrapper">
+    <%= render 'shared/nav' %>
+    <%= yield %>
+    <div class="push"></div>
+  </div>
+  <%= render 'shared/footer' %>
 
 </body>
 </html>

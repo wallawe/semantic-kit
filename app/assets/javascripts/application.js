@@ -12,7 +12,6 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require semantic-ui
 //= require_tree .
 
 $(document).on('click', '.dropdown', function() {
@@ -20,3 +19,10 @@ $(document).on('click', '.dropdown', function() {
 }).on('mouseleave', '.dropdown', function(){
   $('.ui.dropdown').dropdown('hide');
 })
+
+
+window.onload = function() {
+  $('.tooltip').popup({
+    position: 'top center'
+  });
+};

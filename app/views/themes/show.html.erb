@@ -4,10 +4,12 @@
 <% content_for :subtext do %>
   <div class="ui breadcrumb">
     <%= link_to "Themes", themes_path, class: "section" %>
-    <div class="divider" style="color: #fff;"> / </div>
+    <i class="right chevron icon divider" style="color: #fff;"></i>
     <% if @theme.categories.first %>
       <%= link_to @theme.categories.first.name, category_path(@theme.categories.first) %>
     <% end %>
+    <i class="right chevron icon divider" style="color: #fff;"></i>
+    <span class="section"><%= @theme.name %></span>
   </div>
 <% end %>
 
@@ -26,17 +28,15 @@
     <% end %>
 
     <div class="ui segment item-show">
-      <%= image_tag @theme.default_image_url, :width => "620" %>
-
+      <%= image_tag @theme.default_image_url, :width => "100%" %>
       <h3 class="ui dividing header">Description</h3>
       <p><%= simple_format(@theme.description) %></p>
-
-      <h3 class="ui dividing header">Copyright</h3>
-      <p><%= @theme.copyright %></p>
     </div>
   </div>
   <div class="five wide column">
-
+    <div class="column">
+      <button class="ui huge blue icon labeled fluid button bottom-20"><i class="share icon"></i>live preview</button>
+    </div>
     <div class="column" style="text-align: center;">
       <%= call_to_action(@theme) %>
     </div>
@@ -98,14 +98,11 @@
           <td>Released</td>
           <td><%= time_ago_in_words @theme.created_at %> ago</td>
         </tr>
+        <tr>
+          <td>Author</td>
+          <td><%= link_to @theme.owner.username, user_path(@theme.owner.user) %></td>
+        </tr>
       </tbody>
     </table>
-
-
-
-    <div class="ui segment">
-      <header class="ui top attached label"><b>Author</b></header>
-      <div><%= link_to @theme.owner.username, user_path(@theme.owner.user) %></div>
-    </div>
   </div>
 </div>

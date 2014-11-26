@@ -16,7 +16,7 @@ $break-large: 1020px;
 // Resets & Fonts
 
 * {
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Lato', sans-serif;
   box-sizing: border-box;
 }
 
@@ -27,18 +27,19 @@ ol, ul, li {
   list-style: none;
 }
 
-a {
-  color: #6989B5;
-  text-decoration: none;
-}
+
 
 $green:     #1ab394;
 $navy:      #2f4050;
 $orange:    #FF8C66;
+$blue:      #5e80a0;
 $link_blue: #2C82C9;
 $gray_green:#A7CCCA;
 $vanilla:   #fff6e3;
 $pink:      #FF948B;
+$darkness:  #2f3238;
+$fb:        #3b579d;
+$twitter:   #4092cc;
 
 //Overrides
 
@@ -47,7 +48,7 @@ $pink:      #FF948B;
   margin-bottom: 0;
   background: #f9f9f9;
   .item {
-    padding: 1em;
+    padding: 20px;
     font-weight: 500;
   }
   .sub .item {
@@ -59,4 +60,22 @@ $pink:      #FF948B;
   color: #5BBD72;
 }
 
-// Mixins
+#notice {
+  margin-top: 20px;
+}
+
+#snippet_html, #snippet_css, #snippet_js {
+  font-family: monospace;
+  line-height: 1.5;
+}
+
+.twitter-text {
+  color: $twitter;
+}
+
+.facebook-text {
+  color: $fb;
+}
+
+.top-20 { margin-top: 20px !important; }
+.bottom-20 { margin-bottom: 20px !important; }
