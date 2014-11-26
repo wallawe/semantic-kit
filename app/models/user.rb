@@ -8,6 +8,10 @@ class User < ActiveRecord::Base
   validates :password, length: { minimum: 6 }, on: :create
   validates :password, presence: true,         on: :create
 
+  has_many :favorites
+  has_many :favorite_snippets, through: :favorites, source: :favorited, source_type: 'Snippet'
+  has_many :favorite_themes, through: :favorites, source: :favorited, source_type: 'Theme'
+
   has_one :stripe_account
   has_many :subscriptions
   has_many :snippets
@@ -49,6 +53,14 @@ class User < ActiveRecord::Base
 
   def can_edit_snippet?(snippet)
     admin? || owns_snippet?(snippet)
+  end
+
+  def favorited_snippet?(snippet)
+    favorite_snippets.include?(snippet)
+  end
+
+  def favorited_theme?(theme)
+    favorite_themes.include?(theme)
   end
 
 end
