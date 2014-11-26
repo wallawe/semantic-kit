@@ -6,6 +6,5 @@ class CreateFavorites < ActiveRecord::Migration
 
       t.timestamps
     end
-    # add_index :favorites, :content_id
   end
 end
