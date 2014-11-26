@@ -6,4 +6,7 @@ class InfoController < ApplicationController
 
   def help
   end
+
+  def sell
+  end
 end
