@@ -13,6 +13,7 @@ class Theme < ActiveRecord::Base
 
   has_one :owner,      dependent: :destroy
   has_one :price_list, dependent: :destroy
+  has_one :sales_tracker, dependent: :destroy
 
   accepts_nested_attributes_for :price_list
 
@@ -23,6 +24,11 @@ class Theme < ActiveRecord::Base
 
   scope :approved,    -> { where(approved: true) }
   scope :pending,     -> { where(approved: false) }
+
+  delegate :sale_count, :sale_count, :single_tier_count,
+                        :multiple_tier_count, :extended_tier_count, :revenue,
+                    to: :sales_tracker
+
 
   def default_image_url
     if image_url.present?
