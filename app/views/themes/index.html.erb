@@ -1,8 +1,8 @@
 <% content_for :title do %>
-  All
+  Semantic UI Themes &amp; Templates
 <% end %>
 <% content_for :subtext do %>
-  Themes &amp; Templates
+  Find the right theme for your next project
 <% end %>
 
 <% content_for :right_content do %>
@@ -35,8 +35,9 @@
     <%= render partial: "shared/theme", collection: @themes %>
   </div>
 <% else %>
-  <div class="ui raised segment">
-    <%= t(:"themes.none_approved") %>
-    <%= link_to "Create a new one", new_theme_path %>
+  <div style="text-align: center">
+    <i class="warning circle disabled icon massive bottom-20"></i>
+    <h3 class="top-20"><%= t(:"themes.none_approved") %></h3>
+    <%= link_to "Upload One Now!", new_theme_path, class: "ui button massive green top-20" %>
   </div>
 <% end %>
