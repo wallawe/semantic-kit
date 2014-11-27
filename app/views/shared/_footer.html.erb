@@ -12,8 +12,8 @@
       <div class="three wide column">
         <h5 class="ui orange inverted header">Snippets</h5>
         <div class="ui inverted link list">
-          <a class="item">View snippets </a>
-          <a class="item">Create a snippet</a>
+          <%= link_to "View Snippets", snippets_path, class: "item" %>
+          <%= link_to "Create a Snippet", new_snippet_path, class: "item" %>
           <a class="disabled item">Privacy Policy</a>
         </div>
       </div>
