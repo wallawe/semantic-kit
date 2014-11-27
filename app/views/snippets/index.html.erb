@@ -17,7 +17,7 @@
     <% @snippets.each do |snippet| %>
       <div class="ui card snips top-20">
         <%= link_to snippet_path(snippet), class: "image" do %>
-          <img src="http://bootsnipp.com/img/screenshots/86de42971e3ea6d9a06d63e8dc94cc4e0939bfe7.png">
+          <%= image_tag snippet.image %>
         <% end %>
         <div class="content" style="border-top: 1px solid #e9e9e9;">
           <%= link_to snippet.title,snippet_path(snippet), class: "header" %>

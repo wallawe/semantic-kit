@@ -51,6 +51,6 @@ class SnippetsController < ApplicationController
     end
 
     def snippet_params
-      params.require(:snippet).permit(:title, :html, :css, :js, :user_id)
+      params.require(:snippet).permit(:title, :html, :css, :js, :user_id, :image)
     end
 end
