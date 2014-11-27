@@ -5,6 +5,14 @@
   Themes &amp; Templates
 <% end %>
 
+<% content_for :right_content do %>
+  <%= link_to new_theme_path do %>
+    <div class="ui circular plus icon basic button tooltip" data-content="Sell a theme" style="margin-top: 15px;">
+      <i class="plus large icon"></i>
+    </div>
+  <% end %>
+<% end %>
+
 <% content_for :categories do %>
   <div class="ui sub secondary pointing menu">
     <%= nav_link "All", semantic_ui_themes_path %>

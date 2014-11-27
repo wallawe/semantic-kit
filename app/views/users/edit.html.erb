@@ -1,12 +1,8 @@
+<% content_for :title do %>
+  Edit Profile
+<% end %>
+
 <div class="form-wrap card">
-  <h2 class="ui center aligned icon header">
-    Edit your details
-  </h2>
-
-  <div class="ui horizontal divider">
-    <i class="circular angle down icon"></i>
-  </div>
-
   <div class="ui form">
     <%= form_for current_user do |f| %>
       <div class="field">

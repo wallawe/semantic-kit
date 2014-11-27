@@ -1,0 +1,33 @@
+.users {
+
+  .ui.secondary.vertical.pointing.menu {
+    height: 500px;
+    margin-bottom: 0;
+  }
+
+  .about {
+    max-width: 420px;
+  }
+
+  ul {
+    width: 420px;
+    height: 400px;
+    overflow: scroll;
+    li {
+      display: block;
+      border-bottom: 1px solid #f2f2f2;
+      padding: 10px;
+      &:hover {
+        background: #f2f2f2;
+      }
+      &.Snippet {
+        color: $orange;
+      }
+      &.Theme {
+        color: $blue;
+      }
+
+      a { color: inherit; }
+    }
+  }
+}

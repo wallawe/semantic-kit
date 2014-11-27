@@ -21,8 +21,18 @@ $(document).on('click', '.dropdown', function() {
 })
 
 
-window.onload = function() {
+window.onload = function(e) {
   $('.tooltip').popup({
     position: 'top center'
   });
+
+  $('#tabs a').on('click', function(){
+    $('#tabs a').removeClass('active');
+    $('.main-content').hide();
+
+    $(this).addClass('active');
+    var current = $(this).attr('href');
+    $(current).show();
+    return false;
+  })
 };
