@@ -36,6 +36,7 @@
     </div>
     <% if logged_in? && current_user.can_edit_theme?(@theme) %>
       <%= link_to t(:"actions.edit"), edit_theme_path %>
+      <%= link_to "Delete", theme_path(@theme), method: 'delete', :data => { confirm: t(:"actions.confirm_delete") } %>
     <% end %>
   </div>
 

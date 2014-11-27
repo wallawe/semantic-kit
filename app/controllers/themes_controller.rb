@@ -1,5 +1,6 @@
 class ThemesController < ApplicationController
-  before_filter :authenticate, only: [:new]
+  before_filter :authenticate, only: [:new, :create, :destroy, :update, :edit]
+  before_filter :get_theme, only: [:show, :edit, :update, :destroy]
 
   def new
     @theme = Theme.new
@@ -18,13 +19,13 @@ class ThemesController < ApplicationController
   end
 
   def edit
-    @theme = Theme.find(params[:id])
+    authorize(@theme)
   end
 
   def update
-    theme = Theme.find(params[:id])
-    if theme.update_attributes(theme_params)
-      redirect_to theme_path(theme), notice: t(:"themes.updated")
+    authorize(@theme)
+    if @theme.update_attributes(theme_params)
+      redirect_to theme_path(@theme), notice: t(:"themes.updated")
     else
       render :edit
     end
@@ -36,10 +37,24 @@ class ThemesController < ApplicationController
 
   def show
     @license = params[:license] || "single"
-    @theme = Theme.find(params[:id])
+  end
+
+  def destroy
+    authorize(@theme)
+    @theme.destroy
+    redirect_to semantic_ui_snippets_path, notice: 'Deletion successful'
   end
 
   private
+    def get_theme
+      @theme = Theme.find(params[:id])
+    end
+
+    def authorize(theme)
+      if !current_user.can_edit_theme?(theme)
+        redirect_to themes_path
+      end
+    end
 
     def theme_params
       params.require(:theme).permit(:name, :description, :preview_url, { category_ids: [] },

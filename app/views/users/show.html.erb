@@ -1,8 +1,5 @@
 <% content_for :title do %>
-  Profile
-<% end %>
-<% content_for :subtext do %>
-  keepin it trill
+  <%= @user.username %>
 <% end %>
 
 <div class="form-wrap card">
@@ -37,13 +34,32 @@
       <!-- Personal Info -->
       <div id="personal" class="main-content">
         <h2 class="ui dividing header" style="margin-top: 7px;">
-          <%= @user.username %>
+          Info
         </h2>
-        <h4 class="ui header">About</h4>
-        <p class="about"><%= @user.about %></p>
-        <p><b>Website:</b> <%= @user.website %></p>
-        <p><b>Email:</b> <%= @user.email %></p>
-        <p><strong>Location:</strong> <%= @user.location %></p>
+        <p class="about">
+          <%= @user.about %>
+          <% if @user.about.blank? %>
+            <%= link_to "Add a bit about yourself", edit_user_path %>
+          <% end %>
+        </p>
+        <p>
+          <b>Website:</b>
+          <%= @user.website %>
+          <% if @user.website.blank? %>
+            <%= link_to "Add a website", edit_user_path %>
+          <% end %>
+        </p>
+        <p>
+          <b>Email:</b>
+          <%= @user.email %>
+        </p>
+        <p>
+          <strong>Location:</strong>
+          <%= @user.location %>
+          <% if @user.about.blank? %>
+            <%= link_to "Add your location", edit_user_path %>
+          <% end %>
+        </p>
       </div>
 
       <!-- Favorites -->
@@ -51,6 +67,7 @@
       <h2 class="ui dividing header" style="margin-top: 7px;">
         <%= pluralize(@user.favorites.where(:favorited_type => "Snippet").count, "favorite") %>
       </h2>
+      <% if @user.favorites.any? %>
         <ul>
           <% @user.favorites.each do |f| %>
             <li class="<%= f.favorited_type %>">
@@ -61,6 +78,11 @@
             </li>
           <% end %>
         </ul>
+        <% else %>
+          <div class="ui center aligned">
+            <p>None quite yet. When you star a <%= link_to "theme", themes_path %> or <%= link_to "snippet", snippets_path %>, this is where it will appear</p>
+          </div>
+        <% end %>
       </div>
 
     </div>

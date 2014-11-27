@@ -17,14 +17,14 @@
   <% end %>
   <% if !current_user.favorited_snippet?(@snippet) %>
     <%= link_to favorites_path(favorited_id: @snippet.id, favorited_type: "Snippet"), class: "ui button tooltip", data: {content: "Add to Favorites" }, method: :post do %>
-      <i class="empty heart icon"></i>
+      <i class="star icon"></i>
     <% end %>
   <% else %>
     <%= link_to favorite_path(favorited_id: @snippet.id, favorited_type: "Snippet"), class: "ui button tooltip", data: {content: "Remove from Favorites" }, method: :delete do %>
-      <i class="heart icon"></i>
+      <i class="star disabled icon"></i>
     <% end %>
   <% end %>
-  <%= link_to new_snippet_path, class: "ui button tooltip", data: { content: "Add a Snippet" } do %>
+  <%= link_to new_snippet_path, class: "ui button tooltip", data: { content: "Create a Snippet" } do %>
     <i class="plus icon"></i>
   <% end %>
 </div>
