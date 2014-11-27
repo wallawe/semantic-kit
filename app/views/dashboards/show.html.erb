@@ -1,2 +1,59 @@
-<h1>Dashboards#show</h1>
-<p>Find me in app/views/dashboards/show.html.erb</p>
+<% content_for :title do %>
+  Your Dashboard
+<% end %>
+<% content_for :subtext do %>
+  See how your Themes and Snippets are doing
+<% end %>
+
+
+<h1>Themes</h1>
+<% if @themes.any? %>
+  <table class="ui table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Tier 1 Sold</th>
+        <th>Tier 2 Sold</th>
+        <th>Tier 3 Sold</th>
+        <th>Total Revenue</th>
+        <th>Favorites</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @themes.each do |theme| %>
+        <tr>
+          <td><%= link_to theme.name, theme_path(theme) %></td>
+          <td><%= theme.single_tier_count %></td>
+          <td><%= theme.multiple_tier_count %></td>
+          <td><%= theme.extended_tier_count %></td>
+          <td><%= theme.revenue %></td>
+          <td><%= "0" %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p>You haven't made any themes yet. <%= link_to "Create one here.", new_theme_path %></p>
+<% end %>
+
+<h2>Snippets</h2>
+<% if @snippets.any? %>
+    <table class="ui table">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Favorites</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @snippets.each do |snippet| %>
+        <tr>
+          <td><%= link_to snippet.title, snippet_path(snippet) %></td>
+          <td><%= "0" %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p>You haven't made any snippets yet. <%= link_to "Create one here.", new_snippet_path %></p>
+<% end %>
