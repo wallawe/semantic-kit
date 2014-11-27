@@ -20,7 +20,7 @@
       <i class="empty heart icon"></i>
     <% end %>
   <% else %>
-    <%= link_to favorite_path(favorited_id: @snippet.id, favorited_type: "Snippet"), class: "ui button tooltip", data: {content: "Add to Favorites" }, method: :delete do %>
+    <%= link_to favorite_path(favorited_id: @snippet.id, favorited_type: "Snippet"), class: "ui button tooltip", data: {content: "Remove from Favorites" }, method: :delete do %>
       <i class="heart icon"></i>
     <% end %>
   <% end %>
