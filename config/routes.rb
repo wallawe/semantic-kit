@@ -1,10 +1,12 @@
 WrapSemantic::Application.routes.draw do
   root "info#home"
 
-  get "/help",   to: "info#help", as: "help"
   get "/sell-semantic-ui-themes",   to: "info#sell", as: "sell"
   get "/logout", to: "sessions#destroy", as: "logout"
   get "/signin", to: "sessions#new",     as: "signin"
+  get "/privacy-policy", to: "info#privacy_policy"
+  get "/terms", to: "info#terms"
+  get "/faq", to: "info#faq"
 
   ["semantic-ui-themes", "semantic-ui-snippets"].each do |slug|
     controller = slug.gsub("semantic-ui-", "")
