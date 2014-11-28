@@ -226,3 +226,8 @@ html, body {
   background: #f7f7f7;
   border-bottom: 1px solid transparent;
 }
+
+.terms-privacy {
+  color: lighten($darkness, 13%);
+  &:hover { color: lighten($darkness, 10%);}
+}
