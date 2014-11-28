@@ -14,7 +14,6 @@
         <div class="ui inverted link list">
           <%= link_to "View Snippets", snippets_path, class: "item" %>
           <%= link_to "Create a Snippet", new_snippet_path, class: "item" %>
-          <a class="disabled item">Privacy Policy</a>
         </div>
       </div>
       <div class="three wide column">
@@ -22,7 +21,7 @@
         <div class="ui inverted link list">
           <a class="item">Made with Semantic</a>
           <a class="item">Submit a Site</a>
-          <a class="disabled item">Help</a>
+          <%= link_to "FAQ", faq_path, class: "item" %>
         </div>
       </div>
       <div class="six wide column">

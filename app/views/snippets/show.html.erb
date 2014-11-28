@@ -15,13 +15,20 @@
   <%= link_to iframe_content_snippet_path(@snippet), class: "ui button tooltip", data: { content: "View Full Screen Preview" }, target: "_blank" do %>
     <i class="expand icon"></i>
   <% end %>
-  <% if !current_user.favorited_snippet?(@snippet) %>
-    <%= link_to favorites_path(favorited_id: @snippet.id, favorited_type: "Snippet"), class: "ui button tooltip", data: {content: "Add to Favorites" }, method: :post do %>
-      <i class="star icon"></i>
+
+  <% if current_user %>
+    <% if !current_user.favorited_snippet?(@snippet) %>
+      <%= link_to favorites_path(favorited_id: @snippet.id, favorited_type: "Snippet"), class: "ui button tooltip", data: {content: "Add to Favorites" }, method: :post do %>
+        <i class="star icon"></i>
+      <% end %>
+    <% else %>
+      <%= link_to favorite_path(favorited_id: @snippet.id, favorited_type: "Snippet"), class: "ui button tooltip", data: {content: "Remove from Favorites" }, method: :delete do %>
+        <i class="star disabled icon"></i>
+      <% end %>
     <% end %>
   <% else %>
-    <%= link_to favorite_path(favorited_id: @snippet.id, favorited_type: "Snippet"), class: "ui button tooltip", data: {content: "Remove from Favorites" }, method: :delete do %>
-      <i class="star disabled icon"></i>
+    <%= link_to new_session_path, class: "ui button tooltip", data: {content: "Sign in to Favorite" } do %>
+      <i class="star icon"></i>
     <% end %>
   <% end %>
   <%= link_to new_snippet_path, class: "ui button tooltip", data: { content: "Create a Snippet" } do %>
