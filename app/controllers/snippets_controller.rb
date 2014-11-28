@@ -24,6 +24,7 @@ class SnippetsController < ApplicationController
   end
 
   def edit
+    authorize(@snippet)
   end
 
   def index
@@ -31,6 +32,7 @@ class SnippetsController < ApplicationController
   end
 
   def update
+    authorize(@snippet)
     respond_to do |format|
       if @snippet.update(snippet_params)
         format.html { redirect_to snippet_path(@snippet), notice: 'Your snippet was successfully updated' }
@@ -41,11 +43,18 @@ class SnippetsController < ApplicationController
   end
 
   def destroy
+    authorize(@snippet)
     @snippet.destroy
     redirect_to semantic_ui_snippets_path, notice: 'Deletion successful'
   end
 
   private
+    def authorize(snippet)
+      if !current_user.can_edit_snippet?(snippet)
+        redirect_to snippets_path
+      end
+    end
+
     def get_snippet
       @snippet = Snippet.find(params[:id])
     end
