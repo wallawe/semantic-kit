@@ -32,3 +32,11 @@
     }
   }
 }
+
+.sessions-new, .users-new {
+  background-image: asset-url('bright_squares.png');
+
+  .ui.form.segment {
+    background-color: #f9f9f9;
+  }
+}
