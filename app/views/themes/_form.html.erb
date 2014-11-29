@@ -41,7 +41,7 @@
     <div class="two fields">
       <div class="field">
         <%= f.label :preprocessors %>
-        <%= f.select :preprocessor, options_for_select(Theme::PREPROCESSOR_OPTIONS) %>
+        <%= f.select :preprocessor, options_for_select(Theme::PREPROCESSOR_OPTIONS, f) %>
       </div>
       <div class="field">
         <%= f.label :category %>
@@ -59,25 +59,25 @@
     </div>
   </div>
 
-  <%= f.fields_for :price_list, @theme.build_price_list do |builder| %>
+  <%= f.fields_for :price_list do |p| %>
     <div class="ui form">
       <h3 class="ui header">Price</h3>
       <div class="inline field left icon input ui">
-        <%= builder.number_field :single_tier, :placeholder => "Single Application" %>
+        <%= p.number_field :single_tier, :placeholder => "Single Application" %>
         <i class="dollar icon"></i>
 <!--         <div class="ui pointing black left label">
           Single Application - $5 minimum <a href="#"> <i class="question circular icon"></i></a>
         </div> -->
       </div>
       <div class="inline field left icon input ui">
-        <%= builder.number_field :multiple_tier, :placeholder => "Multiple Applications" %>
+        <%= p.number_field :multiple_tier, :placeholder => "Multiple Applications" %>
         <i class="dollar icon"></i>
 <!--         <div class="ui pointing black left label">
           Suggested: Single price x 3 <a href="#"> <i class="question circular icon"></i></a>
         </div> -->
       </div>
       <div class="inline field left icon input ui">
-        <%= builder.number_field :extended_tier, :placeholder => "Extended Application" %>
+        <%= p.number_field :extended_tier, :placeholder => "Extended Application" %>
         <i class="dollar icon"></i>
 <!--         <div class="ui pointing black left label">
           Suggested: Single price x 40 <a href="#"> <i class="question circular icon"></i></a>

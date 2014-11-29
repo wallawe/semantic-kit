@@ -26,24 +26,31 @@
   </div>
 <% end %>
 
+<hr class="ui divider hidden">
+
 <div class="ui grid">
   <div class="eleven wide column">
-
-    <div class="ui segment item-show">
+    <div class="ui segment image-frame">
       <%= image_tag @theme.default_image_url, :width => "100%" %>
+    </div>
+
+    <div class="item-descript">
       <h3 class="ui dividing header">Description</h3>
       <p><%= simple_format(@theme.description) %></p>
     </div>
+
     <% if logged_in? && current_user.can_edit_theme?(@theme) %>
-      <%= link_to t(:"actions.edit"), edit_theme_path %>
-      <%= link_to "Delete", theme_path(@theme), method: 'delete', :data => { confirm: t(:"actions.confirm_delete") } %>
+      <hr class="ui divider hidden">
+      <div class="ui menu action-bar">
+        <%= link_to t(:"actions.edit"), edit_theme_path, class: "item" %>
+        <%= link_to "Delete", theme_path(@theme), method: 'delete', :data => { confirm: t(:"actions.confirm_delete") }, class: "item" %>
+      </div>
     <% end %>
   </div>
 
-
   <div class="five wide column">
     <div class="column">
-      <%= link_to @theme.preview_url, class: "ui huge blue icon labeled fluid button bottom-20" do %>
+      <%= link_to @theme.preview_url, class: "ui huge blue icon labeled fluid button bottom-20", target: "_blank" do %>
         <i class="share icon"></i>
         live preview
       <% end %>

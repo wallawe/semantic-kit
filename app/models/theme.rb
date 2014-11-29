@@ -20,7 +20,7 @@ class Theme < ActiveRecord::Base
   mount_uploader :image, ImageUploader
   mount_uploader :file_package, FilePackageUploader
 
-  validates :name, :description, presence: true
+  validates :name, :description, :preview_url, :file_package, :image, presence: true
 
   scope :approved,    -> { where(approved: true) }
   scope :pending,     -> { where(approved: false) }
