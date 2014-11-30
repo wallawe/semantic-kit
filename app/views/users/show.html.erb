@@ -65,13 +65,13 @@
       <!-- Favorites -->
       <div id="favorites" class="main-content" style="display: none;">
       <h2 class="ui dividing header" style="margin-top: 7px;">
-        <%= pluralize(@user.favorites.where(:favorited_type => "Snippet").count, "favorite") %>
+        <%= total_number_of_favorites(@user) %>
       </h2>
       <% if @user.favorites.any? %>
         <ul>
           <% @user.favorites.each do |f| %>
             <li class="<%= f.favorited_type %>">
-              <%= link_to f.favorited.title, snippet_path(f.favorited_id) %>
+              <%= favorited_item_name(f) %>
               <%= link_to favorite_path(favorited_id: f.favorited_id, favorited_type: f.favorited_type), data: { confirm: "Are you sure?" }, method: :delete, class: "pull-right" do %>
                 <i class="icon remove" style="color: #e93e3c;"></i>
               <% end %>

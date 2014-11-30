@@ -13,6 +13,32 @@
   </div>
 <% end %>
 
+<% content_for :right_content do %>
+  <div class="ui inverted basic icon buttons" style="margin-top: 17px;">
+  <%= link_to preview_theme_path(@theme), class: "ui button tooltip", data: { content: "Preview this Theme" }, target: "_blank" do %>
+    <i class="expand icon"></i>
+  <% end %>
+    <% if current_user %>
+      <% if !current_user.favorited_theme?(@theme) %>
+        <%= link_to favorites_path(favorited_id: @theme.id, favorited_type: "Theme"), class: "ui button tooltip", data: {content: "Add to Favorites" }, method: :post do %>
+          <i class="star icon"></i>
+        <% end %>
+      <% else %>
+        <%= link_to favorite_path(favorited_id: @theme.id, favorited_type: "Theme"), class: "ui button tooltip", data: {content: "Remove from Favorites" }, method: :delete do %>
+          <i class="star disabled icon"></i>
+        <% end %>
+      <% end %>
+    <% else %>
+      <%= link_to new_session_path, class: "ui button tooltip", data: {content: "Sign in to Favorite" } do %>
+        <i class="star icon"></i>
+      <% end %>
+    <% end %>
+    <%= link_to new_theme_path, class: "ui button tooltip", data: { content: "Create a theme" } do %>
+      <i class="plus icon"></i>
+    <% end %>
+  </div>
+<% end %>
+
 
 <% if !@theme.approved? %>
   <div class="ui one column grid top-20">
