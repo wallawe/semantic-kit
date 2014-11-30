@@ -50,7 +50,7 @@
 
   <div class="five wide column">
     <div class="column">
-      <%= link_to @theme.preview_url, class: "ui huge blue icon labeled fluid button bottom-20", target: "_blank" do %>
+      <%= link_to preview_theme_path(@theme), class: "ui huge blue icon labeled fluid button bottom-20", target: "_blank" do %>
         <i class="share icon"></i>
         live preview
       <% end %>

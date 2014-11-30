@@ -1,6 +1,6 @@
 class ThemesController < ApplicationController
   before_filter :authenticate, only: [:new, :create, :destroy, :update, :edit]
-  before_filter :get_theme, only: [:show, :edit, :update, :destroy]
+  before_filter :get_theme, only: [:show, :edit, :update, :destroy, :preview ]
 
   def new
     @theme = Theme.new
@@ -43,6 +43,10 @@ class ThemesController < ApplicationController
     authorize(@theme)
     @theme.destroy
     redirect_to semantic_ui_snippets_path, notice: 'Deletion successful'
+  end
+
+  def preview
+    render layout: false
   end
 
   private
