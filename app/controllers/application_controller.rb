@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
+  #before_filter :show_coming_soon
 
   def current_user
     @current_user ||= lookup_user
@@ -25,6 +26,10 @@ class ApplicationController < ActionController::Base
 
   def access_denied
     redirect_to new_session_path, :notice => "Please log in to continue" and return false
+  end
+
+  def show_coming_soon
+    render "info/home", layout: "landing" unless current_user && current_user.admin? || controller_name == "sessions"
   end
 
 end

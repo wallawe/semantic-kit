@@ -1,6 +1,6 @@
 class ThemesController < ApplicationController
   before_filter :authenticate, only: [:new, :create, :destroy, :update, :edit]
-  before_filter :get_theme, only: [:show, :edit, :update, :destroy]
+  before_filter :get_theme, only: [:show, :edit, :update, :destroy, :preview ]
 
   def new
     @theme = Theme.new
@@ -45,6 +45,10 @@ class ThemesController < ApplicationController
     redirect_to semantic_ui_snippets_path, notice: 'Deletion successful'
   end
 
+  def preview
+    render layout: false
+  end
+
   private
     def get_theme
       @theme = Theme.find(params[:id])
@@ -57,7 +61,7 @@ class ThemesController < ApplicationController
     end
 
     def theme_params
-      params.require(:theme).permit(:name, :description, :preview_url, { category_ids: [] },
+      params.require(:theme).permit(:name, :description, :preview_url, :category_ids, { category_ids: [] },
                                     :image, :file_package, :tag_list, :preprocessor, { browsers: [] },
                                     price_list_attributes: [:single_tier, :multiple_tier, :extended_tier])
     end

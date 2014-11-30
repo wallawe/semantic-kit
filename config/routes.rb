@@ -30,7 +30,12 @@ WrapSemantic::Application.routes.draw do
   resources :subscriptions,       only: [:create]
 
   resources :tags,                only: [:show]
-  resources :themes
+  resources :themes do
+    member do
+      get 'preview'
+    end
+  end
+
   resources :theme_approvals,     only: [:update, :destroy]
   resources :users,               only: [:new, :create, :show, :edit, :update, :index]
 
