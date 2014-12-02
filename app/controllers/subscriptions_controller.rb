@@ -7,15 +7,19 @@ class SubscriptionsController < ApplicationController
 
     subscription = current_user.subscriptions.create!(theme_id: params[:id], price_tier: params[:price])
 
-    subscription.create_customer_and_charge(params[:token], amount)
+    if params[:paypal]
+      theme.sales_tracker.increment!(params[:count].to_sym)
+    else
 
-    theme.pay_owner(amount)
+      subscription.create_customer_and_charge(params[:token], amount)
 
-    redirect_to theme_path(theme), notice: "WOOHOO"
+      theme.pay_owner(amount)
+    rescue Stripe::CardError => e
+      flash[:error] = e.message
+      redirect_to theme_path(theme)
+    end
 
-  rescue Stripe::CardError => e
-    flash[:error] = e.message
-    redirect_to theme_path(theme)
+    redirect_to theme_path(theme), notice: "Thanks for purchasing #{theme.name}"
   end
 
 end
