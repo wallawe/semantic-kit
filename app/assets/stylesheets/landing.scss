@@ -92,6 +92,21 @@
 
 .more-info {
   padding: 120px 0;
+
+  .ui.column.grid {
+    margin-bottom: 50px;
+    padding: 0 100px;
+
+    p {
+      font-size: 18px;
+      width: 330px;
+    }
+  }
+
+  .ico-holder {
+    text-align: center !important;
+    padding-top: 30px !important;
+  }
 }
 
 .email-social {
@@ -99,6 +114,12 @@
   border-top: 1px solid #d5d5d5;
   padding: 120px 0;
   margin-bottom: -40px;
+  .email-collect {
+    font-size: 20px;
+    text-align: center;
+    display: block;
+    margin-bottom: 10px;
+  }
 }
 
 .sessions-new, .users-new {

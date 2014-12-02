@@ -1,17 +1,3 @@
-<!-- <div class="ui large icon inverted message hero">
-  <div class="content">
-    <h1>All Themes Semantic</h1>
-    <p>Differentiate yourself and your design with a Semantic UI theme or template. Semantic UI is an easy to use front-end framework with its own style and purpose. Learn more <a href="http://www.semantic-ui.com">here.</a> </p>
-    <%#= link_to semantic_ui_themes_path, class: "ui animated button green" do %>
-      <div class="visible content">View all Themes</div>
-      <div class="hidden content">
-        <i class="right arrow icon"></i>
-      </div>
-    <#% end %>
-    <span class="secondary-text"> or <%= link_to "sell your themes", new_theme_path %></span>
-  </div>
-</div>
- -->
 <div class="hero">
   <i class="grid-left"></i>
   <i class="grid-right"></i>
@@ -35,36 +21,36 @@
 
 <div class="more-info top-20">
   <div class="container">
-    <div class="ui two column grid">
+    <div class="ui one column grid">
       <div class="column">
-        <h2>What is Semantic UI?</h2>
+        <h2 class="ui center aligned header" style="font-size: 40px;">Why Semantic UI?</h2>
+      </div>
+    </div>
+    <div class="ui two column grid">
+      <div class="column ico-holder">
+        <i class="green icon checkmark massive"></i>
       </div>
       <div class="column">
-        image goes here
+        <h2>Ease of Use</h2>
+        <p>Semantic UI allows you to jump right in and makes rapid prototyping a breeze.</p>
       </div>
     </div>
     <div class="ui two column grid">
       <div class="column">
-        <h2>What is Semantic UI?</h2>
+        <h2>Get more, right out of the box</h2>
+        <p style="width: 390px;">You get the basics that every other front-end framework provides and then some: Cards, comments, statistics and more.</p>
       </div>
-      <div class="column">
-        image goes here
-      </div>
-    </div>
-    <div class="ui two column grid">
-      <div class="column">
-        <h2>What is Semantic UI?</h2>
-      </div>
-      <div class="column">
-        image goes here
+      <div class="column ico-holder">
+        <i class="inverted red icon travel massive"></i>
       </div>
     </div>
     <div class="ui two column grid">
-      <div class="column">
-        <h2>What is Semantic UI?</h2>
+      <div class="column ico-holder">
+        <i class="inverted purple icon laptop massive"></i>
       </div>
       <div class="column">
-        image goes here
+        <h2>Gorgeous design</h2>
+        <p>Differentiate yourself and your design without a design that can be iterated upon, but doesn't have to be.
       </div>
     </div>
   </div>
@@ -72,13 +58,18 @@
 
 <div class="email-social">
   <div class="container">
-    <label for="email-collect">Receive our favorite theme handpicked each week</label>
-    <input type="text" id="email-collect">
+    <label for="email_collect" class="email-collect">
+      Receive the best themes and snippets, handpicked each week
+    </label>
+    <form class="ui form">
+        <div class="field">
+          <div class="ui huge input" style="text-align: center;">
+            <input type="text" placeholder="E-mail" data-validate="email" name="EMAIL" style="width: 50%;">
+            <button class="ui huge black submit button" type="submit">
+              Sign-up
+            </button>
+          </div>
+        </div>
+      </form>
   </div>
 </div>
-
-<!-- <div class="container">
-  <h2>What is Semantic UI?</h2>
-  <p>Description, How we help</p>
-  //input email updates here && social media stuff
-</div> -->
