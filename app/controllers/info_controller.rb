@@ -19,4 +19,6 @@ class InfoController < ApplicationController
   def terms
   end
 
+  def about
+  end
 end
