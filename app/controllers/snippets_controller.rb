@@ -14,7 +14,8 @@ class SnippetsController < ApplicationController
     @snippet = Snippet.new(snippet_params)
     @snippet.user = current_user
     if @snippet.save
-      redirect_to snippet_path(@snippet), notice: "Successfully created a new snippet"
+      redirect_to iframe_content_snippet_path(@snippet),
+      notice: "You are almost done. If you have a moment, please take a screenshot of your snippet and attach it #{ render_to_string :partial => '/snippets/finalize' }".html_safe
     else
       render "new"
     end
@@ -28,7 +29,7 @@ class SnippetsController < ApplicationController
   end
 
   def index
-    @snippets = Snippet.all
+    @snippets = Snippet.paginate(page: params[:page], per_page: 20).order('created_at DESC')
   end
 
   def update

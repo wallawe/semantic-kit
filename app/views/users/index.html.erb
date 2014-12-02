@@ -1,12 +1,12 @@
+<% content_for :title do %>
+  All Users (<%= @users.count %>)
+<% end %>
+
+<hr class="ui divider hidden">
+
 <div class="ui items">
   <% @users.each do |f| %>
-    <%= link_to user_path(f), :class => "item" do %>
-      <div class="image">
-        <%= image_tag avatar_url(f) %>
-      </div>
-      <div class="content">
-        <div class="name"><%= f.username %></div>
-      </div>
-    <% end %>
+    <%= link_to f.username, user_path(f) %> |
+    <%= link_to "delete", user_path(f), method: "delete", data: { confirm: "Sure?" } %><br>
   <% end %>
 </div>

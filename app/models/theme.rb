@@ -11,6 +11,8 @@ class Theme < ActiveRecord::Base
   has_many :taggings
   has_many :tags, through: :taggings
 
+  has_many :favorites, as: :favorited, dependent: :destroy
+
   has_one :owner,      dependent: :destroy
   has_one :price_list, dependent: :destroy
   has_one :sales_tracker, dependent: :destroy

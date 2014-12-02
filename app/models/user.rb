@@ -8,16 +8,16 @@ class User < ActiveRecord::Base
   validates :password, length: { minimum: 6 }, on: :create
   validates :password, presence: true,         on: :create
 
-  has_many :favorites
+  has_many :favorites, dependent: :destroy
   has_many :favorite_snippets, through: :favorites, source: :favorited, source_type: 'Snippet'
   has_many :favorite_themes, through: :favorites, source: :favorited, source_type: 'Theme'
 
   has_one :stripe_account
   has_many :subscriptions
-  has_many :snippets
+  has_many :snippets, dependent: :destroy
 
   has_many :owners
-  has_many :themes, through: :owners
+  has_many :themes, through: :owners, dependent: :destroy
 
   def to_param
     "#{username}"

@@ -6,6 +6,10 @@
 }
 </style>
 
+<% if flash[:notice] %>
+  <p id="notice" class="ui red message"><%= flash[:notice] %></p>
+<% end %>
+
 <style>
   <%= raw @snippet.css %>
 </style>

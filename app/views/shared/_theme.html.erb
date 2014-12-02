@@ -2,7 +2,7 @@
   <%= link_to theme_path(theme), class: "image" do %>
     <%= image_tag theme.default_image_url %>
   <% end %>
-  <div class="content" style="border-top: 1px solid #e9e9e9;">
+  <div class="content">
     <span class="ui right floated icon price-point">
       <%= number_to_currency(theme.price_list.single_tier, precision: 0) %>
     </span>
