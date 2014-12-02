@@ -1,0 +1,11 @@
+<script async="async" src="https://www.paypalobjects.com/js/external/paypal-button.min.js?merchant=SemanticKit"
+    data-button="buynow"
+    data-name="<%= @theme.name %>"
+    data-quantity="1"
+    data-amount="<%= @theme.price_list.send("#{@license}_tier") %>"
+    data-currency="USD"
+    data-shipping="0"
+    data-tax="0"
+    data-callback="http://semantickit.com/blah"
+    data-env="sandbox"
+></script>
