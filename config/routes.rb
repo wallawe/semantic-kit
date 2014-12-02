@@ -17,6 +17,7 @@ WrapSemantic::Application.routes.draw do
   resource  :account,             only: [:show]
   resources :categories
   resource  :dashboard,           only: [:show]
+  resources :expos,               only: [:new, :create, :index]
 
   resources :favorites,           only: [:create, :destroy]
 
