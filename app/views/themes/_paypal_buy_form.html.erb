@@ -1,11 +1,10 @@
-<script async="async" src="https://www.paypalobjects.com/js/external/paypal-button.min.js?merchant=SemanticKit"
-    data-button="buynow"
-    data-name="<%= @theme.name %>"
-    data-quantity="1"
-    data-amount="<%= @theme.price_list.send("#{@license}_tier") %>"
-    data-currency="USD"
-    data-shipping="0"
-    data-tax="0"
-    data-callback="http://semantickit.com/blah"
-    data-env="sandbox"
-></script>
+<form name="_xclick" action="https://www.paypal.com/us/cgi-bin/webscr" method="post">
+<input type="hidden" name="cmd" value="_xclick">
+<input type="hidden" name="business" value="tvalent2@gmualumni.org">
+<input type="hidden" name="currency_code" value="USD">
+<input type="hidden" name="quantity" value="1">
+<input type="hidden" name="item_name" value="<%= @theme.name %>">
+<input type="hidden" name="amount" value="<%= @theme.price_list.send("#{@license}_tier") %>">
+<input type="hidden" name="notify_url" value="blah">
+<input type="image" src="https://www.paypalobjects.com/webstatic/en_US/btn/btn_buynow_pp_142x27.png" border="0" name="submit" alt="Make payments with PayPal - it's fast, free and secure!">
+</form>
