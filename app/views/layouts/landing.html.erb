@@ -11,8 +11,15 @@
 <body class="<%= controller_name %>-<%= action_name %>">
   <div class="sticky-footer-wrapper">
     <%= render 'shared/nav' %>
+
+    <% if flash[:notice] %>
+      <p id="notice" class="ui yellow message"><%= flash[:notice] %></p>
+    <% end %>
+
     <%= yield %>
+
     <div class="push"></div>
+
   </div>
   <%= render 'shared/footer' %>
 </body>

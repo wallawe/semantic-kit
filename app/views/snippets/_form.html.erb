@@ -12,6 +12,12 @@
   <% end %>
 
   <div class="ui form">
+    <% if action_name == "edit" %>
+      <div class="field">
+        <%= f.label :image, "Attach screenshot here" %>
+        <%= f.file_field :image, :class => "image-arena" %>
+      </div>
+    <% end %>
     <div class="field">
       <%= f.label :title, "Title" %>
       <%= f.text_field :title %>
@@ -29,10 +35,6 @@
       <%= f.label :js, "Custom JavaScript" %>
       <%= f.text_area :js %>
       <span class="text-field-note">Semantic UI's JS library is included by default</span>
-    </div>
-    <div class="field">
-      <%= f.label :image, "Image" %>
-      <%= f.file_field :image, :class => "image-arena" %>
     </div>
   </div>
 

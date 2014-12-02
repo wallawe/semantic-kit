@@ -3,6 +3,9 @@ class Snippet < ActiveRecord::Base
 
   validates_presence_of :title, :html
 
+  has_many :favorites
+  has_many :favorites, as: :favorited, dependent: :destroy
+
   mount_uploader :image, ImageUploader
 
   def to_param

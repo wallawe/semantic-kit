@@ -32,7 +32,7 @@ class ThemesController < ApplicationController
   end
 
   def index
-    @themes = Theme.approved
+    @themes = Theme.approved.paginate(page: params[:page], per_page: 20)
   end
 
   def show

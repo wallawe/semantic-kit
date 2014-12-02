@@ -2,7 +2,7 @@
   position: relative;
   height: 700px;
   width: 100%;
-  background: $navy;
+  background-color: $navy;
   background-image: linear-gradient(darken($navy,5%),$navy);
 
   .grid-left {
@@ -88,6 +88,17 @@
       padding: 0 1.5em;
     }
   }
+}
+
+.more-info {
+  padding: 120px 0;
+}
+
+.email-social {
+  background-color: #f0f0f0;
+  border-top: 1px solid #d5d5d5;
+  padding: 120px 0;
+  margin-bottom: -40px;
 }
 
 .sessions-new, .users-new {
