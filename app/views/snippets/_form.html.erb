@@ -11,6 +11,13 @@
     </div>
   <% end %>
 
+  <% if action_name == "new" %>
+    <h3 class="ui large header">Step 1 of 2: Add your code</h3>
+  <% end %>
+
+  <hr class="ui divider hidden">
+
+
   <div class="ui form">
     <% if action_name == "edit" %>
       <div class="field">
