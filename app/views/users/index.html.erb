@@ -6,7 +6,7 @@
 
 <div class="ui items">
   <% @users.each do |f| %>
-    <%= link_to f.username, user_path(f) %> |
+    <%= link_to f.username, user_path(f) %> | <%= f.created_at.strftime("%m/%d/%Y") %> |
     <%= link_to "delete", user_path(f), method: "delete", data: { confirm: "Sure?" } %><br>
   <% end %>
 </div>
