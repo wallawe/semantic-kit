@@ -1,4 +1,6 @@
 $ ->
+  return unless $("body").hasClass("payment_preferences")
+
   $("#card-form, #bank-account-form").hide()
 
   $(".preference-button #cc_button").on "click", ->
