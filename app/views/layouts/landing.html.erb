@@ -1,13 +1,19 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <title>Semantic UI - Themes, Templates &amp; Snippets | Semantic Kit</title>
   <meta name="description" content="The Semantic UI front-end framework is the new kid on the block. Check out our tools and resources to help you make the most out of it.">
+
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
   <%= stylesheet_link_tag    "application", media: "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
   <%= yield :header %>
 </head>
+
 <body class="<%= controller_name %>-<%= action_name %>">
   <div class="sticky-footer-wrapper">
     <%= render 'shared/nav' %>
@@ -23,4 +29,5 @@
   </div>
   <%= render 'shared/footer' %>
 </body>
+
 </html>

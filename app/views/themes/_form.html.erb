@@ -59,7 +59,7 @@
     </div>
   </div>
 
-  <%= f.fields_for :price_list do |p| %>
+  <%= f.fields_for :price_list, @theme.build_price_list do |p| %>
     <div class="ui form">
       <h3 class="ui header">Price</h3>
       <div class="inline field left icon input ui">
