@@ -29,7 +29,11 @@ class ApplicationController < ActionController::Base
   end
 
   def restrict_to_coming_soon
-    render "info/home", layout: "landing" unless current_user && current_user.admin? || controller_name == "sessions"
+    redirect_to root_path unless permitted?
+  end
+
+  def permitted?
+    current_user && current_user.admin? || request.path == root_path || controller_name == "sessions"
   end
 
 end
