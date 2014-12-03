@@ -11,7 +11,7 @@ class ThemesController < ApplicationController
     if @theme.save
       @theme.create_sales_tracker
       @theme.create_owner(user_id: current_user.id)
-      #current_user.create_stripe_account if current_user.stripe_account.nil?
+      current_user.create_stripe_account if current_user.stripe_account.nil?
       redirect_to theme_path(@theme)
     else
       render :new
