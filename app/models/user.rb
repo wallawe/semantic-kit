@@ -12,7 +12,6 @@ class User < ActiveRecord::Base
   has_many :favorite_snippets, through: :favorites, source: :favorited, source_type: 'Snippet'
   has_many :favorite_themes, through: :favorites, source: :favorited, source_type: 'Theme'
 
-  has_one :stripe_account
   has_many :subscriptions
   has_many :snippets, dependent: :destroy
 

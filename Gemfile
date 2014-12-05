@@ -13,7 +13,6 @@ gem 'rmagick', :require => 'RMagick'
 gem 'pg'
 gem 'sass-rails', '~> 4.0.2'
 gem 'screencap'
-gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
 gem 'uglifier', '>= 1.3.0'
 
 group :development do
