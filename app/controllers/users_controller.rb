@@ -47,8 +47,11 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    #TODO: make sure users cant destroy other users
-    @user = User.where(username: params[:id]).first
+    @user = if current_user.admin?
+      User.where(username: params[:id]).first
+    else
+      current_user
+    end
     @user.destroy
     redirect_to users_path
   end
