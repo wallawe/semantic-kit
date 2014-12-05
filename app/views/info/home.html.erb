@@ -1,4 +1,9 @@
 <div class="hero">
+  <% if flash[:notice] %>
+    <div class="container">
+      <p id="notice" class="ui yellow message" style="margin-top: 0;z-index:1;"><%= flash[:notice] %></p>
+    </div>
+  <% end %>
   <i class="grid-left"></i>
   <i class="grid-right"></i>
   <h1 class="headline">Semantic UI Resources</h1>

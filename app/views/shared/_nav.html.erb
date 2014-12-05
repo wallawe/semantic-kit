@@ -31,6 +31,7 @@
             <% end %>
             <% if current_user && current_user.admin? %>
               <%= link_to "Admin Dashboard", admin_dashboard_path, class: "item" %>
+              <%= link_to "All Users", users_path, class: "item" %>
             <% end %>
           </div>
         </div>

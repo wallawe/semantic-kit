@@ -2,7 +2,11 @@ class UsersController < ApplicationController
   layout "landing", only: [:new]
 
   def new
-    @user = User.new
+    if current_user
+      redirect_to root_path
+    else
+      @user = User.new
+    end
   end
 
   def create
@@ -43,8 +47,13 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    @user = User.find(params[:id])
+    @user = if current_user.admin?
+      User.where(username: params[:id]).first
+    else
+      current_user
+    end
     @user.destroy
+    redirect_to users_path
   end
 
   private
