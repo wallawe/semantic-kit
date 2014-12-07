@@ -1,31 +1,45 @@
 <% content_for :title do %>
-  Add your site
+  Submit a site
 <% end %>
 <% content_for :subtext do %>
+  We will only feature sites that are built with Semantic UI. Please allow some time for approval.
 <% end %>
 
-<%= form_for @expo do |f| %>
+<div class="form-wrap card">
 
-  <% if @expo.errors.any? %>
-    <div class="ui red message">
-      <div class="header">We noticed some issues</div>
-      <ul class="list">
-        <% @expo.errors.full_messages.each do |message| %>
-          <li id="error"><%= message %></li>
-        <% end %>
-      </ul>
+  <%= form_for @expo do |f| %>
+
+    <% if @expo.errors.any? %>
+      <div class="ui red message">
+        <div class="header">We noticed some issues</div>
+        <ul class="list">
+          <% @expo.errors.full_messages.each do |message| %>
+            <li id="error"><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <%= f.hidden_field :user_id, value: current_user.id %>
+
+    <div class="ui form">
+      <div class="field">
+        <%= f.label :url, "Site URL" %>
+        <%= f.url_field :url, placeholder: "ex: http://google.com" %>
+      </div>
+      <% if current_user.admin? %>
+        <div class="field">
+          <%= f.label :image, "Image" %>
+          <%= f.file_field :image, :class => "image-arena" %>
+        </div>
+      <% end %>
+    </div>
+
+    <hr class="ui divider hidden">
+
+    <div class="ui form">
+      <%= f.submit "Submit", :class => "ui button green" %>
+      <%= link_to "Cancel", :back %>
     </div>
   <% end %>
-
-  <%= hidden_field_tag(:user_id, current_user.id) %>
-
-  <div class="ui form">
-    <div class="field">
-      <%= f.label :url, "Site URL" %>
-      <%= f.url_field :url, placeholder: "ex: http://google.com" %>
-    </div>
-  <div class="ui form">
-    <%= f.submit "Submit", :class => "ui button green" %>
-    <%= link_to "Cancel", :back %>
-  </div>
-<% end %>
+</div>
