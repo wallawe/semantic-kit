@@ -5,7 +5,7 @@ en:
     edit: "Edit"
   admin:
     theme_index: "You are viewing pending themes."
-    theme_pending: "This theme has not yet been approved."
+    theme_pending: "This theme is currently pending approval. Email help@semantickit.com with any questions."
   categories:
     no_approved_themes: "There are no approved  %{name} themes quite yet."
   sessions:

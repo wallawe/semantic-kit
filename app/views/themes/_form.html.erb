@@ -52,14 +52,14 @@
       <%= f.label :browsers, "Browser Support" %>
       <% Theme::BROWSER_OPTIONS.each do |browser| %>
         <div clas="ui checkbox">
-          <%= check_box_tag browser, browser %>
+          <%= check_box_tag 'theme[browsers][]', browser, @theme.browsers.include?(browser) %>
           <label for="<%= browser %>"><%= browser %></label>
         </div>
       <% end %>
     </div>
   </div>
 
-  <%= f.fields_for :price_list, @theme.build_price_list do |p| %>
+  <%= f.fields_for :price_list, @theme.current_price_list do |p| %>
     <div class="ui form">
       <h3 class="ui header">Price</h3>
       <div class="inline field left icon input ui">

@@ -70,4 +70,8 @@ class Theme < ActiveRecord::Base
   def status
     approved? ? "Approved" : "Pending"
   end
+
+  def current_price_list
+    price_list || build_price_list
+  end
 end

@@ -76,8 +76,10 @@
           <% @user.favorites.each do |f| %>
             <li class="<%= f.favorited_type %>">
               <%= favorited_item_name(f) %>
-              <%= link_to favorite_path(favorited_id: f.favorited_id, favorited_type: f.favorited_type), data: { confirm: "Are you sure?" }, method: :delete, class: "pull-right" do %>
-                <i class="icon remove" style="color: #e93e3c;"></i>
+              <% if current_user.id == @user.id %>
+                <%= link_to favorite_path(favorited_id: f.favorited_id, favorited_type: f.favorited_type), data: { confirm: "Are you sure?" }, method: :delete, class: "pull-right" do %>
+                  <i class="icon remove" style="color: #e93e3c;"></i>
+                <% end %>
               <% end %>
             </li>
           <% end %>
