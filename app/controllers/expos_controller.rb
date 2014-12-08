@@ -8,7 +8,7 @@ class ExposController < ApplicationController
   def create
     @expo = Expo.new(expo_params)
     if @expo.save
-      redirect_to expos_path, notice: "Your site #{@expo.url} is in!"
+      redirect_to expos_path, notice: "Your site has beens submitted. We'll email you upon approval"
     else
       render :new
     end
