@@ -21,3 +21,19 @@
     </tbody>
   </table>
 <% end %>
+
+<% if @expos %>
+  <table class="ui table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Submitted by</th>
+        <th>Status</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= render partial: "admin/dashboards/expo", collection: @expos %>
+    </tbody>
+  </table>
+<% end %>

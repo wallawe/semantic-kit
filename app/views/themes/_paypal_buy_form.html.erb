@@ -6,5 +6,14 @@
   <input type="hidden" name="item_name" value="<%= @theme.name %>">
   <input type="hidden" name="amount" value="<%= @theme.price_list.send("#{@license}_tier") %>">
   <input type="hidden" name="notify_url" value="<%= subscriptions_url(id: @theme.id, price: @theme.price_list.send("#{@license}_tier"), count: "#{@license}_tier_count", paypal: true) %>">
-  <input type="image" src="https://www.paypalobjects.com/webstatic/en_US/btn/btn_buynow_pp_142x27.png" border="0" name="submit" alt="Make payments with PayPal - it's fast, free and secure!">
+  <span class="ui huge green animated fade labeled fluid button" style="position: relative;">
+    <div class="visible content">
+      <i class="tags icon"></i>
+      buy now <%= number_to_currency(@theme.price_list.send("#{@license}_tier"), precision: 0) %>
+    </div>
+    <div class="hidden content">
+      checkout with paypal
+    </div>
+    <input type="image" src="https://www.paypalobjects.com/webstatic/en_US/btn/btn_buynow_pp_142x27.png" border="0" name="submit" alt="Make payments with PayPal - it's fast, free and secure!" style="opacity:0; position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
+  </span>
 </form>

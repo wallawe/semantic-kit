@@ -39,6 +39,7 @@ WrapSemantic::Application.routes.draw do
   end
 
   resources :theme_approvals,     only: [:update, :destroy]
+  resources :expo_approvals,      only: [:update, :destroy]
   resources :users
 
   namespace :admin do

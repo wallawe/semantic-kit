@@ -1,0 +1,15 @@
+<tr>
+  <td><%= link_to expo.url, expo.url, target: "_blank" %></td>
+  <td><%= link_to expo.user.username, user_path(expo.user) %></td>
+  <td><%= expo.status %></td>
+  <% if expo.approved? %>
+    <td></td>
+  <% else %>
+    <td>
+      <%= button_to expo_approval_path(expo), class: "ui tiny blue labeled icon fluid button", method: :put do %>
+        Approve
+        <i class="checkmark icon"></i>
+      <% end %>
+    </td>
+  <% end %>
+</tr>

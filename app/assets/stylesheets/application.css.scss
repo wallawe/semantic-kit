@@ -15,6 +15,7 @@
 @import "globals";
 @import "themes";
 @import "landing";
+@import "expos";
 @import "snippets";
 @import "user";
 
@@ -241,7 +242,16 @@ html, body {
   border-bottom: 1px solid transparent;
 }
 
+.ui.breadcrumb a {
+  color: rgba(255,255,255,0.5);
+  border-bottom: 1px solid rgba(255,255,255,0.2);
+  padding-bottom: 3px !important;
+  &:hover {
+    color: rgba(255,255,255,0.7);
+  }
+}
+
 .terms-privacy {
-  color: lighten($darkness, 13%);
-  &:hover { color: lighten($darkness, 13%);}
+  color: #666;
+  &:hover { color: #666; }
 }
