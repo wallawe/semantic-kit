@@ -6,22 +6,21 @@ class ExposController < ApplicationController
   end
 
   def create
-    expo = Expo.create(expo_params)
-    if expo
-      expo.assign_image!
-      redirect_to expos_path, notice: "Your site #{expo.url} is in!"
+    @expo = Expo.new(expo_params)
+    if @expo.save
+      redirect_to expos_path, notice: "Your site has beens submitted. We'll email you upon approval"
     else
-      redirect_to new_expo_path
+      render :new
     end
   end
 
   def index
-    @expos = Expo.with_image.paginate(page: params[:page], per_page: 20).order('created_at DESC')
+    @expos = Expo.paginate(page: params[:page], per_page: 10).order('created_at DESC')
   end
 
   private
 
-    def expo_params
-      params.require(:expo).permit(:url)
-    end
+  def expo_params
+    params.require(:expo).permit(:user_id, :url, :image)
+  end
 end

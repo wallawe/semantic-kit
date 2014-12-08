@@ -1,7 +1,20 @@
 <% content_for :title do %>
-  View our Expo
+  Expo
 <% end %>
 <% content_for :subtext do %>
+  Beautiful sites built with Semantic UI
 <% end %>
 
-<%= render @expos %>
+<% content_for :right_content do %>
+  <%= link_to new_expo_path do %>
+    <div class="ui circular plus icon basic button tooltip" data-content="Submit a site built with Semantic UI" style="margin-top: 15px;">
+      <i class="plus large icon"></i>
+    </div>
+  <% end %>
+<% end %>
+
+<% @expos.each do |f| %>
+  <%= link_to f.url do %>
+    <%= image_tag f.image %>
+  <% end %>
+<% end %>
