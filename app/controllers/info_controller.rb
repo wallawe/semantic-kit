@@ -20,5 +20,7 @@ class InfoController < ApplicationController
   end
 
   def about
+    @will = User.where(email: "wallac.will@gmail.com").first
+    @travis = User.where(email: "tvalent2@gmualumni.org").first
   end
 end
