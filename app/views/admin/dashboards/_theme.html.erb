@@ -2,7 +2,8 @@
   <td><%= link_to theme.name, theme_path(theme) %></td>
   <td><%= link_to theme.owner.username, user_path(theme.owner.user) %></td>
   <td><%= theme.status %></td>
-  <td><%= theme.has_required_elements? %></td>
+  <td><%= theme.created_at.strftime("%m/%d/%Y") %></td>
+  <!-- <td><%#= theme.has_required_elements? %></td> -->
   <% if theme.approved? %>
     <td></td>
   <% elsif !theme.approved? %>

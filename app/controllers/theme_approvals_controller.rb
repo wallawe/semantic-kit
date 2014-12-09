@@ -6,7 +6,7 @@ class ThemeApprovalsController < ApplicationController
 
   def destroy
     theme.disapprove!
-    redirect_to theme_path(theme)
+    redirect_to themes_path
   end
 
   private
