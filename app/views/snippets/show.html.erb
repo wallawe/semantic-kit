@@ -70,7 +70,7 @@
      <%= @snippet.user.username %>
     <% end %>
     <a class="item"><i class="facebook icon facebook-text"></i>Share</a>
-    <a class="item"><i class="twitter icon twitter-text"></i>Tweet</a>
+    <a class="item" href="https://twitter.com/intent/tweet?text=Check out this snippet&via=SemanticKit&url=<%= snippet_url(@snippet) %>&hashtags=SemanticUI,SemanticKit"><i class="twitter icon twitter-text"></i>Tweet</a>
   <% if logged_in? && current_user.can_edit_snippet?(@snippet) %>
     <div class="right menu">
       <%= link_to edit_snippet_path, class: "item" do %>
@@ -87,6 +87,7 @@
 
 <% content_for :javascripts do %>
 <script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
+<script type="text/javascript" async src="//platform.twitter.com/widgets.js"></script>
 <script type="text/javascript">
 //horrible code. i was hungover. i'll fix it one day
   $('.js-preview').on('click', function(){
