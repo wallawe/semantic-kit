@@ -1,4 +1,5 @@
 class SubscriptionsController < ApplicationController
+  # This allows the PayPal callback to fire as expected
   skip_before_action :verify_authenticity_token
 
   def create
