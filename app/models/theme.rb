@@ -3,7 +3,7 @@ class Theme < ActiveRecord::Base
                            ["LESS", "LESS"], ["Stylus", "Stylus"],
                            ["None", "None"]
                          ]
-  BROWSER_OPTIONS      = [ "Chrome", "Safari", "IE10", "IE9", "IE8", "IE7" ]
+  BROWSER_OPTIONS      = [ "Chrome", "Safari", "Firefox", "IE10", "IE9", "IE8", "IE7" ]
 
   has_many :theme_categories
   has_many :categories, through: :theme_categories
