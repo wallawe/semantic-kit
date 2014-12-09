@@ -18,4 +18,8 @@ module UsersHelper
 
     pluralize(total_theme_faves + total_snippet_faves, "favorite")
   end
+
+  def user_is_current_user(user_id)
+    current_user && current_user.id == user_id
+  end
 end
