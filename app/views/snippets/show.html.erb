@@ -69,7 +69,7 @@
      <i class="icon user"></i>
      <%= @snippet.user.username %>
     <% end %>
-    <a class="item"><i class="facebook icon facebook-text"></i>Share</a>
+    <a class="item fb-share"><i class="facebook icon facebook-text"></i>Share</a>
     <a class="item" href="https://twitter.com/intent/tweet?text=Check out this snippet&via=SemanticKit&url=<%= snippet_url(@snippet) %>&hashtags=SemanticUI,SemanticKit"><i class="twitter icon twitter-text"></i>Tweet</a>
   <% if logged_in? && current_user.can_edit_snippet?(@snippet) %>
     <div class="right menu">
@@ -88,6 +88,23 @@
 <% content_for :javascripts do %>
 <script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
 <script type="text/javascript" async src="//platform.twitter.com/widgets.js"></script>
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '1515902381991740',
+      xfbml      : true,
+      version    : 'v2.2'
+    });
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
 <script type="text/javascript">
 //horrible code. i was hungover. i'll fix it one day
   $('.js-preview').on('click', function(){
@@ -113,6 +130,12 @@
     $(this).addClass('active');
     $('.tab-content').hide();
     $('.js-box').show();
+  });
+  $(".fb-share").on("click", function(){
+    FB.ui({
+      method: 'share',
+      href: document.URL,
+    }, function(response){});
   });
 </script>
 <% end %>
