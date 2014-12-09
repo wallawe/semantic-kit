@@ -1,5 +1,5 @@
 class ExposController < ApplicationController
-  before_filter :authenticate, only: [:new, :create]
+  before_filter :authenticate, except: [:index]
 
   def new
     @expo = Expo.new
@@ -12,6 +12,20 @@ class ExposController < ApplicationController
       redirect_to expos_path, notice: "Your site has beens submitted. We'll email you upon approval"
     else
       render :new
+    end
+  end
+
+  def edit
+    @expo = Expo.find(params[:id])
+  end
+
+  def update
+    expo = Expo.find(params[:id])
+
+    if expo.update_attributes(expo_params)
+      redirect_to expos_path, notice: t(:"expos.updated")
+    else
+      render :edit
     end
   end
 
