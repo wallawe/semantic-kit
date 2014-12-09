@@ -16,10 +16,13 @@ class ExposController < ApplicationController
   end
 
   def edit
+    redirect_to expos_path unless current_user && current_user.admin?
     @expo = Expo.find(params[:id])
   end
 
   def update
+    redirect_to expos_path unless current_user && current_user.admin?
+
     expo = Expo.find(params[:id])
 
     if expo.update_attributes(expo_params)
