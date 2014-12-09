@@ -26,7 +26,7 @@ class ApplicationController < ActionController::Base
   helper_method :logged_in?
 
   def access_denied
-    redirect_to new_session_path, :notice => "Please log in to continue" and return false
+    redirect_to signin_path, :notice => "Please log in to continue" and return false
   end
 
   def restrict_to_coming_soon

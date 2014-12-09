@@ -11,6 +11,7 @@ en:
   sessions:
     invalid_login: "Invalid login/password. Try again!"
     successful_login: "Logged in successfully"
+    successful_logout: "You are logged out."
     log_in: "Log in"
     log_out: "Log out"
   snippets:
