@@ -13,8 +13,25 @@
   <% end %>
 <% end %>
 
-<% @expos.each do |f| %>
-  <%= link_to f.url do %>
-    <%= image_tag f.image %>
-  <% end %>
-<% end %>
+<hr class="ui hidden divider">
+
+<div class="ui grid">
+
+  <div class="eleven wide column">
+    <% @expos.each do |f| %>
+      <figure class="effect-sadie">
+        <%= image_tag f.image %>
+        <figcaption>
+          <h2><%= f.title %> <i class="icon angle right"></i></h2>
+          <p><%= f.url %></p>
+          <%= link_to "View More", f.url, target: "_blank" %>
+        </figcaption>
+      </figure>
+      <hr class="ui divider" style="margin-top: 40px; margin-bottom: 40px;">
+    <% end %>
+  </div>
+
+  <div class="five wide column">
+  </div>
+
+</div>

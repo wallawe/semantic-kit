@@ -90,20 +90,26 @@
       <div class="ui list">
         <%= link_to theme_path(@theme.id, license: "single"), class: "item" do %>
           Single
-          <div class="right floated ui">
-            <%= number_to_currency @theme.price_list.single_tier %>
+          <div class="right floated ui tag labels">
+            <span class="ui label">
+              <%= number_to_currency @theme.price_list.single_tier, precision: 0 %>
+            </span>
           </div>
         <% end %>
         <%= link_to theme_path(@theme, license: "multiple"), class: "item" do %>
           Multiple
-          <div class="right floated ui">
-            <%= number_to_currency @theme.price_list.multiple_tier %>
+          <div class="right floated ui tag labels">
+            <span class="ui label">
+              <%= number_to_currency @theme.price_list.multiple_tier, precision: 0 %>
+            </span>
           </div>
         <% end %>
         <%= link_to theme_path(@theme, license: "extended"), class: "item" do %>
           Extended
-          <div class="right floated ui">
-            <%= number_to_currency @theme.price_list.extended_tier %>
+          <div class="right floated ui tag labels">
+            <span class="ui label">
+              <%= number_to_currency @theme.price_list.extended_tier, precision: 0 %>
+            </span>
           </div>
         <% end %>
       </div>

@@ -24,7 +24,7 @@
               <i class="settings icon"></i>Dashboard
             <% end %>
             <%= link_to logout_path, class: "item" do %>
-              <i class="forward mail icon"></i>Log out
+              <i class="sign out icon"></i>Log out
             <% end %>
             <% if current_user && current_user.admin? %>
               <%= link_to "Admin Dashboard", admin_dashboard_path, class: "item" %>

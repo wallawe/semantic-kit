@@ -14,6 +14,7 @@ class User < ActiveRecord::Base
 
   has_many :subscriptions
   has_many :snippets, dependent: :destroy
+  has_many :expos, dependent: :destroy
 
   has_many :owners
   has_many :themes, through: :owners, dependent: :destroy

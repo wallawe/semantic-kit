@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-  before_filter :restrict_to_coming_soon
+  #before_filter :restrict_to_coming_soon
 
   def current_user
     @current_user ||= lookup_user
