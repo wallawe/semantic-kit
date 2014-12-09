@@ -1,0 +1,37 @@
+<%= form_for @expo do |f| %>
+
+  <% if @expo.errors.any? %>
+    <div class="ui red message">
+      <div class="header">We noticed some issues</div>
+      <ul class="list">
+        <% @expo.errors.full_messages.each do |message| %>
+          <li id="error"><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="ui form">
+    <div class="field">
+      <%= f.label :url, "Site URL" %>
+      <%= f.url_field :url, placeholder: "ex: http://google.com" %>
+    </div>
+    <% if current_user.admin? %>
+      <div class="field">
+      <div class="field">
+        <%= f.label :title, "Name of Site" %>
+        <%= f.text_field :title %>
+      </div>
+        <%= f.label :image, "Image" %>
+        <%= f.file_field :image, :class => "image-arena" %>
+      </div>
+    <% end %>
+  </div>
+
+  <hr class="ui divider hidden">
+
+  <div class="ui form">
+    <%= f.submit "Submit", :class => "ui button green" %>
+    <%= link_to "Cancel", :back %>
+  </div>
+<% end %>

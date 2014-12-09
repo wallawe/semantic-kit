@@ -1,7 +1,7 @@
 <tr>
   <td><%= link_to expo.url, expo.url, target: "_blank" %></td>
   <td><%= link_to expo.user.username, user_path(expo.user) %></td>
-  <td><%= expo.status %></td>
+  <td><%= expo.status %> - <%= link_to "Edit", edit_expo_path(expo) %></td>
   <% if expo.approved? %>
     <td></td>
   <% else %>

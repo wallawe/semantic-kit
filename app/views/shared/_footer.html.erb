@@ -19,8 +19,8 @@
       <div class="three wide column">
         <h5 class="ui green inverted header">Expo</h5>
         <div class="ui inverted link list">
-          <a class="item">Built with Semantic</a>
-          <a class="item">Submit a Site</a>
+          <%= link_to "Built with Semantic", expos_path, class: "item" %>
+          <%= link_to "Submit a Site", new_expo_path, class: "item" %>
           <%= link_to "FAQ", faq_path, class: "item" %>
         </div>
       </div>
