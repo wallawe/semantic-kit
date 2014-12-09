@@ -1,4 +1,6 @@
 class SubscriptionsController < ApplicationController
+  skip_before_action :verify_authenticity_token
+
   def create
     theme = Theme.find_by_id(params[:id])
 
