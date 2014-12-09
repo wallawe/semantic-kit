@@ -23,4 +23,12 @@ module ThemesHelper
       end
     end
   end
+
+  def paypal_url
+    if Rails.env.production?
+      ENV["paypal_url"]
+    else
+      APP_CONFIG["paypal"]["url"]
+    end
+  end
 end
