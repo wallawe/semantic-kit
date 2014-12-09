@@ -17,6 +17,7 @@ class ApplicationController < ActionController::Base
   end
 
   def authenticate
+    session[:return_to] = request.fullpath
     logged_in? ? true : access_denied
   end
 
