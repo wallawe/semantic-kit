@@ -1,0 +1,9 @@
+<%= link_to new_session_path, class: "ui huge green animated fade labeled fluid button buy-button" do %>
+  <div class="visible content">
+    <i class="tags icon"></i>
+    buy now <%= number_to_currency(@theme.price_list.send("#{@license}_tier"), precision: 0) %>
+  </div>
+  <div class="hidden content">
+    sign in to purchase
+  </div>
+<% end %>

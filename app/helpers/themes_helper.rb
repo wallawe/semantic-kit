@@ -21,6 +21,8 @@ module ThemesHelper
       else
         render "subscriptions/button"
       end
+    else
+      render "subscriptions/sign_in_button"
     end
   end
 
