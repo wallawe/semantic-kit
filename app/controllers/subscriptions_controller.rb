@@ -9,7 +9,7 @@ class SubscriptionsController < ApplicationController
 
     user = current_user || User.find_by_id(params[:user_id])
 
-    if user
+    if user && !user.subscribed?(theme)
       subscription = user.subscriptions.create!(
         theme_id: params[:id],
         price_tier: params[:price]
