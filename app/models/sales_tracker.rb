@@ -2,7 +2,7 @@ class SalesTracker < ActiveRecord::Base
   belongs_to :theme
 
   def revenue
-    gross_sales * 0.3
+    gross_sales * 0.7
   end
 
   def gross_sales
