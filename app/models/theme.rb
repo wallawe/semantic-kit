@@ -5,6 +5,8 @@ class Theme < ActiveRecord::Base
                          ]
   BROWSER_OPTIONS      = [ "Chrome", "Safari", "Firefox", "IE10", "IE9", "IE8", "IE7" ]
 
+  has_many :downloads
+
   has_many :theme_categories
   has_many :categories, through: :theme_categories
 

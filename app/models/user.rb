@@ -8,6 +8,8 @@ class User < ActiveRecord::Base
   validates :password, length: { minimum: 6 }, on: :create
   validates :password, presence: true,         on: :create
 
+  has_many :downloads
+
   has_many :favorites, dependent: :destroy
   has_many :favorite_snippets, through: :favorites, source: :favorited, source_type: 'Snippet'
   has_many :favorite_themes, through: :favorites, source: :favorited, source_type: 'Theme'
@@ -61,6 +63,14 @@ class User < ActiveRecord::Base
 
   def favorited_theme?(theme)
     favorite_themes.include?(theme)
+  end
+
+  def can_download?(theme)
+    subscribed?(theme) && has_remaining_downloads?(theme)
+  end
+
+  def has_remaining_downloads?(theme)
+    downloads.where(theme_id: theme.id).count < Download::MAXIMUM_TRIES
   end
 
 end
