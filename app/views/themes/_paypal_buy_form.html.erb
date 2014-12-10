@@ -5,7 +5,7 @@
   <input type="hidden" name="quantity" value="1">
   <input type="hidden" name="item_name" value="<%= @theme.name %>">
   <input type="hidden" name="amount" value="<%= @theme.price_list.send("#{@license}_tier") %>">
-  <input type="hidden" name="notify_url" value="<%= subscriptions_url(id: @theme.id, price: @theme.price_list.send("#{@license}_tier"), count: "#{@license}_tier_count", paypal: true) %>">
+  <input type="hidden" name="notify_url" value="<%= subscriptions_url(id: @theme.id, price: @theme.price_list.send("#{@license}_tier"), count: "#{@license}_tier_count", paypal: true, user_id: current_user.id) %>">
   <span class="ui huge green animated fade labeled fluid button" style="position: relative;">
     <div class="visible content">
       <i class="tags icon"></i>
