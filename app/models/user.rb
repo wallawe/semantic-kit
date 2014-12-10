@@ -8,6 +8,8 @@ class User < ActiveRecord::Base
   validates :password, length: { minimum: 6 }, on: :create
   validates :password, presence: true,         on: :create
 
+  has_many :downloads
+
   has_many :favorites, dependent: :destroy
   has_many :favorite_snippets, through: :favorites, source: :favorited, source_type: 'Snippet'
   has_many :favorite_themes, through: :favorites, source: :favorited, source_type: 'Theme'
