@@ -40,7 +40,7 @@ class UsersController < ApplicationController
 
   def update
     if current_user.update_attributes(user_update_params)
-      redirect_to user_path(current_user.username)
+      redirect_to user_path(current_user.username), notice: "Your changes have been saved successfully."
     else
       render :edit
     end
@@ -63,6 +63,6 @@ class UsersController < ApplicationController
     end
 
     def user_update_params
-      params.require(:user).permit(:username, :website, :location, :about)
+      params.require(:user).permit(:username, :website, :location, :about, :password, :password_confirmation)
     end
 end

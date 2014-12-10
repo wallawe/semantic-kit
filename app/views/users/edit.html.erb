@@ -25,6 +25,16 @@
         <%= f.text_area :about %>
       </div>
 
+      <div class="field">
+        <%= f.label :password, "Change password" %>
+        <%= f.password_field :password %>
+      </div>
+
+      <div class="field">
+        <%= f.label :password_confirmation %>
+        <%= f.password_field :password_confirmation %>
+      </div>
+
       <%= f.submit "Save", :class => "ui button green" %>
       <%= link_to "Cancel", user_path(current_user), :class => "secondary-text" %>
     <% end %>
