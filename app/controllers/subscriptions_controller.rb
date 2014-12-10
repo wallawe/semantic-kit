@@ -6,7 +6,7 @@ class SubscriptionsController < ApplicationController
     theme      = Theme.find_by_id(params[:id])
     amount     = params[:price].to_i * 100
     user       = current_user || User.find_by_id(params[:user_id])
-    logged_out = params[:logged_in] && params[:logged_in] == "false"
+    logged_out = params[:logged_out] && params[:logged_out] == "true"
 
     # if there is a user and they didn't purchase the theme,
     # create subscription and increment
@@ -25,7 +25,7 @@ class SubscriptionsController < ApplicationController
       end
 
       notice = "Thanks for purchasing #{theme.name}"
-    elsif logged_out && !GuestSubscription.exists?(token: params[:guest_token], theme_id: params[:id], price_tier: params[:price])
+    elsif logged_out && !GuestSubscription.already_exists?(params)
       subscription = GuestSubscription.create!(
         token:      params[:guest_token],
         theme_id:   params[:id],
