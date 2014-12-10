@@ -65,4 +65,12 @@ class User < ActiveRecord::Base
     favorite_themes.include?(theme)
   end
 
+  def can_download?(theme)
+    subscribed?(theme) && has_remaining_downloads?(theme)
+  end
+
+  def has_remaining_downloads?(theme)
+    downloads.where(theme_id: theme.id).count < Download::MAXIMUM_TRIES
+  end
+
 end

@@ -1,4 +1,4 @@
-<%= link_to @theme.file_package.url, class: "ui huge blue labeled icon fluid button" do %>
+<%= button_to downloads_path(theme_id: @theme.id), class: "ui huge blue labeled icon fluid button" do %>
   Download
   <i class="download icon"></i>
 <% end %>
