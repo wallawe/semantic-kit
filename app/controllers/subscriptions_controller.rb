@@ -14,7 +14,12 @@ class SubscriptionsController < ApplicationController
         theme_id: params[:id],
         price_tier: params[:price]
       )
-      theme.sales_tracker.increment!(params[:count].to_sym) if params[:paypal]
+
+      if params[:paypal]
+        theme.sales_tracker.increment!(params[:count].to_sym)
+        theme.sales_tracker.increment!(:sale_count)
+      end
+
       notice = "Thanks for purchasing #{theme.name}"
     else
       notice = "We couldn't process that. Please email help."
