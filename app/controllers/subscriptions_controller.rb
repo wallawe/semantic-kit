@@ -7,11 +7,19 @@ class SubscriptionsController < ApplicationController
 
     amount = params[:price].to_i * 100
 
-    subscription = current_user.subscriptions.create!(theme_id: params[:id], price_tier: params[:price])
+    user = current_user || User.find_by_id(params[:user_id])
 
-    theme.sales_tracker.increment!(params[:count].to_sym) if params[:paypal]
+    if user
+      subscription = user.subscriptions.create!(
+        theme_id: params[:id],
+        price_tier: params[:price]
+      )
+      theme.sales_tracker.increment!(params[:count].to_sym) if params[:paypal]
+      notice = notice: "Thanks for purchasing #{theme.name}"
+    else
+      notice = "We couldn't process that. Please email help."
+    end
 
-    redirect_to theme_path(theme), notice: "Thanks for purchasing #{theme.name}"
-
+    redirect_to theme_path(theme), notice: notice
   end
 end
