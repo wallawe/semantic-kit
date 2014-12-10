@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Semantic UI - Themes, Templates &amp; Snippets | Semantic Kit</title>
-  <meta name="description" content="The Semantic UI front-end framework is the new kid on the block. Check out our tools and resources to help you make the most out of it.">
+
+  <title><%= content_for?(:meta_title) ? yield(:meta_title) : t(:"head.title") %></title>
+  <meta name="description" content="<%= content_for?(:meta_desc) ? yield(:meta_desc) : t(:"head.meta_description") %>">
 
   <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
   <link rel="icon" href="/favicon.ico" type="image/x-icon">

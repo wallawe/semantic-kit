@@ -10,6 +10,9 @@ en:
     no_approved_themes: "There are no approved  %{name} themes quite yet."
   expos:
     updated: "Your expo has been updated successfully."
+  head:
+    title: "Semantic UI - Themes, Templates and Snippets | Semantic Kit"
+    meta_description: "The Semantic UI front-end framework is the new kid on the block. Check out our tools and resources to help you make the most out of it."
   sessions:
     invalid_login: "Invalid login/password. Try again!"
     successful_login: "Logged in successfully"
