@@ -22,7 +22,7 @@ module ThemesHelper
         render "subscriptions/button"
       end
     else
-      render "subscriptions/sign_in_button"
+      render "subscriptions/button"
     end
   end
 
@@ -33,4 +33,5 @@ module ThemesHelper
       APP_CONFIG["paypal"]["url"]
     end
   end
+
 end
