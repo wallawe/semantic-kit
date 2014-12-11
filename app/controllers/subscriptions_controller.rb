@@ -13,7 +13,7 @@ class SubscriptionsController < ApplicationController
     #
     # if the user is logged out and there isn't a GuestSubscription
     # create GuestSubscription and increment
-    if user && !user.subscribed?(theme)
+    if user && user.can_purchase?(theme)
       subscription = user.subscriptions.create!(
         theme_id: params[:id],
         price_tier: params[:price]
