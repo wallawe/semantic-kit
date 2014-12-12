@@ -4,7 +4,7 @@ class Subscription < ActiveRecord::Base
 
   has_many :downloads
 
-  def has_remaining_downloads?
+  def has_remaining_downloads?(theme)
     downloads.where(theme_id: theme.id).count < Download::MAXIMUM_TRIES
   end
 

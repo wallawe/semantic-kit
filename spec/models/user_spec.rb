@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe User, :type => :model do
-  let(:user)  { User.create!(email: "blah@testing.com", username: "user") }
+  let(:user)  { User.create(email: "blah@testing.com", password: "password", username: "user") }
   let(:theme) { Theme.create(name: "Blah", description: "stuff", preview_url: "url", file_package: "stuff.zip", image: "image.png") }
 
   before do
@@ -48,7 +48,6 @@ RSpec.describe User, :type => :model do
 
           2.times do |i|
             subscription.downloads.create(
-              id: (i + 1),
               theme_id: theme.id,
               subscription_id: subscription.id,
               user_id: user.id
@@ -93,7 +92,7 @@ RSpec.describe User, :type => :model do
             )
           end
 
-          6.upto(10) do |i|
+          6.upto(10) do |n|
             subscription.downloads.create(
               id: n,
               theme_id: theme.id,
@@ -167,9 +166,9 @@ RSpec.describe User, :type => :model do
       context "with one subscription that has 5 downloads" do
         before do
           subscription = Subscription.create(theme_id: theme.id, user_id: user.id)
-          5.times do |i|
+          1.upto(5) do |n|
             subscription.downloads.create(
-              id: (i + 1),
+              id: n,
               theme_id: theme.id,
               subscription_id: subscription.id,
               user_id: user.id
