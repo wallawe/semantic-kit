@@ -1,8 +1,9 @@
 class Download < ActiveRecord::Base
   MAXIMUM_TRIES = 5
 
-  belongs_to :user
+  belongs_to :subscription
   belongs_to :theme
+  belongs_to :user
 
-  validates :user_id, :theme_id, presence: true
+  validates :subscription_id, presence: true
 end

@@ -25,10 +25,6 @@ class User < ActiveRecord::Base
     "#{username}"
   end
 
-  def subscribed?(theme)
-    subscriptions.where(theme_id: theme.id).any?
-  end
-
   def admin?
     admin
   end
@@ -66,11 +62,19 @@ class User < ActiveRecord::Base
   end
 
   def can_download?(theme)
-    subscribed?(theme) && has_remaining_downloads?(theme)
+    subscribed?(theme)
   end
 
-  def has_remaining_downloads?(theme)
-    downloads.where(theme_id: theme.id).count < Download::MAXIMUM_TRIES
+  def can_purchase?(theme)
+    !subscribed?(theme)
+  end
+
+  def subscribed?(theme)
+    !!subscriptions_for(theme).detect {|s| s.downloads.any? && s.has_remaining_downloads?(theme) }
+  end
+
+  def subscriptions_for(theme)
+    subscriptions.where(theme_id: theme.id)
   end
 
 end
