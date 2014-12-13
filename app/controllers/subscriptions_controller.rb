@@ -19,7 +19,7 @@ class SubscriptionsController < ApplicationController
       notice = "Thanks for purchasing #{theme.name}"
       path   = theme_path(theme)
     elsif logged_out && !GuestSubscription.already_exists?(params)
-      GuestSubscription.create_and_notify(theme, params)
+      GuestSubscription.create_and_notify!(theme, params)
 
       notice = "Thanks for purchasing #{theme.name}"
       path   = theme.file_package.url

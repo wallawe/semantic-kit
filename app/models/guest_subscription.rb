@@ -16,14 +16,17 @@ class GuestSubscription < ActiveRecord::Base
     end
   end
 
-  def self.create_and_notify(theme, params)
+  def self.create_and_notify!(theme, params)
     subscription = self.create!(
       token:      params[:guest_token],
+      email:      params[:payer_email],
       theme_id:   params[:id],
       price_tier: params[:price]
     )
 
     theme.sales_tracker.increment!(params[:count].to_sym)
     theme.sales_tracker.increment!(:sale_count)
+
+    ThemeMailer.guest_purchase(theme, params[:payer_email], subscription.token)
   end
 end

@@ -21,6 +21,8 @@ module ThemesHelper
       else
         render "subscriptions/button"
       end
+    elsif params[:token].present?
+      render "download_button"
     else
       render "subscriptions/button"
     end

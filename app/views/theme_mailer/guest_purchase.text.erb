@@ -1,5 +1,5 @@
-<p>Hey <%= @user.username %>,</p>
+<p>Hey <%= @guest_email %>,</p>
 <p>Thanks for purchasing a theme from SemanticKit! You can download <%= @theme.name %> here:</p>
-<p><%= theme_url(@theme) %></p>
+<p><%= theme_url(@theme, token: @token) %></p>
 <p>-SemanticKit</p>
 <p>@SemanticKit</p>
