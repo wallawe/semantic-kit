@@ -5,6 +5,4 @@ class Download < ActiveRecord::Base
   belongs_to :guest_subscription
   belongs_to :theme
   belongs_to :user
-
-  validates :subscription_id, presence: true
 end

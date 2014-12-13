@@ -16,11 +16,6 @@ RSpec.describe ThemeMailer, :type => :mailer do
 
   describe "#guest_purchase" do
     it "sends a link to the theme" do
-      # @theme = theme
-      # @email = guest_email
-      # @token = token
-      # mail(:to => "#{@email} <#{@email}>", subject: t(:"mailers.themes.purchase_subject", theme_name: theme.name))
-
       mail = ThemeMailer.guest_purchase(theme, "test@testing.com", "1214u10934098")
       mail.subject.should == "Thanks for purchasing Admin Theme"
       mail.to.should == ["test@testing.com"]
