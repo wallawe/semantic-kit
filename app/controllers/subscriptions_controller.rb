@@ -24,7 +24,7 @@ class SubscriptionsController < ApplicationController
       notice = "Thanks for purchasing #{theme.name}"
       path   = theme.file_package.url
     else
-      notice = "We couldn't process that. Please email help."
+      notice = "We couldn't process that. Please email help@semantickit.com so we can help you out."
       path   = theme_path(theme)
     end
 
