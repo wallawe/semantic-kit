@@ -8,7 +8,7 @@ class DownloadsController < ApplicationController
     elsif theme && params[:token]
       guest_subscription = GuestSubscription.where(theme_id: theme.id, token: params[:token]).first
       if guest_subscription
-        guest_subscription.downloads.create!(theme_id: theme.id)
+        guest_subscription.guest_downloads.create!(theme_id: theme.id)
         redirect_to theme.file_package.url
       end
     else

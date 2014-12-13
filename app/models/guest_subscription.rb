@@ -1,7 +1,7 @@
 class GuestSubscription < ActiveRecord::Base
   belongs_to :theme
 
-  has_many :downloads
+  has_many :guest_downloads
 
   validates :token, presence: true
 
@@ -45,6 +45,6 @@ class GuestSubscription < ActiveRecord::Base
   end
 
   def downloadable?
-    downloads.count < Download::MAXIMUM_TRIES
+    guest_downloads.count < Download::MAXIMUM_TRIES
   end
 end
