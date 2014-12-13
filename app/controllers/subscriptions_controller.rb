@@ -14,32 +14,20 @@ class SubscriptionsController < ApplicationController
     # if the user is logged out and there isn't a GuestSubscription
     # create GuestSubscription and increment
     if user && user.can_purchase?(theme)
-      subscription = user.subscriptions.create!(
-        theme_id: params[:id],
-        price_tier: params[:price]
-      )
-
-      if params[:paypal]
-        theme.sales_tracker.increment!(params[:count].to_sym)
-        theme.sales_tracker.increment!(:sale_count)
-      end
+      user.purchase_and_notify!(theme, params)
 
       notice = "Thanks for purchasing #{theme.name}"
+      path   = theme_path(theme)
     elsif logged_out && !GuestSubscription.already_exists?(params)
-      subscription = GuestSubscription.create!(
-        token:      params[:guest_token],
-        theme_id:   params[:id],
-        price_tier: params[:price]
-      )
-
-      theme.sales_tracker.increment!(params[:count].to_sym)
-      theme.sales_tracker.increment!(:sale_count)
+      GuestSubscription.create_and_notify(theme, params)
 
       notice = "Thanks for purchasing #{theme.name}"
+      path   = theme.file_package.url
     else
       notice = "We couldn't process that. Please email help."
+      path   = theme_path(theme)
     end
 
-    redirect_to theme_path(theme), notice: notice
+    redirect_to path, notice: notice
   end
 end

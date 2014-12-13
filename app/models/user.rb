@@ -77,4 +77,18 @@ class User < ActiveRecord::Base
     subscriptions.where(theme_id: theme.id)
   end
 
+  def purchase_and_notify!(theme, params)
+    user.subscriptions.create!(
+      theme_id: params[:id],
+      price_tier: params[:price]
+    )
+
+    if params[:paypal]
+      theme.sales_tracker.increment!(params[:count].to_sym)
+      theme.sales_tracker.increment!(:sale_count)
+    end
+
+    ThemeMailer.user_purchased(theme, self)
+  end
+
 end
