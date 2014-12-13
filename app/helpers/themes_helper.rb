@@ -21,7 +21,7 @@ module ThemesHelper
       else
         render "subscriptions/button"
       end
-    elsif params[:token].present?
+    elsif GuestSubscription.exists_and_downloadable?(params[:id], params[:token])
       render "download_button"
     else
       render "subscriptions/button"
