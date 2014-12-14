@@ -13,6 +13,9 @@ en:
   head:
     title: "Semantic UI - Themes, Templates and Snippets | Semantic Kit"
     meta_description: "The Semantic UI front-end framework is the new kid on the block. Check out our tools and resources to help you make the most out of it."
+  mailers:
+    themes:
+      purchase_subject: "Thanks for purchasing %{theme_name}"
   sessions:
     invalid_login: "Invalid login/password. Try again!"
     successful_login: "Logged in successfully"
