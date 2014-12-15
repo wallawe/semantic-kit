@@ -16,18 +16,13 @@ class SubscriptionsController < ApplicationController
     if user && user.can_purchase?(theme)
       user.purchase_and_notify!(theme, params)
 
-      notice = "Thanks for purchasing #{theme.name}"
-      path   = theme_path(theme)
+      redirect_to theme_path(theme), notice: "Thanks for purchasing #{theme.name}"
     elsif logged_out && !GuestSubscription.already_exists?(params)
       GuestSubscription.create_and_notify!(theme, params)
 
-      notice = "Thanks for purchasing #{theme.name}"
-      path   = theme.file_package.url
+      redirect_to theme.file_package.url, notice: "Thanks for purchasing #{theme.name}"
     else
-      notice = "We couldn't process that. Please email help@semantickit.com so we can help you out."
-      path   = theme_path(theme)
+      redirect_to theme_path(theme), notice: "We couldn't process that. Please email help@semantickit.com so we can help you out."
     end
-
-    redirect_to path, notice: notice
   end
 end
