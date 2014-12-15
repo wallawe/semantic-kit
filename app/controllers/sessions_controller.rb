@@ -9,7 +9,8 @@ class SessionsController < ApplicationController
   def create
     if user = User.find_by_email(params[:email]).try(:authenticate, params[:password])
       session[:user_id] = user.id
-      redirect_to session.delete(:return_to), :notice => t(:"sessions.successful_login")
+      path = session.delete(:return_to) || root_path
+      redirect_to path, :notice => t(:"sessions.successful_login")
     else
       flash.now[:alert] = t(:"sessions.invalid_login")
       render :action => 'new'
