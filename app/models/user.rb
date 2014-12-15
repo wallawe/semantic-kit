@@ -88,7 +88,7 @@ class User < ActiveRecord::Base
       theme.sales_tracker.increment!(:sale_count)
     end
 
-    ThemeMailer.user_purchased(theme, self)
+    ThemeMailer.user_purchase(theme, self).deliver
   end
 
 end

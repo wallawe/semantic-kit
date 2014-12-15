@@ -31,7 +31,7 @@ class GuestSubscription < ActiveRecord::Base
     theme.sales_tracker.increment!(params[:count].to_sym)
     theme.sales_tracker.increment!(:sale_count)
 
-    ThemeMailer.guest_purchase(theme, params[:payer_email], subscription.token)
+    ThemeMailer.guest_purchase(theme, params[:payer_email], subscription.token).deliver
   end
 
   def self.exists_and_downloadable?(theme_id, token)
