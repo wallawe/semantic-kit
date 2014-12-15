@@ -1,10 +1,10 @@
 <% if params[:token] %>
-  <%= button_to downloads_path(theme_id: @theme.id, token: params[:token]), class: "ui huge blue labeled icon fluid button" do %>
+  <%= button_to downloads_path(theme_id: @theme.id, token: params[:token]), class: "ui huge green labeled icon fluid button" do %>
     Download
     <i class="download icon"></i>
   <% end %>
 <% else %>
-  <%= button_to downloads_path(theme_id: @theme.id), class: "ui huge blue labeled icon fluid button" do %>
+  <%= button_to downloads_path(theme_id: @theme.id), class: "ui huge green labeled icon fluid button" do %>
     Download
     <i class="download icon"></i>
   <% end %>
