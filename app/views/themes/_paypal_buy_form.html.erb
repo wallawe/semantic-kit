@@ -9,7 +9,7 @@
   <% if logged_in? %>
     <input type="hidden" name="notify_url" value="<%= subscriptions_url(id: @theme.id, price: @theme.price_list.send("#{@license}_tier"), count: "#{@license}_tier_count", paypal: true, user_id: current_user.id) %>">
   <% else %>
-    <input type="hidden" name="notify_url" value="<%= subscriptions_url(id: @theme.id, price: @theme.price_list.send("#{@license}_tier"), count: "#{@license}_tier_count", paypal: true, user_id: current_user.try(:id), logged_out: "true", guest_token: GuestSubscription.random_token) %>">
+    <input type="hidden" name="notify_url" value="<%= subscriptions_url(id: @theme.id, price: @theme.price_list.send("#{@license}_tier"), count: "#{@license}_tier_count", paypal: true, logged_out: "true", guest_token: GuestSubscription.random_token) %>">
   <% end %>
 
   <span class="ui huge green animated fade labeled fluid button buy-button">
