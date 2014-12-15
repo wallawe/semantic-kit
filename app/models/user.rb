@@ -78,7 +78,7 @@ class User < ActiveRecord::Base
   end
 
   def purchase_and_notify!(theme, params)
-    user.subscriptions.create!(
+    self.subscriptions.create!(
       theme_id: params[:id],
       price_tier: params[:price]
     )
