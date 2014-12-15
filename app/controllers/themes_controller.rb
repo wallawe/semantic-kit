@@ -41,7 +41,7 @@ class ThemesController < ApplicationController
   def destroy
     authorize(@theme)
     @theme.destroy
-    redirect_to semantic_ui_snippets_path, notice: 'Deletion successful'
+    redirect_to themes_path, notice: 'Deletion successful'
   end
 
   def preview
