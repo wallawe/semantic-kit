@@ -21,6 +21,9 @@ class SubscriptionsController < ApplicationController
       GuestSubscription.create_and_notify!(theme, params)
 
       render nothing: true
+    else
+      Rails.logger.info "Error creating a subscription"
+      render nothing: true
     end
   end
 end
