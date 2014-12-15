@@ -35,6 +35,7 @@ class ThemesController < ApplicationController
   end
 
   def show
+    Rails.logger.info "CURRENT USER: #{current_user.inspect}"
     @license = params[:license] || "single"
   end
 
