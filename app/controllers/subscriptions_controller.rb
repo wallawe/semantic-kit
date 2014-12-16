@@ -13,11 +13,11 @@ class SubscriptionsController < ApplicationController
     #
     # if the user is logged out and there isn't a GuestSubscription
     # create GuestSubscription and increment
-    if user && user.can_purchase?(theme)
+    if theme && user && user.can_purchase?(theme)
       user.purchase_and_notify!(theme, params)
 
       render nothing: true
-    elsif logged_out && !GuestSubscription.already_exists?(params)
+    elsif theme && logged_out && !GuestSubscription.already_exists?(params)
       GuestSubscription.create_and_notify!(theme, params)
 
       render nothing: true
