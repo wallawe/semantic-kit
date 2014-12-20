@@ -25,6 +25,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.where(username: params[:id]).first
+    redirect_to root_path, notice: "That user does not exist" unless @user
   end
 
   def edit
