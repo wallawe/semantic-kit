@@ -49,10 +49,12 @@
             <%= link_to "Add a website", edit_user_path %>
           <% end %>
         </p>
-        <p>
-          <b>Email:</b>
-          <%= @user.email %>
-        </p>
+        <% if current_user && current_user.admin? %>
+          <p>
+            <b>Email:</b>
+            <%= @user.email %>
+          </p>
+        <% end %>
         <p>
           <strong>Location:</strong>
           <%= @user.location.present? ? @user.location : "Earth" %>
