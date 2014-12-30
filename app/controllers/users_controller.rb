@@ -32,7 +32,7 @@ class UsersController < ApplicationController
   end
 
   def index
-    if current_user.admin?
+    if current_user && current_user.admin?
       @users = User.all
     else
       redirect_to root_path
@@ -40,7 +40,7 @@ class UsersController < ApplicationController
   end
 
   def update
-    if current_user.update_attributes(user_update_params)
+    if current_user && current_user.update_attributes(user_update_params)
       redirect_to user_path(current_user.username), notice: "Your changes have been saved successfully."
     else
       render :edit
