@@ -30,7 +30,7 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.where(username: params[:id]).first
-    redirect_to root_path if @user.id != current_user.id
+    redirect_to root_path unless current_user && @user.id == current_user.id
   end
 
   def index
