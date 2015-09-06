@@ -140,7 +140,7 @@
         </tr>
         <tr>
           <td>Tags</td>
-          <td><%= @theme.tags.map(&:name).map { |t| link_to t, tag_path(t) }.join(', ').html_safe %></td>
+          <td><%= @theme.tags.map(&:name).reject(&:blank?).map { |t| link_to t, tag_path(t) }.join(', ').html_safe %></td>
         </tr>
         <tr>
           <td>Released</td>
