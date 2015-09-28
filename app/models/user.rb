@@ -70,7 +70,11 @@ class User < ActiveRecord::Base
   end
 
   def subscribed?(theme)
-    !!subscriptions_for(theme).detect {|s| s.has_remaining_downloads?(theme) }
+    !!subscription_with_remaining_downloads_for(theme)
+  end
+
+  def subscription_with_remaining_downloads_for(theme)
+    subscriptions_for(theme).detect {|s| s.has_remaining_downloads?(theme) }
   end
 
   def subscriptions_for(theme)
