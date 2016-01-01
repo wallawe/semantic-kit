@@ -31,7 +31,7 @@ class ThemesController < ApplicationController
   end
 
   def index
-    @themes = Theme.approved.paginate(page: params[:page], per_page: 20)
+    @themes = Theme.approved.order('created_at desc').paginate(page: params[:page], per_page: 20)
   end
 
   def show
