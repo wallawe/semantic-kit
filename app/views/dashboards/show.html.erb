@@ -26,7 +26,7 @@
           <td><%= theme.single_tier_count %></td>
           <td><%= theme.multiple_tier_count %></td>
           <td><%= theme.extended_tier_count %></td>
-          <td><%= number_to_currency(theme.revenue) %> <%= theme.revenue_explanation %></td>
+          <td><%= number_to_currency(theme.revenue) %> <span class="theme revenue-explanation"><%= theme.revenue_explanation %><span></td>
           <td><%= theme.favorites.count %></td>
         </tr>
       <% end %>
