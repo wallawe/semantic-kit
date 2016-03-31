@@ -16,7 +16,7 @@ module ThemesHelper
     if current_user
       if current_user.admin? && !theme.approved?
         render "approve_button"
-      elsif current_user.can_download?(theme)
+      elsif current_user.can_download?(theme) || current_user.owns_theme?(theme)
         render "download_button"
       else
         render "subscriptions/button"
