@@ -8,6 +8,8 @@ en:
     theme_pending: "This theme is currently pending approval. Email help@semantickit.com with any questions."
   categories:
     no_approved_themes: "There are no approved  %{name} themes quite yet."
+  downloads:
+    reminder: "Thanks for your purchase! Click the download button to download %{name}."
   expos:
     updated: "Your expo has been updated successfully."
   head:

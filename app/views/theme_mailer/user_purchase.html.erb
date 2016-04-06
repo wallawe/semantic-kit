@@ -1,6 +1,6 @@
 <p>Hey <%= @user.username %>,</p>
 <p>Thanks for purchasing a theme from SemanticKit! You can download <%= @theme.name %> here:</p>
-<p><%= theme_url(@theme) %></p>
+<p><%= theme_url(@theme, purchase_mailer: true) %></p>
 <p><b>Please note:</b> You will only have 5 downloads total before this link expires.</p>
 <br>
 <p>-SemanticKit</p>
