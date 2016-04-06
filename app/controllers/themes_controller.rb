@@ -71,7 +71,7 @@ class ThemesController < ApplicationController
     def should_see_download_notice?
       return if !params[:purchase_mailer]
       if current_user
-        current_user.can_download?(theme) || current_user.owns_theme?(theme)
+        current_user.can_download?(@theme) || current_user.owns_theme?(@theme)
       elsif GuestSubscription.exists_and_downloadable?(params[:id], params[:token])
         true
       end
