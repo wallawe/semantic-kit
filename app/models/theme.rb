@@ -33,7 +33,7 @@ class Theme < ActiveRecord::Base
   scope :pending,     -> { where(approved: false) }
 
   delegate :sale_count, :single_tier_count, :multiple_tier_count,
-           :extended_tier_count, :revenue, :revenue_explanation,
+           :extended_tier_count, :revenue,
        to: :sales_tracker
 
 

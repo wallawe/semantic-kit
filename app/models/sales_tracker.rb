@@ -5,10 +5,6 @@ class SalesTracker < ActiveRecord::Base
     gross_sales * PriceList::THEME_CREATOR_PERCENTAGE
   end
 
-  def revenue_explanation
-    "(#{gross_sales} x #{(PriceList::THEME_CREATOR_PERCENTAGE * 100)}%)"
-  end
-
   def gross_sales
     subscription_sales + guest_subscription_sales
     # (single_tier_count || 0) * theme.price_list.single_tier +
