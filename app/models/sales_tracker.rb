@@ -10,8 +10,17 @@ class SalesTracker < ActiveRecord::Base
   end
 
   def gross_sales
-    (single_tier_count || 0) * theme.price_list.single_tier +
-    (multiple_tier_count || 0) * theme.price_list.multiple_tier +
-    (extended_tier_count || 0) * theme.price_list.extended_tier
+    subscription_sales + guest_subscription_sales
+    # (single_tier_count || 0) * theme.price_list.single_tier +
+    # (multiple_tier_count || 0) * theme.price_list.multiple_tier +
+    # (extended_tier_count || 0) * theme.price_list.extended_tier
+  end
+
+  def subscription_sales
+    Subscription.where(theme_id: theme.id).map{|s| s.price_tier.to_f}.reduce(:+)
+  end
+
+  def guest_subscription_sales
+    GuestSubscription.where(theme_id: theme.id).map{|gs| gs.price_tier.to_f}.reduce(:+)
   end
 end
