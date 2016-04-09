@@ -30,10 +30,6 @@ class SalesTracker < ActiveRecord::Base
     new_hash
   end
 
-  def formatted_sales_by_price
-    sales_grouped_by_price.map{|k,v| "#{k.to_s} (#{v})"}.join(", ")
-  end
-
   private
 
     def guest_subscriptions
