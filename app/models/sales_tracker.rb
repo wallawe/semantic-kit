@@ -24,13 +24,23 @@ class SalesTracker < ActiveRecord::Base
     guest_subscriptions.map{|gs| gs.price_tier.to_f}.reduce(:+)
   end
 
+  def sales_grouped_by_price
+    new_hash = Hash.new
+    (guest_subscriptions + subscriptions).group_by(&:price_tier).map {|k,v| h[k.to_f] = v.count }
+    new_hash
+  end
+
+  def formatted_sales_by_price
+    sales_grouped_by_price.map{|k,v| "#{k.to_s} (#{v})"}.join(", ")
+  end
+
   private
 
     def guest_subscriptions
-      GuestSubscription.where(theme_id: theme.id)
+      theme.guest_subscriptions
     end
 
     def subscriptions
-      Subscription.where(theme_id: theme.id)
+      theme.subscriptions
     end
 end
