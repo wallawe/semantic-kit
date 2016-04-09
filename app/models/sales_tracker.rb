@@ -26,7 +26,7 @@ class SalesTracker < ActiveRecord::Base
 
   def sales_grouped_by_price
     new_hash = Hash.new
-    (guest_subscriptions + subscriptions).group_by(&:price_tier).map {|k,v| h[k.to_f] = v.count }
+    (guest_subscriptions + subscriptions).group_by(&:price_tier).map {|k,v| new_hash[k.to_f] = v.count }
     new_hash
   end
 
