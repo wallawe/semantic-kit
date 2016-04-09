@@ -17,10 +17,20 @@ class SalesTracker < ActiveRecord::Base
   end
 
   def subscription_sales
-    Subscription.where(theme_id: theme.id).map{|s| s.price_tier.to_f}.reduce(:+)
+    subscriptions.map{|s| s.price_tier.to_f}.reduce(:+)
   end
 
   def guest_subscription_sales
-    GuestSubscription.where(theme_id: theme.id).map{|gs| gs.price_tier.to_f}.reduce(:+)
+    guest_subscriptions.map{|gs| gs.price_tier.to_f}.reduce(:+)
   end
+
+  private
+
+    def guest_subscriptions
+      GuestSubscription.where(theme_id: theme.id)
+    end
+
+    def subscriptions
+      Subscription.where(theme_id: theme.id)
+    end
 end

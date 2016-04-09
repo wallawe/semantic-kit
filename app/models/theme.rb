@@ -19,6 +19,9 @@ class Theme < ActiveRecord::Base
   has_one :price_list, dependent: :destroy
   has_one :sales_tracker, dependent: :destroy
 
+  has_many :subscriptions
+  has_many :guest_subscriptions
+
   accepts_nested_attributes_for :price_list
 
   mount_uploader :image, ImageUploader
