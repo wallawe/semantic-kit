@@ -2,10 +2,13 @@ class DownloadsController < ApplicationController
   def create
     theme = Theme.find_by_id(params[:theme_id])
 
-    if theme && current_user && current_user.can_download?(theme) || current_user.owns_theme?(theme)
-      valid_subscription = current_user.subscription_with_remaining_downloads_for(theme)
-      current_user.downloads.create!(theme_id: theme.id, subscription_id: valid_subscription.id)
-      redirect_to theme.file_package.url
+    if theme && current_user
+      if current_user.can_download?(theme)
+        valid_subscription = current_user.subscription_with_remaining_downloads_for(theme)
+        current_user.downloads.create!(theme_id: theme.id, subscription_id: valid_subscription.id)
+      elsif current_user.owns_theme?(theme)
+        redirect_to theme.file_package.url
+      end
     elsif theme && params[:token]
       guest_subscription = GuestSubscription.where(theme_id: theme.id, token: params[:token]).first
       if guest_subscription
