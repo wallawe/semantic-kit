@@ -17,6 +17,11 @@ travis = User.create(email: "travis@test.com", password: "password",
                      location: "Washington, DC",
                      website: "tcvalentine.com", about: "Ginger")
 
+test = User.create(email: "help@semantickit.com", password: "helptest",
+                     password_confirmation: "helptest", username: "semantictest",
+                     location: "Washington, DC",
+                     website: "semantickit.com", about: "Testing")
+
 #####################
 ### Create Categories
 #####################
