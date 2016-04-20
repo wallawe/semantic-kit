@@ -6,7 +6,6 @@ class DownloadsController < ApplicationController
       if current_user.can_download?(theme)
         valid_subscription = current_user.subscription_with_remaining_downloads_for(theme)
         current_user.downloads.create!(theme_id: theme.id, subscription_id: valid_subscription.id)
-      elsif current_user.owns_theme?(theme)
         redirect_to theme.file_package.url
       end
     elsif theme && params[:token]
