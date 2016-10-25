@@ -31,11 +31,14 @@ class ThemesController < ApplicationController
   end
 
   def index
-    @themes = Theme.approved.paginate(page: params[:page], per_page: 20)
+    @themes = Theme.approved.order('created_at desc').paginate(page: params[:page], per_page: 20)
   end
 
   def show
     @license = params[:license] || "single"
+    if should_see_download_notice?
+      flash[:notice] = t(:"downloads.reminder", name: @theme.name)
+    end
   end
 
   def destroy
@@ -63,5 +66,16 @@ class ThemesController < ApplicationController
       params.require(:theme).permit(:name, :description, :preview_url, :category_ids, { category_ids: [] },
                                     :image, :file_package, :tag_list, :preprocessor, { browsers: [] },
                                     price_list_attributes: [:single_tier, :multiple_tier, :extended_tier])
+    end
+
+    def should_see_download_notice?
+      return if !params[:purchase_mailer]
+      # Sometimes people are logged in AND somehow getting to the theme with a token
+      # this forces the lookup on GuestSubscription if params[:token] exists
+      if current_user && !params[:token]
+        current_user.can_download?(@theme) || current_user.owns_theme?(@theme)
+      elsif GuestSubscription.exists_and_downloadable?(params[:id], params[:token])
+        true
+      end
     end
 end

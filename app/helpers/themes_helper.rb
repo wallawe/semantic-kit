@@ -13,10 +13,12 @@ module ThemesHelper
   end
 
   def call_to_action(theme)
-    if current_user
+    # Sometimes people are logged in AND somehow getting to the theme with a token
+    # this forces the lookup on GuestSubscription if params[:token] exists
+    if current_user && !params[:token]
       if current_user.admin? && !theme.approved?
         render "approve_button"
-      elsif current_user.can_download?(theme)
+      elsif current_user.can_download?(theme) || current_user.owns_theme?(theme)
         render "download_button"
       else
         render "subscriptions/button"

@@ -15,6 +15,7 @@
         <th>Tier 1 Sold</th>
         <th>Tier 2 Sold</th>
         <th>Tier 3 Sold</th>
+        <th>Sold By Price</th>
         <th>Total Revenue</th>
         <th>Favorites</th>
       </tr>
@@ -26,7 +27,8 @@
           <td><%= theme.single_tier_count %></td>
           <td><%= theme.multiple_tier_count %></td>
           <td><%= theme.extended_tier_count %></td>
-          <td><%= number_to_currency(theme.revenue) %></td>
+          <td><%= formatted_sales_by_price_for(theme) %></td>
+          <td><%= number_to_currency(theme.revenue) %> <span class="theme revenue-explanation"><%= revenue_explanation_for(theme) %><span></td>
           <td><%= theme.favorites.count %></td>
         </tr>
       <% end %>

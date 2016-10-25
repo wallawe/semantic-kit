@@ -33,7 +33,7 @@ WrapSemantic::Application.routes.draw do
   resources :subscriptions,       only: [:create]
 
   resources :tags,                only: [:show]
-  resources :themes do
+  resources :themes, defaults: { format: "html" } do
     member do
       get 'preview'
     end

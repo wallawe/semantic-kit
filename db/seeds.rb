@@ -17,6 +17,11 @@ travis = User.create(email: "travis@test.com", password: "password",
                      location: "Washington, DC",
                      website: "tcvalentine.com", about: "Ginger")
 
+test = User.create(email: "help@semantickit.com", password: "helptest",
+                     password_confirmation: "helptest", username: "semantictest",
+                     location: "Washington, DC",
+                     website: "semantickit.com", about: "Testing")
+
 #####################
 ### Create Categories
 #####################
@@ -40,11 +45,12 @@ multiple = [13.00, 15.00, 18.00]
 extended = [200.00, 300.00, 400.00]
 
 [ theme_one, theme_two, theme_three ].each_with_index do |theme, index|
-  theme = Theme.create(name: theme[:name], description: theme[:description])
+  theme = Theme.create(name: theme[:name], description: theme[:description], approved: true)
+  theme.save(validate: false)
   # create theme categories
-  theme.theme_categories.create(category_id: Category.all.sample.id)
+  theme.theme_categories.create!(category_id: Category.all.sample.id)
   # create theme price_list
-  theme.create_price_list(single_tier: single[index], multiple_tier: multiple[index], extended_tier: extended[index])
+  theme.create_price_list!(single_tier: single[index], multiple_tier: multiple[index], extended_tier: extended[index])
 end
 
 #####################
